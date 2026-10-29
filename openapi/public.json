@@ -1,0 +1,5451 @@
+{
+  "basePath": "/api/v1",
+  "definitions": {
+    "app.Response": {
+      "description": "The Response struct is used for wrapping the API response with a code, message, and data.",
+      "properties": {
+        "code": {
+          "description": "Code is the HTTP status code or a custom code used to indicate the result of the request\n@example 200",
+          "type": "integer"
+        },
+        "data": {
+          "description": "Data is the response data (can be any object or null)\n@example {\"id\": 1, \"name\": \"John Doe\"}"
+        },
+        "msg": {
+          "description": "Msg is the message that describes the result of the request\n@example \"Request successful\""
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ArchiveYear": {
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ArchivedSeries": {
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "date_range": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ArchivesResponse": {
+      "properties": {
+        "categories": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.MatchCategory"
+          },
+          "type": "array"
+        },
+        "category": {
+          "type": "string"
+        },
+        "current_year": {
+          "type": "integer"
+        },
+        "empty_state": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "q": {
+          "type": "string"
+        },
+        "selected_year": {
+          "type": "integer"
+        },
+        "series": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ArchivedSeries"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "years": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ArchiveYear"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionCurrency": {
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "symbol": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionFilter": {
+      "properties": {
+        "input_type": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionFilterOption"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionFilterOption": {
+      "properties": {
+        "image_id": {
+          "type": "integer"
+        },
+        "label": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionInfoBlock": {
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionInfoResponse": {
+      "properties": {
+        "auction_title": {
+          "type": "string"
+        },
+        "blocks": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionInfoBlock"
+          },
+          "type": "array"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "page_title": {
+          "type": "string"
+        },
+        "season": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "tournament": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionLiveResponse": {
+      "properties": {
+        "auction_title": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "current_status": {
+          "type": "string"
+        },
+        "featured_players": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionPlayer"
+          },
+          "type": "array"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "returned_count": {
+          "type": "integer"
+        },
+        "season": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "tournament": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionOptionsResponse": {
+      "properties": {
+        "fetched_at": {
+          "type": "string"
+        },
+        "filters": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionFilter"
+          },
+          "type": "array"
+        },
+        "season": {
+          "type": "string"
+        },
+        "sort": {
+          "$ref": "#/definitions/cricbuzz.AuctionSortFilter"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "tournament": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionPlayer": {
+      "properties": {
+        "auction_price": {
+          "type": "string"
+        },
+        "auction_remarks": {
+          "type": "string"
+        },
+        "base_price": {
+          "type": "string"
+        },
+        "capped_status": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "country_id": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "player_id": {
+          "type": "integer"
+        },
+        "player_image_id": {
+          "type": "integer"
+        },
+        "player_overseas": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "string"
+        },
+        "season": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        },
+        "team_id": {
+          "type": "integer"
+        },
+        "team_image_id": {
+          "type": "integer"
+        },
+        "updated_time": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionPlayerDetailResponse": {
+      "properties": {
+        "auction_earnings": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionPlayerEarning"
+          },
+          "type": "array"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "earnings_disclaimer": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "player": {
+          "$ref": "#/definitions/cricbuzz.AuctionPlayer"
+        },
+        "season": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "tournament": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionPlayerEarning": {
+      "properties": {
+        "auction_price": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        },
+        "team_id": {
+          "type": "integer"
+        },
+        "team_image_id": {
+          "type": "integer"
+        },
+        "year": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionPlayerSearchResponse": {
+      "properties": {
+        "auction_title": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionPlayer"
+          },
+          "type": "array"
+        },
+        "live_blog_id": {
+          "type": "integer"
+        },
+        "q": {
+          "type": "string"
+        },
+        "returned_count": {
+          "type": "integer"
+        },
+        "season": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "tournament": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionResultsResponse": {
+      "properties": {
+        "auction_title": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "current_status": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionPlayer"
+          },
+          "type": "array"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "returned_count": {
+          "type": "integer"
+        },
+        "season": {
+          "type": "string"
+        },
+        "selection": {
+          "$ref": "#/definitions/cricbuzz.AuctionResultsSelection"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "tournament": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionResultsSelection": {
+      "properties": {
+        "cap": {
+          "type": "string"
+        },
+        "country_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "role": {
+          "type": "string"
+        },
+        "sort": {
+          "$ref": "#/definitions/cricbuzz.AuctionSortOption"
+        },
+        "statuses": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "team_id": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionSeason": {
+      "properties": {
+        "currencies": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "currency_data": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionCurrency"
+          },
+          "type": "array"
+        },
+        "season": {
+          "type": "string"
+        },
+        "series_id": {
+          "type": "integer"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionSeasonDefaults": {
+      "properties": {
+        "currency": {
+          "type": "string"
+        },
+        "tournament": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionSeasonsResponse": {
+      "properties": {
+        "defaults": {
+          "$ref": "#/definitions/cricbuzz.AuctionSeasonDefaults"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "tournaments": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionTournament"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionSortFilter": {
+      "properties": {
+        "key1": {
+          "type": "string"
+        },
+        "key2": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionSortOption"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionSortOption": {
+      "properties": {
+        "is_default": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "string"
+        },
+        "value1": {
+          "type": "string"
+        },
+        "value2": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionTeamDetailResponse": {
+      "properties": {
+        "currency": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "groups": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionTeamRosterGroup"
+          },
+          "type": "array"
+        },
+        "season": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "team": {
+          "$ref": "#/definitions/cricbuzz.AuctionTeamSummary"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "tournament": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionTeamRosterGroup": {
+      "properties": {
+        "players": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionPlayer"
+          },
+          "type": "array"
+        },
+        "role": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionTeamSummary": {
+      "properties": {
+        "auction_spend": {
+          "type": "string"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "image_id": {
+          "type": "integer"
+        },
+        "max_overseas_players": {
+          "type": "integer"
+        },
+        "max_players": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "player_slots_local": {
+          "type": "integer"
+        },
+        "player_slots_overseas": {
+          "type": "integer"
+        },
+        "players_bought": {
+          "type": "integer"
+        },
+        "purse_at_start": {
+          "type": "string"
+        },
+        "purse_remaining": {
+          "type": "string"
+        },
+        "retention_spent": {
+          "type": "string"
+        },
+        "season": {
+          "type": "string"
+        },
+        "team_id": {
+          "type": "integer"
+        },
+        "total_purse": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionTeamsOptionsResponse": {
+      "properties": {
+        "fetched_at": {
+          "type": "string"
+        },
+        "season": {
+          "type": "string"
+        },
+        "sort": {
+          "$ref": "#/definitions/cricbuzz.AuctionSortFilter"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionTeamSummary"
+          },
+          "type": "array"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "tournament": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionTeamsResponse": {
+      "properties": {
+        "currency": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionTeamSummary"
+          },
+          "type": "array"
+        },
+        "season": {
+          "type": "string"
+        },
+        "selection": {
+          "$ref": "#/definitions/cricbuzz.AuctionSortOption"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "tournament": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionTournament": {
+      "properties": {
+        "identifier": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "years": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionSeason"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionUpcomingResponse": {
+      "properties": {
+        "auction_title": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "current_status": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.AuctionPlayer"
+          },
+          "type": "array"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "returned_count": {
+          "type": "integer"
+        },
+        "season": {
+          "type": "string"
+        },
+        "selection": {
+          "$ref": "#/definitions/cricbuzz.AuctionUpcomingSelection"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "tournament": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.AuctionUpcomingSelection": {
+      "properties": {
+        "cap": {
+          "type": "string"
+        },
+        "country_ids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "role": {
+          "type": "string"
+        },
+        "sort": {
+          "$ref": "#/definitions/cricbuzz.AuctionSortOption"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.GraphInnings": {
+      "properties": {
+        "color": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "label": {
+          "type": "string"
+        },
+        "short_name": {
+          "type": "string"
+        },
+        "team_id": {
+          "type": "integer"
+        },
+        "team_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.GraphPoint": {
+      "properties": {
+        "draw": {
+          "type": "number"
+        },
+        "innings": {
+          "type": "integer"
+        },
+        "over": {
+          "type": "number"
+        },
+        "team1": {
+          "type": "number"
+        },
+        "team1_wicket": {
+          "type": "boolean"
+        },
+        "team2": {
+          "type": "number"
+        },
+        "team2_wicket": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.GraphTeam": {
+      "properties": {
+        "color": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "image_id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "short_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.GraphsResponse": {
+      "properties": {
+        "empty_state": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "innings": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.GraphInnings"
+          },
+          "type": "array"
+        },
+        "match_id": {
+          "type": "integer"
+        },
+        "run_rate": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.GraphPoint"
+          },
+          "type": "array"
+        },
+        "runs": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.GraphPoint"
+          },
+          "type": "array"
+        },
+        "runs_per_over": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.GraphPoint"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "team1": {
+          "$ref": "#/definitions/cricbuzz.GraphTeam"
+        },
+        "team2": {
+          "$ref": "#/definitions/cricbuzz.GraphTeam"
+        },
+        "wicket_overs": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "win_probability": {
+          "additionalProperties": {
+            "items": {
+              "$ref": "#/definitions/cricbuzz.GraphPoint"
+            },
+            "type": "array"
+          },
+          "type": "object"
+        },
+        "win_probability_horizontal": {
+          "additionalProperties": {
+            "items": {
+              "$ref": "#/definitions/cricbuzz.GraphPoint"
+            },
+            "type": "array"
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.InningsScore": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "overs": {
+          "type": "number"
+        },
+        "runs": {
+          "type": "integer"
+        },
+        "wickets": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.MatchCategory": {
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.MatchCategoryGroup": {
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "series": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.MatchSeries"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.MatchFactsResponse": {
+      "properties": {
+        "fetched_at": {
+          "type": "string"
+        },
+        "match_id": {
+          "type": "integer"
+        },
+        "match_url": {
+          "type": "string"
+        },
+        "officials": {
+          "$ref": "#/definitions/cricbuzz.MatchOfficials"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.MatchTeamSquad"
+          },
+          "type": "array"
+        },
+        "title": {
+          "type": "string"
+        },
+        "toss": {
+          "type": "string"
+        },
+        "venue": {
+          "$ref": "#/definitions/cricbuzz.MatchFactsVenue"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.MatchFactsVenue": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.MatchOfficials": {
+      "properties": {
+        "referee": {
+          "type": "string"
+        },
+        "third_umpire": {
+          "type": "string"
+        },
+        "umpires": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.MatchScore": {
+      "properties": {
+        "team1": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.InningsScore"
+          },
+          "type": "array"
+        },
+        "team2": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.InningsScore"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.MatchSeries": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "matches": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.MatchSummary"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.MatchSummary": {
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "current_batting_team_id": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "end_time": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "hide_score_status": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "is_time_announced": {
+          "type": "boolean"
+        },
+        "score": {
+          "$ref": "#/definitions/cricbuzz.MatchScore"
+        },
+        "series_id": {
+          "type": "integer"
+        },
+        "series_name": {
+          "type": "string"
+        },
+        "short_status": {
+          "type": "string"
+        },
+        "start_time": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "state_title": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "team1": {
+          "$ref": "#/definitions/cricbuzz.Team"
+        },
+        "team2": {
+          "$ref": "#/definitions/cricbuzz.Team"
+        },
+        "url": {
+          "type": "string"
+        },
+        "venue": {
+          "$ref": "#/definitions/cricbuzz.MatchVenue"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.MatchTeamSquad": {
+      "properties": {
+        "groups": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.SquadGroup"
+          },
+          "type": "array"
+        },
+        "team_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.MatchVenue": {
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "ground": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "latitude": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.MatchesResponse": {
+      "properties": {
+        "categories": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.MatchCategory"
+          },
+          "type": "array"
+        },
+        "category": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "groups": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.MatchCategoryGroup"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.NavigationItem": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.NavigationMenu": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.NavigationItem"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.NavigationResponse": {
+      "properties": {
+        "fetched_at": {
+          "type": "string"
+        },
+        "menus": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.NavigationMenu"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "utility_links": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.NavigationItem"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.NewsSection": {
+      "properties": {
+        "access": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.NewsTopic": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.NewsTopicsResponse": {
+      "properties": {
+        "fetched_at": {
+          "type": "string"
+        },
+        "q": {
+          "type": "string"
+        },
+        "sections": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.NewsSection"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "topics": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.NewsTopic"
+          },
+          "type": "array"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.OverInningsFilter": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "label": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.OverSummary": {
+      "properties": {
+        "batting_team": {
+          "type": "string"
+        },
+        "bowler_ids": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "bowler_maidens": {
+          "type": "integer"
+        },
+        "bowler_names": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bowler_overs": {
+          "type": "number"
+        },
+        "bowler_runs": {
+          "type": "integer"
+        },
+        "bowler_wickets": {
+          "type": "integer"
+        },
+        "innings_id": {
+          "type": "integer"
+        },
+        "non_striker_balls": {
+          "type": "integer"
+        },
+        "non_striker_ids": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "non_striker_names": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "non_striker_runs": {
+          "type": "integer"
+        },
+        "over": {
+          "type": "integer"
+        },
+        "runs": {
+          "type": "integer"
+        },
+        "score": {
+          "type": "integer"
+        },
+        "striker_balls": {
+          "type": "integer"
+        },
+        "striker_ids": {
+          "items": {
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "striker_names": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "striker_runs": {
+          "type": "integer"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "wickets": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.OversResponse": {
+      "properties": {
+        "coverage": {
+          "type": "string"
+        },
+        "empty_state": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "innings_filters": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.OverInningsFilter"
+          },
+          "type": "array"
+        },
+        "is_complete": {
+          "type": "boolean"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.OverSummary"
+          },
+          "type": "array"
+        },
+        "match_id": {
+          "type": "integer"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.RankingEntry": {
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "face_image_id": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "image_id": {
+          "type": "integer"
+        },
+        "matches": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "points": {
+          "type": "integer"
+        },
+        "profile_url": {
+          "type": "string"
+        },
+        "rank": {
+          "type": "integer"
+        },
+        "rating": {
+          "type": "integer"
+        },
+        "trend": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.RankingsResponse": {
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "empty_state": {
+          "type": "string"
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.RankingEntry"
+          },
+          "type": "array"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "formats": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "genders": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        },
+        "types": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.RecordCategory": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "stats": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.RecordType"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.RecordFilter": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.RecordOption"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.RecordOption": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.RecordRow": {
+      "properties": {
+        "player_id": {
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.RecordSelection": {
+      "properties": {
+        "format": {
+          "type": "string"
+        },
+        "format_id": {
+          "type": "string"
+        },
+        "opponent": {
+          "type": "string"
+        },
+        "stat": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.RecordTable": {
+      "properties": {
+        "headers": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "rows": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.RecordRow"
+          },
+          "type": "array"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.RecordType": {
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.RecordsResponse": {
+      "properties": {
+        "categories": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.RecordCategory"
+          },
+          "type": "array"
+        },
+        "current_table": {
+          "$ref": "#/definitions/cricbuzz.RecordTable"
+        },
+        "data_url": {
+          "type": "string"
+        },
+        "empty_state": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "filters": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.RecordFilter"
+          },
+          "type": "array"
+        },
+        "selected": {
+          "$ref": "#/definitions/cricbuzz.RecordSelection"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScheduleDay": {
+      "properties": {
+        "date": {
+          "type": "string"
+        },
+        "series": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ScheduleSeries"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScheduleMatch": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "end_time": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "series_id": {
+          "type": "integer"
+        },
+        "series_name": {
+          "type": "string"
+        },
+        "start_time": {
+          "type": "string"
+        },
+        "team1": {
+          "$ref": "#/definitions/cricbuzz.Team"
+        },
+        "team2": {
+          "$ref": "#/definitions/cricbuzz.Team"
+        },
+        "url": {
+          "type": "string"
+        },
+        "venue": {
+          "$ref": "#/definitions/cricbuzz.MatchVenue"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScheduleResponse": {
+      "properties": {
+        "categories": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.MatchCategory"
+          },
+          "type": "array"
+        },
+        "category": {
+          "type": "string"
+        },
+        "days": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ScheduleDay"
+          },
+          "type": "array"
+        },
+        "empty_state": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "q": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScheduleSeries": {
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "matches": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ScheduleMatch"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardAward": {
+      "properties": {
+        "face_image_id": {
+          "type": "integer"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "is_captain": {
+          "type": "boolean"
+        },
+        "is_keeper": {
+          "type": "boolean"
+        },
+        "is_substitute": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nickname": {
+          "type": "string"
+        },
+        "team_id": {
+          "type": "integer"
+        },
+        "team_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardBatter": {
+      "properties": {
+        "balls": {
+          "type": "integer"
+        },
+        "boundaries": {
+          "type": "integer"
+        },
+        "bowler_id": {
+          "type": "integer"
+        },
+        "dots": {
+          "type": "integer"
+        },
+        "fielder_id_1": {
+          "type": "integer"
+        },
+        "fielder_id_2": {
+          "type": "integer"
+        },
+        "fielder_id_3": {
+          "type": "integer"
+        },
+        "fives": {
+          "type": "integer"
+        },
+        "fours": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "in_match_change": {
+          "type": "string"
+        },
+        "is_captain": {
+          "type": "boolean"
+        },
+        "is_keeper": {
+          "type": "boolean"
+        },
+        "is_overseas": {
+          "type": "boolean"
+        },
+        "minutes": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "ones": {
+          "type": "integer"
+        },
+        "out_description": {
+          "type": "string"
+        },
+        "playing_xi_change": {
+          "type": "string"
+        },
+        "runs": {
+          "type": "integer"
+        },
+        "short_name": {
+          "type": "string"
+        },
+        "sixers": {
+          "type": "integer"
+        },
+        "sixes": {
+          "type": "integer"
+        },
+        "strike_rate": {
+          "type": "number"
+        },
+        "threes": {
+          "type": "integer"
+        },
+        "twos": {
+          "type": "integer"
+        },
+        "wicket_code": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardBowler": {
+      "properties": {
+        "balls": {
+          "type": "integer"
+        },
+        "dots": {
+          "type": "integer"
+        },
+        "economy": {
+          "type": "number"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "in_match_change": {
+          "type": "string"
+        },
+        "is_captain": {
+          "type": "boolean"
+        },
+        "is_keeper": {
+          "type": "boolean"
+        },
+        "is_overseas": {
+          "type": "boolean"
+        },
+        "maidens": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "no_balls": {
+          "type": "integer"
+        },
+        "overs": {
+          "type": "number"
+        },
+        "playing_xi_change": {
+          "type": "string"
+        },
+        "runs": {
+          "type": "integer"
+        },
+        "runs_per_ball": {
+          "type": "number"
+        },
+        "short_name": {
+          "type": "string"
+        },
+        "wickets": {
+          "type": "integer"
+        },
+        "wides": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardExtras": {
+      "properties": {
+        "byes": {
+          "type": "integer"
+        },
+        "leg_byes": {
+          "type": "integer"
+        },
+        "no_balls": {
+          "type": "integer"
+        },
+        "penalty": {
+          "type": "integer"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "wides": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardHeader": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "end_time": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "livestream_enabled": {
+          "type": "boolean"
+        },
+        "match_not_covered": {
+          "type": "boolean"
+        },
+        "players_of_the_match": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ScorecardAward"
+          },
+          "type": "array"
+        },
+        "players_of_the_series": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ScorecardAward"
+          },
+          "type": "array"
+        },
+        "result": {
+          "$ref": "#/definitions/cricbuzz.ScorecardResult"
+        },
+        "series_description": {
+          "type": "string"
+        },
+        "series_id": {
+          "type": "integer"
+        },
+        "series_name": {
+          "type": "string"
+        },
+        "start_time": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "team1": {
+          "$ref": "#/definitions/cricbuzz.ScorecardTeam"
+        },
+        "team2": {
+          "$ref": "#/definitions/cricbuzz.ScorecardTeam"
+        },
+        "toss": {
+          "$ref": "#/definitions/cricbuzz.ScorecardToss"
+        },
+        "type": {
+          "type": "string"
+        },
+        "venue": {
+          "$ref": "#/definitions/cricbuzz.ScorecardVenue"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardInnings": {
+      "properties": {
+        "batters": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ScorecardBatter"
+          },
+          "type": "array"
+        },
+        "batting_team": {
+          "$ref": "#/definitions/cricbuzz.ScorecardTeam"
+        },
+        "bowlers": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ScorecardBowler"
+          },
+          "type": "array"
+        },
+        "bowling_team": {
+          "$ref": "#/definitions/cricbuzz.ScorecardTeam"
+        },
+        "extras": {
+          "$ref": "#/definitions/cricbuzz.ScorecardExtras"
+        },
+        "innings_id": {
+          "type": "integer"
+        },
+        "partnerships": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ScorecardPartnership"
+          },
+          "type": "array"
+        },
+        "powerplays": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ScorecardPowerPlay"
+          },
+          "type": "array"
+        },
+        "time": {
+          "type": "string"
+        },
+        "totals": {
+          "$ref": "#/definitions/cricbuzz.ScorecardTotals"
+        },
+        "wickets": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ScorecardWicket"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardPartnership": {
+      "properties": {
+        "batter_1_balls": {
+          "type": "integer"
+        },
+        "batter_1_fives": {
+          "type": "integer"
+        },
+        "batter_1_fours": {
+          "type": "integer"
+        },
+        "batter_1_id": {
+          "type": "integer"
+        },
+        "batter_1_name": {
+          "type": "string"
+        },
+        "batter_1_ones": {
+          "type": "integer"
+        },
+        "batter_1_runs": {
+          "type": "integer"
+        },
+        "batter_1_sixes": {
+          "type": "integer"
+        },
+        "batter_1_threes": {
+          "type": "integer"
+        },
+        "batter_1_twos": {
+          "type": "integer"
+        },
+        "batter_2_balls": {
+          "type": "integer"
+        },
+        "batter_2_fives": {
+          "type": "integer"
+        },
+        "batter_2_fours": {
+          "type": "integer"
+        },
+        "batter_2_id": {
+          "type": "integer"
+        },
+        "batter_2_name": {
+          "type": "string"
+        },
+        "batter_2_ones": {
+          "type": "integer"
+        },
+        "batter_2_runs": {
+          "type": "integer"
+        },
+        "batter_2_sixes": {
+          "type": "integer"
+        },
+        "batter_2_threes": {
+          "type": "integer"
+        },
+        "batter_2_twos": {
+          "type": "integer"
+        },
+        "total_balls": {
+          "type": "integer"
+        },
+        "total_runs": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardPowerPlay": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "overs_from": {
+          "type": "number"
+        },
+        "overs_to": {
+          "type": "number"
+        },
+        "runs": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardResponse": {
+      "properties": {
+        "empty_state": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "header": {
+          "$ref": "#/definitions/cricbuzz.ScorecardHeader"
+        },
+        "innings": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.ScorecardInnings"
+          },
+          "type": "array"
+        },
+        "match_complete": {
+          "type": "boolean"
+        },
+        "match_id": {
+          "type": "integer"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "string"
+        },
+        "upstream_updated_at": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardResult": {
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "winning_margin": {
+          "type": "integer"
+        },
+        "winning_team": {
+          "type": "string"
+        },
+        "winning_team_id": {
+          "type": "integer"
+        },
+        "won_by_innings": {
+          "type": "boolean"
+        },
+        "won_by_runs": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardTeam": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "short_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardToss": {
+      "properties": {
+        "decision": {
+          "type": "string"
+        },
+        "winner_id": {
+          "type": "integer"
+        },
+        "winner_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardTotals": {
+      "properties": {
+        "ball_number": {
+          "type": "integer"
+        },
+        "declared": {
+          "type": "boolean"
+        },
+        "follow_on": {
+          "type": "boolean"
+        },
+        "overs": {
+          "type": "number"
+        },
+        "revised_overs": {
+          "type": "number"
+        },
+        "run_rate": {
+          "type": "number"
+        },
+        "runs": {
+          "type": "integer"
+        },
+        "runs_per_ball": {
+          "type": "number"
+        },
+        "wickets": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardVenue": {
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "latitude": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.ScorecardWicket": {
+      "properties": {
+        "ball_number": {
+          "type": "integer"
+        },
+        "batter_id": {
+          "type": "integer"
+        },
+        "batter_name": {
+          "type": "string"
+        },
+        "over": {
+          "type": "number"
+        },
+        "runs": {
+          "type": "integer"
+        },
+        "wicket_number": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.Series": {
+      "properties": {
+        "end_date": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "start_date": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.SeriesFilter": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.SeriesMonth": {
+      "properties": {
+        "month": {
+          "type": "string"
+        },
+        "series": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.Series"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.SeriesResponse": {
+      "properties": {
+        "categories": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "category": {
+          "type": "string"
+        },
+        "empty_state": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "filters": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.SeriesFilter"
+          },
+          "type": "array"
+        },
+        "live_stream": {
+          "type": "boolean"
+        },
+        "months": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.SeriesMonth"
+          },
+          "type": "array"
+        },
+        "q": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.SeriesStatsResponse": {
+      "properties": {
+        "categories": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.RecordCategory"
+          },
+          "type": "array"
+        },
+        "data_url": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "formats": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.RecordOption"
+          },
+          "type": "array"
+        },
+        "season_options": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.RecordOption"
+          },
+          "type": "array"
+        },
+        "selected_filters": {
+          "$ref": "#/definitions/cricbuzz.SeriesStatsSelection"
+        },
+        "selected_stat": {
+          "$ref": "#/definitions/cricbuzz.RecordType"
+        },
+        "series_id": {
+          "type": "integer"
+        },
+        "series_name": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "tables": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.SeriesStatsTable"
+          },
+          "type": "array"
+        },
+        "team_options": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.RecordOption"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.SeriesStatsSelection": {
+      "properties": {
+        "match_type_id": {
+          "type": "string"
+        },
+        "season_id": {
+          "type": "string"
+        },
+        "team_id": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.SeriesStatsTable": {
+      "properties": {
+        "format": {
+          "type": "string"
+        },
+        "headers": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "rows": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.RecordRow"
+          },
+          "type": "array"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.SquadGroup": {
+      "properties": {
+        "members": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.SquadMember"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.SquadMember": {
+      "properties": {
+        "is_captain": {
+          "type": "boolean"
+        },
+        "is_keeper": {
+          "type": "boolean"
+        },
+        "match_performance_url": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "profile_url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.Team": {
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "image_id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "profile_url": {
+          "type": "string"
+        },
+        "short_name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.TeamGroup": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.Team"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.TeamsResponse": {
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "groups": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.TeamGroup"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.VideoCategoriesResponse": {
+      "properties": {
+        "categories": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.VideoCategory"
+          },
+          "type": "array"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "media_assets_included": {
+          "type": "boolean"
+        },
+        "sections": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.VideoSection"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.VideoCategory": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "video_count": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.VideoPlaylist": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "preview_slug": {
+          "type": "string"
+        },
+        "preview_video_id": {
+          "type": "integer"
+        },
+        "url": {
+          "type": "string"
+        },
+        "video_count": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.VideoPlaylistsResponse": {
+      "properties": {
+        "fetched_at": {
+          "type": "string"
+        },
+        "media_assets_included": {
+          "type": "boolean"
+        },
+        "playlists": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.VideoPlaylist"
+          },
+          "type": "array"
+        },
+        "sections": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.VideoSection"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.VideoSection": {
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.WTCResponse": {
+      "properties": {
+        "current_season": {
+          "$ref": "#/definitions/cricbuzz.WTCSeason"
+        },
+        "fetched_at": {
+          "type": "string"
+        },
+        "seasons": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.WTCSeason"
+          },
+          "type": "array"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "stale": {
+          "type": "boolean"
+        },
+        "teams": {
+          "items": {
+            "$ref": "#/definitions/cricbuzz.WTCTeam"
+          },
+          "type": "array"
+        },
+        "total": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.WTCSeason": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.WTCTeam": {
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "image_id": {
+          "type": "integer"
+        },
+        "matches_drawn": {
+          "type": "integer"
+        },
+        "matches_lost": {
+          "type": "integer"
+        },
+        "matches_played": {
+          "type": "integer"
+        },
+        "matches_tied": {
+          "type": "integer"
+        },
+        "matches_won": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "percentage": {
+          "type": "number"
+        },
+        "rank": {
+          "type": "integer"
+        },
+        "total_points": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.archivesResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.ArchivesResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.auctionInfoResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.AuctionInfoResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.auctionLiveResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.AuctionLiveResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.auctionOptionsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.AuctionOptionsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.auctionPlayerDetailResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.AuctionPlayerDetailResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.auctionPlayerSearchResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.AuctionPlayerSearchResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.auctionResultsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.AuctionResultsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.auctionSeasonsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.AuctionSeasonsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.auctionTeamDetailResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.AuctionTeamDetailResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.auctionTeamsOptionsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.AuctionTeamsOptionsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.auctionTeamsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.AuctionTeamsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.auctionUpcomingResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.AuctionUpcomingResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.graphsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.GraphsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.matchFactsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.MatchFactsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.matchesResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.MatchesResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.navigationResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.NavigationResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.newsTopicsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.NewsTopicsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.oversResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.OversResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.rankingsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.RankingsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.recordsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.RecordsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.scheduleResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.ScheduleResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.scorecardResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.ScorecardResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.seriesResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.SeriesResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.seriesStatsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.SeriesStatsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.teamsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.TeamsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.videoCategoriesResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.VideoCategoriesResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.videoPlaylistsResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.VideoPlaylistsResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "cricbuzz.wtcResponseDoc": {
+      "properties": {
+        "code": {
+          "example": 200,
+          "type": "integer"
+        },
+        "data": {
+          "$ref": "#/definitions/cricbuzz.WTCResponse"
+        },
+        "msg": {
+          "example": "OK",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "api.crawlora.net",
+  "info": {
+    "contact": {
+      "email": "support@crawlora.net",
+      "name": "API Support",
+      "url": "https://crawlora.net"
+    },
+    "description": "Crawlora is a hosted web-data and SERP API: call documented REST endpoints and get normalized JSON instead of HTML to parse — across search/SERP, maps and local, e-commerce, app stores, social, media and finance. One API key; Crawlora runs the proxy rotation, headless browsers and parsing behind the scenes. Billed pay-on-success: charged only on a successful 2xx response, 1-10 credits per call, with a free tier of 2,000 credits per month and no card. A hosted MCP server (mcp.crawlora.net/mcp) exposes the same catalog as agent tools. Search endpoints accept `q` as a universal alias for whichever search-term parameter they document (`query`, `term`, `keyword`, or Amazon's `k`), so one parameter name works across the whole catalog; an explicitly supplied documented name always wins.",
+    "license": {
+      "name": "Crawlora Terms of Service",
+      "url": "https://crawlora.net/terms"
+    },
+    "termsOfService": "https://crawlora.net/terms",
+    "title": "Crawlora API",
+    "version": "1.2",
+    "x-logo": {
+      "altText": "Crawlora",
+      "backgroundColor": "#FFFFFF",
+      "url": "https://raw.githubusercontent.com/Crawlora-org/crawlora-mcp/main/assets/logo-400x400.png"
+    }
+  },
+  "paths": {
+    "/cricbuzz/archives": {
+      "get": {
+        "description": "Returns all year links advertised by the Cricket Archives page and the complete series list for the selected year, grouped by the four visible archive categories. Supply year from the returned years array to fetch that year's page. category and q filter the full parsed series list locally.",
+        "operationId": "cricbuzz-archives",
+        "parameters": [
+          {
+            "description": "Archive year from the years array in the response",
+            "in": "query",
+            "name": "year",
+            "type": "integer",
+            "x-example": 2026
+          },
+          {
+            "description": "Archive series category; omit for all categories",
+            "enum": [
+              "international",
+              "league",
+              "domestic",
+              "women"
+            ],
+            "in": "query",
+            "name": "category",
+            "type": "string",
+            "x-example": "international"
+          },
+          {
+            "description": "Optional local case-insensitive substring search over selected-year series, up to 100 characters",
+            "in": "query",
+            "name": "q",
+            "type": "string",
+            "x-example": "india"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.archivesResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz archive years and series",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/auction/info": {
+      "get": {
+        "description": "Returns all labelled text and list blocks shown in the selected edition's Auction Guide. The guide's fields vary by competition and season; date, venue, auctioneer, purse/roster rules, FAQs and currency-rate blocks are preserved as source text.",
+        "operationId": "cricbuzz-auction-info",
+        "parameters": [
+          {
+            "description": "Tournament identifier from cricbuzz/auction/seasons: ipl, wpl, sa20, hunm, hunw; defaults to ipl when both tournament/year are omitted",
+            "in": "query",
+            "name": "tournament",
+            "type": "string",
+            "x-example": "sa20"
+          },
+          {
+            "description": "Edition from cricbuzz/auction/seasons: IPL 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; WPL 2023, 2024, 2025, 2026, 2027; SA20 2027; HUNM 2026; HUNW 2026; defaults to 2026 when both tournament/year are omitted",
+            "in": "query",
+            "name": "year",
+            "type": "string",
+            "x-example": "2027"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.auctionInfoResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get the Cricbuzz auction guide",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/auction/live": {
+      "get": {
+        "description": "Returns current_status, state and featured/editor-pick players from the edition's Live tab. This is not a bid-event feed; a completed edition may return featured players without live bidding.",
+        "operationId": "cricbuzz-auction-live",
+        "parameters": [
+          {
+            "description": "Tournament identifier from cricbuzz/auction/seasons: ipl, wpl, sa20, hunm, hunw",
+            "in": "query",
+            "name": "tournament",
+            "required": true,
+            "type": "string",
+            "x-example": "sa20"
+          },
+          {
+            "description": "Edition from cricbuzz/auction/seasons: IPL 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; WPL 2023, 2024, 2025, 2026, 2027; SA20 2027; HUNM 2026; HUNW 2026",
+            "in": "query",
+            "name": "year",
+            "required": true,
+            "type": "string",
+            "x-example": "2027"
+          },
+          {
+            "description": "Currency accepted by the selected edition: INR, USD, EUR, GBP, AUD, CAD, NZD, AED, ZAR, PKR, LKR, BDT, NPR",
+            "in": "query",
+            "name": "currency",
+            "required": true,
+            "type": "string",
+            "x-example": "ZAR"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.auctionLiveResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get the current Cricbuzz auction Live-tab payload",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/auction/options": {
+      "get": {
+        "description": "Returns all filter dropdown values and sort choices embedded in the selected public completed-auction page. Use auction/seasons to discover current tournament and year values; when omitted, tournament and year default to ipl and 2026. Filter and sort values vary by edition and are returned dynamically.",
+        "operationId": "cricbuzz-auction-options",
+        "parameters": [
+          {
+            "description": "Tournament identifier from cricbuzz/auction/seasons; current values: ipl, wpl, sa20, hunm, hunw",
+            "in": "query",
+            "name": "tournament",
+            "type": "string",
+            "x-example": "ipl"
+          },
+          {
+            "description": "Edition from cricbuzz/auction/seasons: ipl 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; wpl 2023, 2024, 2025, 2026, 2027; sa20 2027; hunm 2026; hunw 2026",
+            "in": "query",
+            "name": "year",
+            "type": "string",
+            "x-example": "2026"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.auctionOptionsResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz auction filters and sort values",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/auction/player": {
+      "get": {
+        "description": "Returns one player's current edition profile and every auction-earnings row in the public payload. Discover player_id through auction/player-search, auction/upcoming, auction/results or auction/team; discover currency through auction/seasons.",
+        "operationId": "cricbuzz-auction-player-detail",
+        "parameters": [
+          {
+            "description": "Tournament identifier from cricbuzz/auction/seasons: ipl, wpl, sa20, hunm, hunw",
+            "in": "query",
+            "name": "tournament",
+            "required": true,
+            "type": "string",
+            "x-example": "sa20"
+          },
+          {
+            "description": "Edition from cricbuzz/auction/seasons: IPL 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; WPL 2023, 2024, 2025, 2026, 2027; SA20 2027; HUNM 2026; HUNW 2026",
+            "in": "query",
+            "name": "year",
+            "required": true,
+            "type": "string",
+            "x-example": "2027"
+          },
+          {
+            "description": "Currency accepted by the selected edition: INR, USD, EUR, GBP, AUD, CAD, NZD, AED, ZAR, PKR, LKR, BDT, NPR",
+            "in": "query",
+            "name": "currency",
+            "required": true,
+            "type": "string",
+            "x-example": "ZAR"
+          },
+          {
+            "description": "Positive Cricbuzz player ID from an auction player result or team roster",
+            "in": "query",
+            "name": "player_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 8512
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.auctionPlayerDetailResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get a Cricbuzz auction player profile and earnings",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/auction/player-search": {
+      "get": {
+        "description": "Searches the current edition's public player index. q must contain 3-100 ASCII English letters or spaces, matching the source UI. A valid query with no matching players returns an empty items list.",
+        "operationId": "cricbuzz-auction-player-search",
+        "parameters": [
+          {
+            "description": "Tournament identifier from cricbuzz/auction/seasons: ipl, wpl, sa20, hunm, hunw",
+            "in": "query",
+            "name": "tournament",
+            "required": true,
+            "type": "string",
+            "x-example": "sa20"
+          },
+          {
+            "description": "Edition from cricbuzz/auction/seasons: IPL 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; WPL 2023, 2024, 2025, 2026, 2027; SA20 2027; HUNM 2026; HUNW 2026",
+            "in": "query",
+            "name": "year",
+            "required": true,
+            "type": "string",
+            "x-example": "2027"
+          },
+          {
+            "description": "3-100 ASCII English letters or spaces",
+            "in": "query",
+            "name": "q",
+            "required": true,
+            "type": "string",
+            "x-example": "Jamie"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.auctionPlayerSearchResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Search Cricbuzz auction players",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/auction/results": {
+      "get": {
+        "description": "Returns one 1-based page from the selected completed auction. Discover tournament/year/currency with cricbuzz/auction/seasons and the selected edition's Country, Status, Team, Role, Cap and Sort values with cricbuzz/auction/options. country_ids and statuses accept comma-separated values from those menus; the other filters accept one value. Pages return up to 20 rows; the source does not provide a total count or has-more flag.",
+        "operationId": "cricbuzz-auction-results",
+        "parameters": [
+          {
+            "description": "Tournament identifier from cricbuzz/auction/seasons; current values: ipl, wpl, sa20, hunm, hunw",
+            "in": "query",
+            "name": "tournament",
+            "required": true,
+            "type": "string",
+            "x-example": "ipl"
+          },
+          {
+            "description": "Edition from cricbuzz/auction/seasons: ipl 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; wpl 2023, 2024, 2025, 2026, 2027; sa20 2027; hunm 2026; hunw 2026",
+            "in": "query",
+            "name": "year",
+            "required": true,
+            "type": "string",
+            "x-example": "2026"
+          },
+          {
+            "description": "Currency code from the selected edition: INR, USD, EUR, GBP, AUD, CAD, NZD, AED, ZAR, PKR, LKR, BDT, NPR",
+            "in": "query",
+            "name": "currency",
+            "required": true,
+            "type": "string",
+            "x-example": "INR"
+          },
+          {
+            "description": "One-based page number; defaults to 1",
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "x-example": 1
+          },
+          {
+            "description": "Comma-separated Country IDs from cricbuzz/auction/options; current IPL 2026 values: 96, 4, 6, 26, 9, 8, 2, 27, 527, 303, 14, 161, 72, 24, 13, 3, 23, 190, 11, 5, 384, 7, 15, 10, 12",
+            "in": "query",
+            "name": "country_ids",
+            "type": "string",
+            "x-example": "2,4"
+          },
+          {
+            "description": "Comma-separated Status values from cricbuzz/auction/options; current IPL 2026 values: Sold, Unsold, Retained, RTM, Drafted, Replacement, Traded, Wild Card",
+            "in": "query",
+            "name": "statuses",
+            "type": "string",
+            "x-example": "Sold,Unsold"
+          },
+          {
+            "description": "One Team ID from cricbuzz/auction/options; current IPL 2026 values: 58, 59, 61, 62, 63, 64, 65, 255, 966, 971",
+            "in": "query",
+            "name": "team_id",
+            "type": "string",
+            "x-example": "59"
+          },
+          {
+            "description": "One Role from cricbuzz/auction/options; current values: Batter, Bowler, Allrounder, WK-Batter",
+            "in": "query",
+            "name": "role",
+            "type": "string",
+            "x-example": "Allrounder"
+          },
+          {
+            "description": "One Cap value from cricbuzz/auction/options; current values: Capped, Uncapped",
+            "in": "query",
+            "name": "cap",
+            "type": "string",
+            "x-example": "Uncapped"
+          },
+          {
+            "description": "Displayed Sort label from cricbuzz/auction/options; current values: Recent, Featured, Base Price: High to Low, Base Price: Low to High, Final Price: High to Low, Final Price: Low to High",
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "x-example": "Recent"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.auctionResultsResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get filtered and sorted Cricbuzz completed-auction players",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/auction/seasons": {
+      "get": {
+        "description": "Returns every current League & Edition menu value, its canonical season slug and its accepted currencies from Cricbuzz's public season-details JSON.",
+        "operationId": "cricbuzz-auction-seasons",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.auctionSeasonsResponseDoc"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz auction leagues, editions and currencies",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/auction/team": {
+      "get": {
+        "description": "Returns team purse metadata and role-grouped Batters, Wicket Keepers, All Rounders and Bowlers. Discover team_id through auction/teams/options or auction/teams; discover currency through auction/seasons.",
+        "operationId": "cricbuzz-auction-team-detail",
+        "parameters": [
+          {
+            "description": "Tournament identifier from cricbuzz/auction/seasons: ipl, wpl, sa20, hunm, hunw",
+            "in": "query",
+            "name": "tournament",
+            "required": true,
+            "type": "string",
+            "x-example": "sa20"
+          },
+          {
+            "description": "Edition from cricbuzz/auction/seasons: IPL 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; WPL 2023, 2024, 2025, 2026, 2027; SA20 2027; HUNM 2026; HUNW 2026",
+            "in": "query",
+            "name": "year",
+            "required": true,
+            "type": "string",
+            "x-example": "2027"
+          },
+          {
+            "description": "Currency accepted by the selected edition: INR, USD, EUR, GBP, AUD, CAD, NZD, AED, ZAR, PKR, LKR, BDT, NPR",
+            "in": "query",
+            "name": "currency",
+            "required": true,
+            "type": "string",
+            "x-example": "ZAR"
+          },
+          {
+            "description": "Team ID returned by auction/teams/options for the selected edition",
+            "in": "query",
+            "name": "team_id",
+            "required": true,
+            "type": "integer",
+            "x-example": 1242
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.auctionTeamDetailResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get a Cricbuzz auction team's roster",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/auction/teams": {
+      "get": {
+        "description": "Returns every team row for one selected edition and currency. Discover exact currency choices through auction/seasons and sort labels through auction/teams/options. Valid sort labels are Alphabetical, Spent: High to Low, Spent: Low to High, Remaining: High to Low, Remaining: Low to High, Players: High to Low and Players: Low to High.",
+        "operationId": "cricbuzz-auction-teams",
+        "parameters": [
+          {
+            "description": "Tournament identifier from cricbuzz/auction/seasons: ipl, wpl, sa20, hunm, hunw",
+            "in": "query",
+            "name": "tournament",
+            "required": true,
+            "type": "string",
+            "x-example": "sa20"
+          },
+          {
+            "description": "Edition from cricbuzz/auction/seasons: IPL 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; WPL 2023, 2024, 2025, 2026, 2027; SA20 2027; HUNM 2026; HUNW 2026",
+            "in": "query",
+            "name": "year",
+            "required": true,
+            "type": "string",
+            "x-example": "2027"
+          },
+          {
+            "description": "Currency accepted by the selected edition: INR, USD, EUR, GBP, AUD, CAD, NZD, AED, ZAR, PKR, LKR, BDT, NPR",
+            "in": "query",
+            "name": "currency",
+            "required": true,
+            "type": "string",
+            "x-example": "ZAR"
+          },
+          {
+            "description": "Sort label from auction/teams/options: Alphabetical, Spent: High to Low, Spent: Low to High, Remaining: High to Low, Remaining: Low to High, Players: High to Low, Players: Low to High; defaults to the upstream default",
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "x-example": "Spent: High to Low"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.auctionTeamsResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get Cricbuzz auction team purse and roster summaries",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/auction/teams/options": {
+      "get": {
+        "description": "Returns all current team IDs and names plus the seven Teams-tab sorts: Alphabetical, Spent: High to Low, Spent: Low to High, Remaining: High to Low, Remaining: Low to High, Players: High to Low, Players: Low to High. Use the returned team_id values with auction/team and the sort labels with auction/teams.",
+        "operationId": "cricbuzz-auction-teams-options",
+        "parameters": [
+          {
+            "description": "Tournament identifier from cricbuzz/auction/seasons: ipl, wpl, sa20, hunm, hunw; defaults to ipl when both tournament/year are omitted",
+            "in": "query",
+            "name": "tournament",
+            "type": "string",
+            "x-example": "sa20"
+          },
+          {
+            "description": "Edition from cricbuzz/auction/seasons: IPL 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; WPL 2023, 2024, 2025, 2026, 2027; SA20 2027; HUNM 2026; HUNW 2026; defaults to 2026 when both tournament/year are omitted",
+            "in": "query",
+            "name": "year",
+            "type": "string",
+            "x-example": "2027"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.auctionTeamsOptionsResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz auction teams and sort values",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/auction/upcoming": {
+      "get": {
+        "description": "Returns one 1-based page of unauctioned players. Discover tournament/year/currency via auction/seasons and exact Country/Role/Cap/Sort values via auction/upcoming/options. Country IDs are comma-separated and can be selected together; sort values are Base Price: High to Low and Base Price: Low to High. The source returns up to 20 rows and no total or has-more flag.",
+        "operationId": "cricbuzz-auction-upcoming",
+        "parameters": [
+          {
+            "description": "Tournament identifier from cricbuzz/auction/seasons: ipl, wpl, sa20, hunm, hunw",
+            "in": "query",
+            "name": "tournament",
+            "required": true,
+            "type": "string",
+            "x-example": "sa20"
+          },
+          {
+            "description": "Edition from cricbuzz/auction/seasons: IPL 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; WPL 2023, 2024, 2025, 2026, 2027; SA20 2027; HUNM 2026; HUNW 2026",
+            "in": "query",
+            "name": "year",
+            "required": true,
+            "type": "string",
+            "x-example": "2027"
+          },
+          {
+            "description": "Currency accepted by the selected edition: INR, USD, EUR, GBP, AUD, CAD, NZD, AED, ZAR, PKR, LKR, BDT, NPR",
+            "in": "query",
+            "name": "currency",
+            "required": true,
+            "type": "string",
+            "x-example": "ZAR"
+          },
+          {
+            "description": "One-based page number; defaults to 1",
+            "in": "query",
+            "name": "page",
+            "type": "integer",
+            "x-example": 1
+          },
+          {
+            "description": "Comma-separated exact Country option values from auction/upcoming/options; SA20 2027 labels: Afghanistan, Australia, Bangladesh, Canada, England, Hong Kong China, India, Ireland, Italy, Jersey, Kenya, Namibia, Nepal, Netherlands, New Zealand, Pakistan, Scotland, Singapore, South Africa, Sri Lanka, Thailand, United Arab Emirates, United States of America, West Indies, Zimbabwe",
+            "in": "query",
+            "name": "country_ids",
+            "type": "string",
+            "x-example": "9"
+          },
+          {
+            "description": "Exact Role option value from auction/upcoming/options; SA20 2027 labels: All, Batter, Bowler, All Rounder, WK Batter",
+            "in": "query",
+            "name": "role",
+            "type": "string",
+            "x-example": "Allrounder"
+          },
+          {
+            "description": "Exact Cap option value from auction/upcoming/options; values: Capped, Uncapped",
+            "in": "query",
+            "name": "cap",
+            "type": "string",
+            "x-example": "Uncapped"
+          },
+          {
+            "description": "Sort label from auction/upcoming/options: Base Price: High to Low, Base Price: Low to High",
+            "in": "query",
+            "name": "sort",
+            "type": "string",
+            "x-example": "Base Price: High to Low"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.auctionUpcomingResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get filtered Cricbuzz unauctioned players",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/auction/upcoming/options": {
+      "get": {
+        "description": "Returns the edition-specific Country, Role, Cap and Sort menus from the public Unauctioned auction page. Omitted tournament/year default to ipl/2026. Current SA20 2027 Country labels are Afghanistan, Australia, Bangladesh, Canada, England, Hong Kong China, India, Ireland, Italy, Jersey, Kenya, Namibia, Nepal, Netherlands, New Zealand, Pakistan, Scotland, Singapore, South Africa, Sri Lanka, Thailand, United Arab Emirates, United States of America, West Indies and Zimbabwe. Role labels are All, Batter, Bowler, All Rounder and WK Batter; Cap values are Capped and Uncapped; Sort values are Base Price: High to Low and Base Price: Low to High. Use each option's exact `value` with auction/upcoming.",
+        "operationId": "cricbuzz-auction-upcoming-options",
+        "parameters": [
+          {
+            "description": "Tournament identifier from cricbuzz/auction/seasons: ipl, wpl, sa20, hunm, hunw; defaults to ipl when both tournament/year are omitted",
+            "in": "query",
+            "name": "tournament",
+            "type": "string",
+            "x-example": "sa20"
+          },
+          {
+            "description": "Edition from cricbuzz/auction/seasons: IPL 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; WPL 2023, 2024, 2025, 2026, 2027; SA20 2027; HUNM 2026; HUNW 2026; defaults to 2026 when both tournament/year are omitted",
+            "in": "query",
+            "name": "year",
+            "type": "string",
+            "x-example": "2027"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.auctionOptionsResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz unauctioned-player filters",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/match-facts": {
+      "get": {
+        "description": "Returns the public Info-tab match title, toss, venue guide, umpires, third umpire, referee, both team squads, bench players, and support staff. Use the canonical match URL returned by /cricbuzz/matches. Squad member links are preserved where Cricbuzz publishes them.",
+        "operationId": "cricbuzz-match-facts",
+        "parameters": [
+          {
+            "description": "Canonical Cricbuzz live-cricket-scores URL returned by /cricbuzz/matches",
+            "in": "query",
+            "name": "match_url",
+            "required": true,
+            "type": "string",
+            "x-example": "https://www.cricbuzz.com/live-cricket-scores/172701/afg-vs-zim-1st-t20i-afghanistan-vs-zimbabwe-in-uae-2026"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.matchFactsResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get Cricbuzz match information and squads",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/match-graphs": {
+      "get": {
+        "description": "Returns the first-party Graphs page's runs, run-rate, runs-per-over, win-probability, innings, and wicket-over values. Commentary prose and media are omitted. Pass the canonical match URL returned by /cricbuzz/matches.",
+        "operationId": "cricbuzz-match-graphs",
+        "parameters": [
+          {
+            "description": "Canonical Cricbuzz live-cricket-scores URL returned by /cricbuzz/matches",
+            "in": "query",
+            "name": "match_url",
+            "required": true,
+            "type": "string",
+            "x-example": "https://www.cricbuzz.com/live-cricket-scores/172701/afg-vs-zim-1st-t20i-afghanistan-vs-zimbabwe-in-uae-2026"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.graphsResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get numeric Cricbuzz match graphs",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/match-overs": {
+      "get": {
+        "description": "Returns every over-summary row present in the first-party Over-by-Over page payload and the live innings filter values. Some upstream snapshots include only a recent window; the response sets is_complete=false in that case. Full ball-by-ball commentary text is not included.",
+        "operationId": "cricbuzz-match-overs",
+        "parameters": [
+          {
+            "description": "Canonical Cricbuzz live-cricket-scores URL returned by /cricbuzz/matches",
+            "in": "query",
+            "name": "match_url",
+            "required": true,
+            "type": "string",
+            "x-example": "https://www.cricbuzz.com/live-cricket-scores/172701/afg-vs-zim-1st-t20i-afghanistan-vs-zimbabwe-in-uae-2026"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.oversResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get Cricbuzz over summaries",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/matches": {
+      "get": {
+        "description": "Returns Cricbuzz match cards grouped by source category and series, including teams, scores when available, venue, time, status, and the canonical live-score URL for detail endpoints. The homepage-only Live Now and Today controls are not included because their effects were not verified. Category filtering is local over the route-backed match groups.",
+        "operationId": "cricbuzz-matches",
+        "parameters": [
+          {
+            "description": "Match-list status; defaults to live",
+            "enum": [
+              "live",
+              "recent",
+              "upcoming"
+            ],
+            "in": "query",
+            "name": "status",
+            "type": "string",
+            "x-example": "live"
+          },
+          {
+            "description": "Match category; defaults to all",
+            "enum": [
+              "all",
+              "international",
+              "league",
+              "domestic",
+              "women"
+            ],
+            "in": "query",
+            "name": "category",
+            "type": "string",
+            "x-example": "international"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.matchesResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "List Cricbuzz live, recent, or upcoming matches",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/navigation": {
+      "get": {
+        "description": "Returns the current first-party JSON-LD navigation tree from the Live Scores page, including the News, Videos, Rankings, and More dropdown items and utility links. The short featured Team and Series dropdown entries are not complete directories; use the teams and series endpoints for their full dynamic lists.",
+        "operationId": "cricbuzz-navigation",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.navigationResponseDoc"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz top-level menus and dropdown links",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/news/topics": {
+      "get": {
+        "description": "Returns the current public News navigation sections and all topic cards linked from the Topics page, including IDs, slugs, titles, descriptions, and canonical URLs. Topic coverage is dynamic and is discovered from Cricbuzz at request time. The response contains topic metadata only, not story bodies; the Premium Editorials navigation entry is marked premium.",
+        "operationId": "cricbuzz-news-topics",
+        "parameters": [
+          {
+            "description": "Optional case-insensitive substring search over topic title, description, and slug, up to 100 characters",
+            "in": "query",
+            "name": "q",
+            "type": "string",
+            "x-example": "auction"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.newsTopicsResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz News sections and topics",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/rankings": {
+      "get": {
+        "description": "Returns Men or Women rankings for Batting, Bowling, All rounder, or Teams. The format list is discovered from the selected category page; Men currently expose Test, ODI, and T20, while Women expose ODI and T20. Ranking rows are parsed from the page's embedded data, and empty ranking tables are reported explicitly.",
+        "operationId": "cricbuzz-rankings",
+        "parameters": [
+          {
+            "description": "Ranking gender; defaults to men",
+            "enum": [
+              "men",
+              "women"
+            ],
+            "in": "query",
+            "name": "gender",
+            "type": "string",
+            "x-example": "men"
+          },
+          {
+            "description": "Ranking table type; defaults to batting",
+            "enum": [
+              "batting",
+              "bowling",
+              "all-rounder",
+              "teams"
+            ],
+            "in": "query",
+            "name": "type",
+            "type": "string",
+            "x-example": "batting"
+          },
+          {
+            "description": "Ranking format; defaults to the page's selected format. The valid set depends on gender.",
+            "enum": [
+              "test",
+              "odi",
+              "t20"
+            ],
+            "in": "query",
+            "name": "format",
+            "type": "string",
+            "x-example": "odi"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.rankingsResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get an ICC ranking table from Cricbuzz",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/records": {
+      "get": {
+        "description": "Returns all record-topic/filter values and the selected Cricbuzz record table. The first-party request path was cold-replayed; supplied filters are validated against the page's current discovery values before fetching data.",
+        "operationId": "cricbuzz-records",
+        "parameters": [
+          {
+            "description": "Record topic; defaults to mostRuns",
+            "enum": [
+              "mostRuns",
+              "highestScore",
+              "highestAvg",
+              "highestSr",
+              "mostHundreds",
+              "mostFifties",
+              "mostFours",
+              "mostSixes",
+              "mostNineties",
+              "mostWickets",
+              "lowestAvg",
+              "bestBowlingInnings",
+              "mostFiveWickets",
+              "lowestEcon",
+              "lowestSr"
+            ],
+            "in": "query",
+            "name": "stat",
+            "type": "string",
+            "x-example": "mostRuns"
+          },
+          {
+            "description": "Match format label; defaults to the current table format",
+            "enum": [
+              "test",
+              "odi",
+              "t20"
+            ],
+            "in": "query",
+            "name": "format",
+            "type": "string",
+            "x-example": "test"
+          },
+          {
+            "description": "Year value from the page's dynamically discovered Year options",
+            "in": "query",
+            "name": "year",
+            "type": "string",
+            "x-example": "2026"
+          },
+          {
+            "description": "Team ID from the page's dynamically discovered Team options",
+            "in": "query",
+            "name": "team",
+            "type": "string",
+            "x-example": "2"
+          },
+          {
+            "description": "Opponent ID from the page's dynamically discovered Oppn options",
+            "in": "query",
+            "name": "opponent",
+            "type": "string",
+            "x-example": "4"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.recordsResponseDoc"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz record topics and filter values",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/schedule": {
+      "get": {
+        "description": "Returns every match in the current date window shown by Cricbuzz's Matches By Day page, grouped by date and series. Category and q filters run locally over that complete page payload. The date window is dynamic and can change with the upstream page.",
+        "operationId": "cricbuzz-schedule",
+        "parameters": [
+          {
+            "description": "Schedule category; defaults to all",
+            "enum": [
+              "all",
+              "international",
+              "league",
+              "domestic",
+              "women"
+            ],
+            "in": "query",
+            "name": "category",
+            "type": "string",
+            "x-example": "all"
+          },
+          {
+            "description": "Optional case-insensitive substring search over series, match descriptions, and team names, up to 100 characters",
+            "in": "query",
+            "name": "q",
+            "type": "string",
+            "x-example": "wellington"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.scheduleResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "List Cricbuzz matches by day",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/scorecard": {
+      "get": {
+        "description": "Returns match header, toss/result, teams/venue, and every innings' batting, bowling, totals, extras, powerplays, wickets, and partnerships. Pass the canonical match URL returned by /cricbuzz/matches. Future matches can return an explicit no_scorecard state. Media assets are not returned.",
+        "operationId": "cricbuzz-scorecard",
+        "parameters": [
+          {
+            "description": "Canonical Cricbuzz live-cricket-scores URL returned by /cricbuzz/matches",
+            "in": "query",
+            "name": "match_url",
+            "required": true,
+            "type": "string",
+            "x-example": "https://www.cricbuzz.com/live-cricket-scores/172701/afg-vs-zim-1st-t20i-afghanistan-vs-zimbabwe-in-uae-2026"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.scorecardResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get a Cricbuzz match scorecard",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/series": {
+      "get": {
+        "description": "Returns current and future series grouped by month, with series IDs, dates, and canonical URLs. Filter by the live route-backed category, the Live Streaming flag, or a local case-insensitive series-name substring. Live Streaming may validly return an empty result set when Cricbuzz has no matching entries for the current egress/time.",
+        "operationId": "cricbuzz-series",
+        "parameters": [
+          {
+            "description": "Series category; defaults to all",
+            "enum": [
+              "all",
+              "international",
+              "domestic",
+              "league",
+              "women"
+            ],
+            "in": "query",
+            "name": "category",
+            "type": "string",
+            "x-example": "all"
+          },
+          {
+            "description": "Restrict to Cricbuzz's Live Streaming page filter",
+            "in": "query",
+            "name": "live_stream",
+            "type": "boolean",
+            "x-example": false
+          },
+          {
+            "description": "Optional local substring search over series names, up to 100 characters",
+            "in": "query",
+            "name": "q",
+            "type": "string",
+            "x-example": "ashes"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.seriesResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz current and future series",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/series/stats": {
+      "get": {
+        "description": "Returns all Batting/Bowling statistic topics and format values for a series, its selected filter state, and selected stats table. `stat` and `format` are validated against the page's dynamic option lists and fetched via the first-party series-stats route. Team/Season filter values are not accepted because their complete option sets have not been confirmed.",
+        "operationId": "cricbuzz-series-stats",
+        "parameters": [
+          {
+            "description": "Canonical series URL returned by /cricbuzz/series",
+            "in": "query",
+            "name": "series_url",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "Stat topic; defaults to the currently selected topic",
+            "enum": [
+              "mostRuns",
+              "highestScore",
+              "highestAvg",
+              "highestSr",
+              "mostHundreds",
+              "mostFifties",
+              "mostFours",
+              "mostSixes",
+              "mostNineties",
+              "mostWickets",
+              "lowestAvg",
+              "bestBowlingInnings",
+              "mostFiveWickets",
+              "lowestEcon",
+              "lowestSr"
+            ],
+            "in": "query",
+            "name": "stat",
+            "type": "string",
+            "x-example": "mostRuns"
+          },
+          {
+            "description": "Format ID from the response's dynamic formats list; defaults to the current page selection",
+            "in": "query",
+            "name": "format",
+            "type": "string",
+            "x-example": "1"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.seriesStatsResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz series statistics",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/teams": {
+      "get": {
+        "description": "Returns the complete team directory for one Cricbuzz category, with group labels, team IDs, short names, country labels, image IDs, and canonical team profile URLs. The optional q value performs a case-insensitive substring match on team names within the returned category.",
+        "operationId": "cricbuzz-teams",
+        "parameters": [
+          {
+            "description": "Team directory category; defaults to international",
+            "enum": [
+              "international",
+              "domestic",
+              "league",
+              "women"
+            ],
+            "in": "query",
+            "name": "category",
+            "type": "string",
+            "x-example": "international"
+          },
+          {
+            "description": "Optional local substring search over team names, up to 100 characters",
+            "in": "query",
+            "name": "q",
+            "type": "string",
+            "x-example": "india"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.teamsResponseDoc"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz teams",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/videos/categories": {
+      "get": {
+        "description": "Returns the current Videos menu and every category card visible on Cricbuzz's category directory, including its dynamic ID, slug, title, current count, and canonical URL. The response contains navigation and category metadata only; it does not include video media.",
+        "operationId": "cricbuzz-video-categories",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.videoCategoriesResponseDoc"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz video categories",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/videos/playlists": {
+      "get": {
+        "description": "Returns every playlist card currently linked from the public Playlists page, including its dynamic playlist ID, title, count, preview video link, and canonical URL. The endpoint returns playlist metadata only and does not proxy video assets.",
+        "operationId": "cricbuzz-video-playlists",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.videoPlaylistsResponseDoc"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Discover Cricbuzz video playlists",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    },
+    "/cricbuzz/wtc": {
+      "get": {
+        "description": "Returns the current public WTC points table and every season value in the page's dropdown. The dropdown selection effect has not been verified, so the endpoint exposes options but does not accept a season_id parameter.",
+        "operationId": "cricbuzz-wtc",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/cricbuzz.wtcResponseDoc"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get Cricbuzz World Test Championship standings",
+        "tags": [
+          "cricbuzz"
+        ]
+      }
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "ApiKeyAuth": {
+      "in": "header",
+      "name": "x-api-key",
+      "type": "apiKey"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "name": "cricbuzz"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "name": "crawlora/cricbuzz",
+  "description": "Crawlora Cricbuzz API client with 29 endpoints for cricket matches, schedules, news, rankings, series, and records",
+  "keywords": [
+    "crawlora",
+    "api-client",
+    "sdk",
+    "web-scraping",
+    "scraping-api",
+    "cricbuzz",
+    "cricbuzz-api",
+    "cricbuzz-scraper",
+    "cricbuzz-data",
+    "cricbuzz-cricket-matches",
+    "cricbuzz-schedules",
+    "cricbuzz-news",
+    "cricbuzz-rankings",
+    "cricbuzz-series",
+    "cricbuzz-records"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Crawlora\\Cricbuzz\\": "php/src/Crawlora/Cricbuzz/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Crawlora\\Cricbuzz\\Tests\\": "php/tests/"
+    }
+  },
+  "scripts": {
+    "test": "php php/tests/client_test.php"
+  },
+  "homepage": "https://crawlora.net/?utm_source=packagist&utm_medium=referral&utm_campaign=platform-clients&utm_content=cricbuzz-php-homepage",
+  "support": {
+    "source": "https://github.com/Crawlora-org/crawlora-cricbuzz",
+    "docs": "https://crawlora.net/docs?utm_source=packagist&utm_medium=referral&utm_campaign=platform-clients&utm_content=cricbuzz-php-api-docs"
+  }
+}
