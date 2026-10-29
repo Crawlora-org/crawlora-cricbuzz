@@ -1,4 +1,5 @@
 {
+  "api_path_prefix": "/cricbuzz/",
   "async_class_name": "AsyncCricbuzzClient",
   "class_name": "CricbuzzClient",
   "contract_revision": "sha256:24090022ab422946e7b2a0693ba68ff52b3751b406e29ef04e14c88905c28a6b",
