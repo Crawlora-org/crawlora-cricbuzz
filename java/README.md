@@ -1,6 +1,6 @@
 # Crawlora Cricbuzz API client for Java
 
-The official Java client for Crawlora's hosted Cricbuzz API. It exposes 29 endpoints covering cricket matches, schedules, news, rankings, series, and records. Requests use your `x-api-key`; the client does not connect to the upstream site directly.
+The official Java client for Crawlora's hosted Cricbuzz API. It exposes 35 endpoints covering cricket matches, schedules, news, rankings, series, and records. Requests use your `x-api-key`; the client does not connect to the upstream site directly.
 
 ## Install
 
@@ -8,7 +8,7 @@ The official Java client for Crawlora's hosted Cricbuzz API. It exposes 29 endpo
 <dependency>
   <groupId>net.crawlora</groupId>
   <artifactId>crawlora-cricbuzz</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
@@ -40,6 +40,8 @@ Browse every route included in this Java package. The [endpoint reference](https
 | `GET` | `/cricbuzz/archives` | `cricbuzz-archives` | Discover Cricbuzz archive years and series |
 | `GET` | `/cricbuzz/auction/info` | `cricbuzz-auction-info` | Get the Cricbuzz auction guide |
 | `GET` | `/cricbuzz/auction/live` | `cricbuzz-auction-live` | Get the current Cricbuzz auction Live-tab payload |
+| `GET` | `/cricbuzz/auction/live-blog` | `cricbuzz-auction-live-blog` | Get an edition's auction Live Blog article |
+| `GET` | `/cricbuzz/auction/news` | `cricbuzz-auction-news` | Get an edition's Cricbuzz Auction News cards |
 | `GET` | `/cricbuzz/auction/options` | `cricbuzz-auction-options` | Discover Cricbuzz auction filters and sort values |
 | `GET` | `/cricbuzz/auction/player` | `cricbuzz-auction-player-detail` | Get a Cricbuzz auction player profile and earnings |
 | `GET` | `/cricbuzz/auction/player-search` | `cricbuzz-auction-player-search` | Search Cricbuzz auction players |
@@ -50,11 +52,13 @@ Browse every route included in this Java package. The [endpoint reference](https
 | `GET` | `/cricbuzz/auction/teams/options` | `cricbuzz-auction-teams-options` | Discover Cricbuzz auction teams and sort values |
 | `GET` | `/cricbuzz/auction/upcoming` | `cricbuzz-auction-upcoming` | Get filtered Cricbuzz unauctioned players |
 | `GET` | `/cricbuzz/auction/upcoming/options` | `cricbuzz-auction-upcoming-options` | Discover Cricbuzz unauctioned-player filters |
+| `GET` | `/cricbuzz/auction/videos` | `cricbuzz-auction-videos` | Get an edition's Cricbuzz Auction Videos cards |
 | `GET` | `/cricbuzz/match-facts` | `cricbuzz-match-facts` | Get Cricbuzz match information and squads |
 | `GET` | `/cricbuzz/match-graphs` | `cricbuzz-match-graphs` | Get numeric Cricbuzz match graphs |
 | `GET` | `/cricbuzz/match-overs` | `cricbuzz-match-overs` | Get Cricbuzz over summaries |
 | `GET` | `/cricbuzz/matches` | `cricbuzz-matches` | List Cricbuzz live, recent, or upcoming matches |
 | `GET` | `/cricbuzz/navigation` | `cricbuzz-navigation` | Discover Cricbuzz top-level menus and dropdown links |
+| `GET` | `/cricbuzz/news/story` | `cricbuzz-news-story` | Get a public Cricbuzz NewsArticle and its tags |
 | `GET` | `/cricbuzz/news/topics` | `cricbuzz-news-topics` | Discover Cricbuzz News sections and topics |
 | `GET` | `/cricbuzz/rankings` | `cricbuzz-rankings` | Get an ICC ranking table from Cricbuzz |
 | `GET` | `/cricbuzz/records` | `cricbuzz-records` | Discover Cricbuzz record topics and filter values |
@@ -62,6 +66,8 @@ Browse every route included in this Java package. The [endpoint reference](https
 | `GET` | `/cricbuzz/scorecard` | `cricbuzz-scorecard` | Get a Cricbuzz match scorecard |
 | `GET` | `/cricbuzz/series` | `cricbuzz-series` | Discover Cricbuzz current and future series |
 | `GET` | `/cricbuzz/series/stats` | `cricbuzz-series-stats` | Discover Cricbuzz series statistics |
+| `GET` | `/cricbuzz/team/stats` | `cricbuzz-team-stats` | Fetch one team statistics table |
+| `GET` | `/cricbuzz/team/stats/options` | `cricbuzz-team-stats-options` | Discover team statistics topics and filters |
 | `GET` | `/cricbuzz/teams` | `cricbuzz-teams` | Discover Cricbuzz teams |
 | `GET` | `/cricbuzz/videos/categories` | `cricbuzz-video-categories` | Discover Cricbuzz video categories |
 | `GET` | `/cricbuzz/videos/playlists` | `cricbuzz-video-playlists` | Discover Cricbuzz video playlists |

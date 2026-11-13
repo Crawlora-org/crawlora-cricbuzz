@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Official async Rust client for Crawlora's hosted Cricbuzz API. It exposes
-typed request parameters and response handling for 29 public
+typed request parameters and response handling for 35 public
 operations. It calls Crawlora's hosted service; it does not scrape Cricbuzz
 locally. Requests use your Crawlora account and follow its billing plan. Crawlora
 is independent from and not affiliated with or endorsed by Cricbuzz or
@@ -30,7 +30,7 @@ To pin a release directly in `Cargo.toml`:
 
 ```toml
 [dependencies]
-crawlora-cricbuzz = "0.1.0"
+crawlora-cricbuzz = "0.2.0"
 ```
 
 Create an account at [crawlora.net](https://crawlora.net/signup?utm_source=crates.io&utm_medium=referral&utm_campaign=platform-clients&utm_content=cricbuzz-rust-signup), then [create an API key](https://crawlora.net/app/api-keys?utm_source=crates.io&utm_medium=referral&utm_campaign=platform-clients&utm_content=cricbuzz-rust-api-keys). Keep the key out of source control and load it from the environment:

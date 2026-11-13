@@ -3,8 +3,8 @@ require_relative "lib/crawlora/cricbuzz/version"
 Gem::Specification.new do |spec|
   spec.name = "crawlora-cricbuzz"
   spec.version = Crawlora::Cricbuzz::VERSION
-  spec.summary = "Cricbuzz API client for Crawlora (29 endpoints)"
-  spec.description = "Ruby client for Crawlora's hosted Cricbuzz API. Covers cricket matches, schedules, news, rankings, series, and records across 29 endpoints."
+  spec.summary = "Cricbuzz API client for Crawlora (35 endpoints)"
+  spec.description = "Ruby client for Crawlora's hosted Cricbuzz API. Covers cricket matches, schedules, news, rankings, series, and records across 35 endpoints."
   spec.authors = ["Crawlora"]
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6"

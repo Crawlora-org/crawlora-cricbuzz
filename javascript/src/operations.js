@@ -103,6 +103,66 @@ export const operations = {
       "ApiKeyAuth"
     ]
   },
+  "cricbuzz-auction-live-blog": {
+    "bodyParam": null,
+    "bodyRequired": false,
+    "consumes": [],
+    "formParams": [],
+    "id": "cricbuzz-auction-live-blog",
+    "method": "GET",
+    "path": "/cricbuzz/auction/live-blog",
+    "pathParams": [],
+    "produces": [
+      "application/json"
+    ],
+    "queryParams": [
+      {
+        "in": "query",
+        "name": "tournament",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "query",
+        "name": "year",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "security": [
+      "ApiKeyAuth"
+    ]
+  },
+  "cricbuzz-auction-news": {
+    "bodyParam": null,
+    "bodyRequired": false,
+    "consumes": [],
+    "formParams": [],
+    "id": "cricbuzz-auction-news",
+    "method": "GET",
+    "path": "/cricbuzz/auction/news",
+    "pathParams": [],
+    "produces": [
+      "application/json"
+    ],
+    "queryParams": [
+      {
+        "in": "query",
+        "name": "tournament",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "query",
+        "name": "year",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "security": [
+      "ApiKeyAuth"
+    ]
+  },
   "cricbuzz-auction-options": {
     "bodyParam": null,
     "bodyRequired": false,
@@ -499,6 +559,36 @@ export const operations = {
       "ApiKeyAuth"
     ]
   },
+  "cricbuzz-auction-videos": {
+    "bodyParam": null,
+    "bodyRequired": false,
+    "consumes": [],
+    "formParams": [],
+    "id": "cricbuzz-auction-videos",
+    "method": "GET",
+    "path": "/cricbuzz/auction/videos",
+    "pathParams": [],
+    "produces": [
+      "application/json"
+    ],
+    "queryParams": [
+      {
+        "in": "query",
+        "name": "tournament",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "query",
+        "name": "year",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "security": [
+      "ApiKeyAuth"
+    ]
+  },
   "cricbuzz-match-facts": {
     "bodyParam": null,
     "bodyRequired": false,
@@ -624,6 +714,30 @@ export const operations = {
       "application/json"
     ],
     "queryParams": [],
+    "security": [
+      "ApiKeyAuth"
+    ]
+  },
+  "cricbuzz-news-story": {
+    "bodyParam": null,
+    "bodyRequired": false,
+    "consumes": [],
+    "formParams": [],
+    "id": "cricbuzz-news-story",
+    "method": "GET",
+    "path": "/cricbuzz/news/story",
+    "pathParams": [],
+    "produces": [
+      "application/json"
+    ],
+    "queryParams": [
+      {
+        "in": "query",
+        "name": "url",
+        "required": true,
+        "type": "string"
+      }
+    ],
     "security": [
       "ApiKeyAuth"
     ]
@@ -914,6 +1028,102 @@ export const operations = {
       "ApiKeyAuth"
     ]
   },
+  "cricbuzz-team-stats": {
+    "bodyParam": null,
+    "bodyRequired": false,
+    "consumes": [],
+    "formParams": [],
+    "id": "cricbuzz-team-stats",
+    "method": "GET",
+    "path": "/cricbuzz/team/stats",
+    "pathParams": [],
+    "produces": [
+      "application/json"
+    ],
+    "queryParams": [
+      {
+        "enum": [
+          "international",
+          "domestic",
+          "league",
+          "women"
+        ],
+        "in": "query",
+        "name": "category",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "query",
+        "name": "team_id",
+        "required": true,
+        "type": "integer"
+      },
+      {
+        "in": "query",
+        "name": "stat",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "query",
+        "name": "format_id",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "query",
+        "name": "year",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "query",
+        "name": "opponent_id",
+        "required": true,
+        "type": "string"
+      }
+    ],
+    "security": [
+      "ApiKeyAuth"
+    ]
+  },
+  "cricbuzz-team-stats-options": {
+    "bodyParam": null,
+    "bodyRequired": false,
+    "consumes": [],
+    "formParams": [],
+    "id": "cricbuzz-team-stats-options",
+    "method": "GET",
+    "path": "/cricbuzz/team/stats/options",
+    "pathParams": [],
+    "produces": [
+      "application/json"
+    ],
+    "queryParams": [
+      {
+        "enum": [
+          "international",
+          "domestic",
+          "league",
+          "women"
+        ],
+        "in": "query",
+        "name": "category",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "in": "query",
+        "name": "team_id",
+        "required": true,
+        "type": "integer"
+      }
+    ],
+    "security": [
+      "ApiKeyAuth"
+    ]
+  },
   "cricbuzz-teams": {
     "bodyParam": null,
     "bodyRequired": false,
@@ -1006,6 +1216,8 @@ export const groups = {
     "archives": "cricbuzz-archives",
     "auctionInfo": "cricbuzz-auction-info",
     "auctionLive": "cricbuzz-auction-live",
+    "auctionLiveBlog": "cricbuzz-auction-live-blog",
+    "auctionNews": "cricbuzz-auction-news",
     "auctionOptions": "cricbuzz-auction-options",
     "auctionPlayerDetail": "cricbuzz-auction-player-detail",
     "auctionPlayerSearch": "cricbuzz-auction-player-search",
@@ -1016,11 +1228,13 @@ export const groups = {
     "auctionTeamsOptions": "cricbuzz-auction-teams-options",
     "auctionUpcoming": "cricbuzz-auction-upcoming",
     "auctionUpcomingOptions": "cricbuzz-auction-upcoming-options",
+    "auctionVideos": "cricbuzz-auction-videos",
     "matchFacts": "cricbuzz-match-facts",
     "matchGraphs": "cricbuzz-match-graphs",
     "matchOvers": "cricbuzz-match-overs",
     "matches": "cricbuzz-matches",
     "navigation": "cricbuzz-navigation",
+    "newsStory": "cricbuzz-news-story",
     "newsTopics": "cricbuzz-news-topics",
     "rankings": "cricbuzz-rankings",
     "records": "cricbuzz-records",
@@ -1028,6 +1242,8 @@ export const groups = {
     "scorecard": "cricbuzz-scorecard",
     "series": "cricbuzz-series",
     "seriesStats": "cricbuzz-series-stats",
+    "teamStats": "cricbuzz-team-stats",
+    "teamStatsOptions": "cricbuzz-team-stats-options",
     "teams": "cricbuzz-teams",
     "videoCategories": "cricbuzz-video-categories",
     "videoPlaylists": "cricbuzz-video-playlists",
@@ -1035,12 +1251,14 @@ export const groups = {
   }
 };
 
-export const operationCount = 29;
+export const operationCount = 35;
 
 export const OperationIds = Object.freeze({
   "CricbuzzArchives": "cricbuzz-archives",
   "CricbuzzAuctionInfo": "cricbuzz-auction-info",
   "CricbuzzAuctionLive": "cricbuzz-auction-live",
+  "CricbuzzAuctionLiveBlog": "cricbuzz-auction-live-blog",
+  "CricbuzzAuctionNews": "cricbuzz-auction-news",
   "CricbuzzAuctionOptions": "cricbuzz-auction-options",
   "CricbuzzAuctionPlayerDetail": "cricbuzz-auction-player-detail",
   "CricbuzzAuctionPlayerSearch": "cricbuzz-auction-player-search",
@@ -1051,11 +1269,13 @@ export const OperationIds = Object.freeze({
   "CricbuzzAuctionTeamsOptions": "cricbuzz-auction-teams-options",
   "CricbuzzAuctionUpcoming": "cricbuzz-auction-upcoming",
   "CricbuzzAuctionUpcomingOptions": "cricbuzz-auction-upcoming-options",
+  "CricbuzzAuctionVideos": "cricbuzz-auction-videos",
   "CricbuzzMatchFacts": "cricbuzz-match-facts",
   "CricbuzzMatchGraphs": "cricbuzz-match-graphs",
   "CricbuzzMatchOvers": "cricbuzz-match-overs",
   "CricbuzzMatches": "cricbuzz-matches",
   "CricbuzzNavigation": "cricbuzz-navigation",
+  "CricbuzzNewsStory": "cricbuzz-news-story",
   "CricbuzzNewsTopics": "cricbuzz-news-topics",
   "CricbuzzRankings": "cricbuzz-rankings",
   "CricbuzzRecords": "cricbuzz-records",
@@ -1063,6 +1283,8 @@ export const OperationIds = Object.freeze({
   "CricbuzzScorecard": "cricbuzz-scorecard",
   "CricbuzzSeries": "cricbuzz-series",
   "CricbuzzSeriesStats": "cricbuzz-series-stats",
+  "CricbuzzTeamStats": "cricbuzz-team-stats",
+  "CricbuzzTeamStatsOptions": "cricbuzz-team-stats-options",
   "CricbuzzTeams": "cricbuzz-teams",
   "CricbuzzVideoCategories": "cricbuzz-video-categories",
   "CricbuzzVideoPlaylists": "cricbuzz-video-playlists",

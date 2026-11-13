@@ -9,10 +9,12 @@ import {
 
 export class CricbuzzClient extends CrawloraClient {
   constructor(options = {}) {
-    super({ ...options, userAgent: options.userAgent ?? "crawlora-cricbuzz-js/0.1.0" });
+    super({ ...options, userAgent: options.userAgent ?? "crawlora-cricbuzz-js/0.2.0" });
     this["archives"] = (...args) => this.request("cricbuzz-archives", ...args);
     this["auctionInfo"] = (...args) => this.request("cricbuzz-auction-info", ...args);
     this["auctionLive"] = (...args) => this.request("cricbuzz-auction-live", ...args);
+    this["auctionLiveBlog"] = (...args) => this.request("cricbuzz-auction-live-blog", ...args);
+    this["auctionNews"] = (...args) => this.request("cricbuzz-auction-news", ...args);
     this["auctionOptions"] = (...args) => this.request("cricbuzz-auction-options", ...args);
     this["auctionPlayerDetail"] = (...args) => this.request("cricbuzz-auction-player-detail", ...args);
     this["auctionPlayerSearch"] = (...args) => this.request("cricbuzz-auction-player-search", ...args);
@@ -23,11 +25,13 @@ export class CricbuzzClient extends CrawloraClient {
     this["auctionTeamsOptions"] = (...args) => this.request("cricbuzz-auction-teams-options", ...args);
     this["auctionUpcoming"] = (...args) => this.request("cricbuzz-auction-upcoming", ...args);
     this["auctionUpcomingOptions"] = (...args) => this.request("cricbuzz-auction-upcoming-options", ...args);
+    this["auctionVideos"] = (...args) => this.request("cricbuzz-auction-videos", ...args);
     this["matchFacts"] = (...args) => this.request("cricbuzz-match-facts", ...args);
     this["matchGraphs"] = (...args) => this.request("cricbuzz-match-graphs", ...args);
     this["matchOvers"] = (...args) => this.request("cricbuzz-match-overs", ...args);
     this["matches"] = (...args) => this.request("cricbuzz-matches", ...args);
     this["navigation"] = (...args) => this.request("cricbuzz-navigation", ...args);
+    this["newsStory"] = (...args) => this.request("cricbuzz-news-story", ...args);
     this["newsTopics"] = (...args) => this.request("cricbuzz-news-topics", ...args);
     this["rankings"] = (...args) => this.request("cricbuzz-rankings", ...args);
     this["records"] = (...args) => this.request("cricbuzz-records", ...args);
@@ -35,6 +39,8 @@ export class CricbuzzClient extends CrawloraClient {
     this["scorecard"] = (...args) => this.request("cricbuzz-scorecard", ...args);
     this["series"] = (...args) => this.request("cricbuzz-series", ...args);
     this["seriesStats"] = (...args) => this.request("cricbuzz-series-stats", ...args);
+    this["teamStats"] = (...args) => this.request("cricbuzz-team-stats", ...args);
+    this["teamStatsOptions"] = (...args) => this.request("cricbuzz-team-stats-options", ...args);
     this["teams"] = (...args) => this.request("cricbuzz-teams", ...args);
     this["videoCategories"] = (...args) => this.request("cricbuzz-video-categories", ...args);
     this["videoPlaylists"] = (...args) => this.request("cricbuzz-video-playlists", ...args);
@@ -51,5 +57,5 @@ export {
   CrawloraServerError
 };
 export { groups, operations, operationCount, OperationIds } from "./operations.js";
-export const VERSION = "0.1.0";
+export const VERSION = "0.2.0";
 export default CricbuzzClient;

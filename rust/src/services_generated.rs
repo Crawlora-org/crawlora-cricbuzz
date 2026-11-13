@@ -49,6 +49,22 @@ pub struct CricbuzzAuctionLiveParams {
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize)]
+pub struct CricbuzzAuctionLiveBlogParams {
+    #[serde(rename = "tournament", skip_serializing_if = "Option::is_none")]
+    pub tournament: Option<String>,
+    #[serde(rename = "year", skip_serializing_if = "Option::is_none")]
+    pub year: Option<String>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize)]
+pub struct CricbuzzAuctionNewsParams {
+    #[serde(rename = "tournament", skip_serializing_if = "Option::is_none")]
+    pub tournament: Option<String>,
+    #[serde(rename = "year", skip_serializing_if = "Option::is_none")]
+    pub year: Option<String>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct CricbuzzAuctionOptionsParams {
     #[serde(rename = "tournament", skip_serializing_if = "Option::is_none")]
     pub tournament: Option<String>,
@@ -169,6 +185,14 @@ pub struct CricbuzzAuctionUpcomingOptionsParams {
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize)]
+pub struct CricbuzzAuctionVideosParams {
+    #[serde(rename = "tournament", skip_serializing_if = "Option::is_none")]
+    pub tournament: Option<String>,
+    #[serde(rename = "year", skip_serializing_if = "Option::is_none")]
+    pub year: Option<String>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct CricbuzzMatchFactsParams {
     #[serde(rename = "match_url", skip_serializing_if = "Option::is_none")]
     pub match_url: Option<String>,
@@ -198,6 +222,12 @@ pub struct CricbuzzMatchesParams {
 pub struct CricbuzzNavigationParams {
     #[serde(skip)]
     _empty: Option<()>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize)]
+pub struct CricbuzzNewsStoryParams {
+    #[serde(rename = "url", skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize)]
@@ -265,6 +295,30 @@ pub struct CricbuzzSeriesStatsParams {
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize)]
+pub struct CricbuzzTeamStatsParams {
+    #[serde(rename = "category", skip_serializing_if = "Option::is_none")]
+    pub category: Option<String>,
+    #[serde(rename = "team_id", skip_serializing_if = "Option::is_none")]
+    pub team_id: Option<i64>,
+    #[serde(rename = "stat", skip_serializing_if = "Option::is_none")]
+    pub stat: Option<String>,
+    #[serde(rename = "format_id", skip_serializing_if = "Option::is_none")]
+    pub format_id: Option<String>,
+    #[serde(rename = "year", skip_serializing_if = "Option::is_none")]
+    pub year: Option<String>,
+    #[serde(rename = "opponent_id", skip_serializing_if = "Option::is_none")]
+    pub opponent_id: Option<String>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize)]
+pub struct CricbuzzTeamStatsOptionsParams {
+    #[serde(rename = "category", skip_serializing_if = "Option::is_none")]
+    pub category: Option<String>,
+    #[serde(rename = "team_id", skip_serializing_if = "Option::is_none")]
+    pub team_id: Option<i64>,
+}
+
+#[derive(Debug, Clone, Default, serde::Serialize)]
 pub struct CricbuzzTeamsParams {
     #[serde(rename = "category", skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,
@@ -317,6 +371,28 @@ impl CricbuzzApi {
     ) -> Result<ApiResponse, Error> {
         self.inner
             .call("cricbuzz-auction-live", &params, RequestOptions::default())
+            .await
+    }
+
+    pub async fn auction_live_blog(
+        &self,
+        params: CricbuzzAuctionLiveBlogParams,
+    ) -> Result<ApiResponse, Error> {
+        self.inner
+            .call(
+                "cricbuzz-auction-live-blog",
+                &params,
+                RequestOptions::default(),
+            )
+            .await
+    }
+
+    pub async fn auction_news(
+        &self,
+        params: CricbuzzAuctionNewsParams,
+    ) -> Result<ApiResponse, Error> {
+        self.inner
+            .call("cricbuzz-auction-news", &params, RequestOptions::default())
             .await
     }
 
@@ -446,6 +522,19 @@ impl CricbuzzApi {
             .await
     }
 
+    pub async fn auction_videos(
+        &self,
+        params: CricbuzzAuctionVideosParams,
+    ) -> Result<ApiResponse, Error> {
+        self.inner
+            .call(
+                "cricbuzz-auction-videos",
+                &params,
+                RequestOptions::default(),
+            )
+            .await
+    }
+
     pub async fn match_facts(
         &self,
         params: CricbuzzMatchFactsParams,
@@ -482,6 +571,12 @@ impl CricbuzzApi {
     pub async fn navigation(&self, params: CricbuzzNavigationParams) -> Result<ApiResponse, Error> {
         self.inner
             .call("cricbuzz-navigation", &params, RequestOptions::default())
+            .await
+    }
+
+    pub async fn news_story(&self, params: CricbuzzNewsStoryParams) -> Result<ApiResponse, Error> {
+        self.inner
+            .call("cricbuzz-news-story", &params, RequestOptions::default())
             .await
     }
 
@@ -530,6 +625,25 @@ impl CricbuzzApi {
     ) -> Result<ApiResponse, Error> {
         self.inner
             .call("cricbuzz-series-stats", &params, RequestOptions::default())
+            .await
+    }
+
+    pub async fn team_stats(&self, params: CricbuzzTeamStatsParams) -> Result<ApiResponse, Error> {
+        self.inner
+            .call("cricbuzz-team-stats", &params, RequestOptions::default())
+            .await
+    }
+
+    pub async fn team_stats_options(
+        &self,
+        params: CricbuzzTeamStatsOptionsParams,
+    ) -> Result<ApiResponse, Error> {
+        self.inner
+            .call(
+                "cricbuzz-team-stats-options",
+                &params,
+                RequestOptions::default(),
+            )
             .await
     }
 

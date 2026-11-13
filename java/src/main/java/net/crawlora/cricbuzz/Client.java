@@ -22,11 +22,13 @@ import java.util.TreeSet;
 /** Client for the Cricbuzz endpoints hosted by Crawlora. */
 public final class Client implements AutoCloseable {
     public static final String DEFAULT_BASE_URL = "https://api.crawlora.net/api/v1";
-    public static final int OPERATION_COUNT = 29;
+    public static final int OPERATION_COUNT = 35;
     public static final List<String> OPERATION_IDS = List.of(
             "cricbuzz-archives",
             "cricbuzz-auction-info",
             "cricbuzz-auction-live",
+            "cricbuzz-auction-live-blog",
+            "cricbuzz-auction-news",
             "cricbuzz-auction-options",
             "cricbuzz-auction-player-detail",
             "cricbuzz-auction-player-search",
@@ -37,11 +39,13 @@ public final class Client implements AutoCloseable {
             "cricbuzz-auction-teams-options",
             "cricbuzz-auction-upcoming",
             "cricbuzz-auction-upcoming-options",
+            "cricbuzz-auction-videos",
             "cricbuzz-match-facts",
             "cricbuzz-match-graphs",
             "cricbuzz-match-overs",
             "cricbuzz-matches",
             "cricbuzz-navigation",
+            "cricbuzz-news-story",
             "cricbuzz-news-topics",
             "cricbuzz-rankings",
             "cricbuzz-records",
@@ -49,6 +53,8 @@ public final class Client implements AutoCloseable {
             "cricbuzz-scorecard",
             "cricbuzz-series",
             "cricbuzz-series-stats",
+            "cricbuzz-team-stats",
+            "cricbuzz-team-stats-options",
             "cricbuzz-teams",
             "cricbuzz-video-categories",
             "cricbuzz-video-playlists",
@@ -61,6 +67,8 @@ public final class Client implements AutoCloseable {
         operations.put("cricbuzz-archives", new Operation("cricbuzz-archives", "GET", "/cricbuzz/archives", Map.ofEntries(Map.entry("year", new Param("year", "query", false, "integer", List.of(), "csv")), Map.entry("category", new Param("category", "query", false, "string", List.of("international", "league", "domestic", "women"), "csv")), Map.entry("q", new Param("q", "query", false, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-auction-info", new Operation("cricbuzz-auction-info", "GET", "/cricbuzz/auction/info", Map.ofEntries(Map.entry("tournament", new Param("tournament", "query", false, "string", List.of(), "csv")), Map.entry("year", new Param("year", "query", false, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-auction-live", new Operation("cricbuzz-auction-live", "GET", "/cricbuzz/auction/live", Map.ofEntries(Map.entry("tournament", new Param("tournament", "query", true, "string", List.of(), "csv")), Map.entry("year", new Param("year", "query", true, "string", List.of(), "csv")), Map.entry("currency", new Param("currency", "query", true, "string", List.of(), "csv"))), List.of("application/json")));
+        operations.put("cricbuzz-auction-live-blog", new Operation("cricbuzz-auction-live-blog", "GET", "/cricbuzz/auction/live-blog", Map.ofEntries(Map.entry("tournament", new Param("tournament", "query", true, "string", List.of(), "csv")), Map.entry("year", new Param("year", "query", true, "string", List.of(), "csv"))), List.of("application/json")));
+        operations.put("cricbuzz-auction-news", new Operation("cricbuzz-auction-news", "GET", "/cricbuzz/auction/news", Map.ofEntries(Map.entry("tournament", new Param("tournament", "query", true, "string", List.of(), "csv")), Map.entry("year", new Param("year", "query", true, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-auction-options", new Operation("cricbuzz-auction-options", "GET", "/cricbuzz/auction/options", Map.ofEntries(Map.entry("tournament", new Param("tournament", "query", false, "string", List.of(), "csv")), Map.entry("year", new Param("year", "query", false, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-auction-player-detail", new Operation("cricbuzz-auction-player-detail", "GET", "/cricbuzz/auction/player", Map.ofEntries(Map.entry("tournament", new Param("tournament", "query", true, "string", List.of(), "csv")), Map.entry("year", new Param("year", "query", true, "string", List.of(), "csv")), Map.entry("currency", new Param("currency", "query", true, "string", List.of(), "csv")), Map.entry("player_id", new Param("player_id", "query", true, "integer", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-auction-player-search", new Operation("cricbuzz-auction-player-search", "GET", "/cricbuzz/auction/player-search", Map.ofEntries(Map.entry("tournament", new Param("tournament", "query", true, "string", List.of(), "csv")), Map.entry("year", new Param("year", "query", true, "string", List.of(), "csv")), Map.entry("q", new Param("q", "query", true, "string", List.of(), "csv"))), List.of("application/json")));
@@ -71,11 +79,13 @@ public final class Client implements AutoCloseable {
         operations.put("cricbuzz-auction-teams-options", new Operation("cricbuzz-auction-teams-options", "GET", "/cricbuzz/auction/teams/options", Map.ofEntries(Map.entry("tournament", new Param("tournament", "query", false, "string", List.of(), "csv")), Map.entry("year", new Param("year", "query", false, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-auction-upcoming", new Operation("cricbuzz-auction-upcoming", "GET", "/cricbuzz/auction/upcoming", Map.ofEntries(Map.entry("tournament", new Param("tournament", "query", true, "string", List.of(), "csv")), Map.entry("year", new Param("year", "query", true, "string", List.of(), "csv")), Map.entry("currency", new Param("currency", "query", true, "string", List.of(), "csv")), Map.entry("page", new Param("page", "query", false, "integer", List.of(), "csv")), Map.entry("country_ids", new Param("country_ids", "query", false, "string", List.of(), "csv")), Map.entry("role", new Param("role", "query", false, "string", List.of(), "csv")), Map.entry("cap", new Param("cap", "query", false, "string", List.of(), "csv")), Map.entry("sort", new Param("sort", "query", false, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-auction-upcoming-options", new Operation("cricbuzz-auction-upcoming-options", "GET", "/cricbuzz/auction/upcoming/options", Map.ofEntries(Map.entry("tournament", new Param("tournament", "query", false, "string", List.of(), "csv")), Map.entry("year", new Param("year", "query", false, "string", List.of(), "csv"))), List.of("application/json")));
+        operations.put("cricbuzz-auction-videos", new Operation("cricbuzz-auction-videos", "GET", "/cricbuzz/auction/videos", Map.ofEntries(Map.entry("tournament", new Param("tournament", "query", true, "string", List.of(), "csv")), Map.entry("year", new Param("year", "query", true, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-match-facts", new Operation("cricbuzz-match-facts", "GET", "/cricbuzz/match-facts", Map.ofEntries(Map.entry("match_url", new Param("match_url", "query", true, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-match-graphs", new Operation("cricbuzz-match-graphs", "GET", "/cricbuzz/match-graphs", Map.ofEntries(Map.entry("match_url", new Param("match_url", "query", true, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-match-overs", new Operation("cricbuzz-match-overs", "GET", "/cricbuzz/match-overs", Map.ofEntries(Map.entry("match_url", new Param("match_url", "query", true, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-matches", new Operation("cricbuzz-matches", "GET", "/cricbuzz/matches", Map.ofEntries(Map.entry("status", new Param("status", "query", false, "string", List.of("live", "recent", "upcoming"), "csv")), Map.entry("category", new Param("category", "query", false, "string", List.of("all", "international", "league", "domestic", "women"), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-navigation", new Operation("cricbuzz-navigation", "GET", "/cricbuzz/navigation", Map.of(), List.of("application/json")));
+        operations.put("cricbuzz-news-story", new Operation("cricbuzz-news-story", "GET", "/cricbuzz/news/story", Map.ofEntries(Map.entry("url", new Param("url", "query", true, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-news-topics", new Operation("cricbuzz-news-topics", "GET", "/cricbuzz/news/topics", Map.ofEntries(Map.entry("q", new Param("q", "query", false, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-rankings", new Operation("cricbuzz-rankings", "GET", "/cricbuzz/rankings", Map.ofEntries(Map.entry("gender", new Param("gender", "query", false, "string", List.of("men", "women"), "csv")), Map.entry("type", new Param("type", "query", false, "string", List.of("batting", "bowling", "all-rounder", "teams"), "csv")), Map.entry("format", new Param("format", "query", false, "string", List.of("test", "odi", "t20"), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-records", new Operation("cricbuzz-records", "GET", "/cricbuzz/records", Map.ofEntries(Map.entry("stat", new Param("stat", "query", false, "string", List.of("mostRuns", "highestScore", "highestAvg", "highestSr", "mostHundreds", "mostFifties", "mostFours", "mostSixes", "mostNineties", "mostWickets", "lowestAvg", "bestBowlingInnings", "mostFiveWickets", "lowestEcon", "lowestSr"), "csv")), Map.entry("format", new Param("format", "query", false, "string", List.of("test", "odi", "t20"), "csv")), Map.entry("year", new Param("year", "query", false, "string", List.of(), "csv")), Map.entry("team", new Param("team", "query", false, "string", List.of(), "csv")), Map.entry("opponent", new Param("opponent", "query", false, "string", List.of(), "csv"))), List.of("application/json")));
@@ -83,6 +93,8 @@ public final class Client implements AutoCloseable {
         operations.put("cricbuzz-scorecard", new Operation("cricbuzz-scorecard", "GET", "/cricbuzz/scorecard", Map.ofEntries(Map.entry("match_url", new Param("match_url", "query", true, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-series", new Operation("cricbuzz-series", "GET", "/cricbuzz/series", Map.ofEntries(Map.entry("category", new Param("category", "query", false, "string", List.of("all", "international", "domestic", "league", "women"), "csv")), Map.entry("live_stream", new Param("live_stream", "query", false, "boolean", List.of(), "csv")), Map.entry("q", new Param("q", "query", false, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-series-stats", new Operation("cricbuzz-series-stats", "GET", "/cricbuzz/series/stats", Map.ofEntries(Map.entry("series_url", new Param("series_url", "query", true, "string", List.of(), "csv")), Map.entry("stat", new Param("stat", "query", false, "string", List.of("mostRuns", "highestScore", "highestAvg", "highestSr", "mostHundreds", "mostFifties", "mostFours", "mostSixes", "mostNineties", "mostWickets", "lowestAvg", "bestBowlingInnings", "mostFiveWickets", "lowestEcon", "lowestSr"), "csv")), Map.entry("format", new Param("format", "query", false, "string", List.of(), "csv"))), List.of("application/json")));
+        operations.put("cricbuzz-team-stats", new Operation("cricbuzz-team-stats", "GET", "/cricbuzz/team/stats", Map.ofEntries(Map.entry("category", new Param("category", "query", true, "string", List.of("international", "domestic", "league", "women"), "csv")), Map.entry("team_id", new Param("team_id", "query", true, "integer", List.of(), "csv")), Map.entry("stat", new Param("stat", "query", true, "string", List.of(), "csv")), Map.entry("format_id", new Param("format_id", "query", true, "string", List.of(), "csv")), Map.entry("year", new Param("year", "query", true, "string", List.of(), "csv")), Map.entry("opponent_id", new Param("opponent_id", "query", true, "string", List.of(), "csv"))), List.of("application/json")));
+        operations.put("cricbuzz-team-stats-options", new Operation("cricbuzz-team-stats-options", "GET", "/cricbuzz/team/stats/options", Map.ofEntries(Map.entry("category", new Param("category", "query", true, "string", List.of("international", "domestic", "league", "women"), "csv")), Map.entry("team_id", new Param("team_id", "query", true, "integer", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-teams", new Operation("cricbuzz-teams", "GET", "/cricbuzz/teams", Map.ofEntries(Map.entry("category", new Param("category", "query", false, "string", List.of("international", "domestic", "league", "women"), "csv")), Map.entry("q", new Param("q", "query", false, "string", List.of(), "csv"))), List.of("application/json")));
         operations.put("cricbuzz-video-categories", new Operation("cricbuzz-video-categories", "GET", "/cricbuzz/videos/categories", Map.of(), List.of("application/json")));
         operations.put("cricbuzz-video-playlists", new Operation("cricbuzz-video-playlists", "GET", "/cricbuzz/videos/playlists", Map.of(), List.of("application/json")));
@@ -196,6 +208,8 @@ public final class Client implements AutoCloseable {
     public Object archives(Map<String, ?> params) { return request("cricbuzz-archives", params); }
     public Object auctionInfo(Map<String, ?> params) { return request("cricbuzz-auction-info", params); }
     public Object auctionLive(Map<String, ?> params) { return request("cricbuzz-auction-live", params); }
+    public Object auctionLiveBlog(Map<String, ?> params) { return request("cricbuzz-auction-live-blog", params); }
+    public Object auctionNews(Map<String, ?> params) { return request("cricbuzz-auction-news", params); }
     public Object auctionOptions(Map<String, ?> params) { return request("cricbuzz-auction-options", params); }
     public Object auctionPlayerDetail(Map<String, ?> params) { return request("cricbuzz-auction-player-detail", params); }
     public Object auctionPlayerSearch(Map<String, ?> params) { return request("cricbuzz-auction-player-search", params); }
@@ -206,11 +220,13 @@ public final class Client implements AutoCloseable {
     public Object auctionTeamsOptions(Map<String, ?> params) { return request("cricbuzz-auction-teams-options", params); }
     public Object auctionUpcoming(Map<String, ?> params) { return request("cricbuzz-auction-upcoming", params); }
     public Object auctionUpcomingOptions(Map<String, ?> params) { return request("cricbuzz-auction-upcoming-options", params); }
+    public Object auctionVideos(Map<String, ?> params) { return request("cricbuzz-auction-videos", params); }
     public Object matchFacts(Map<String, ?> params) { return request("cricbuzz-match-facts", params); }
     public Object matchGraphs(Map<String, ?> params) { return request("cricbuzz-match-graphs", params); }
     public Object matchOvers(Map<String, ?> params) { return request("cricbuzz-match-overs", params); }
     public Object matches(Map<String, ?> params) { return request("cricbuzz-matches", params); }
     public Object navigation(Map<String, ?> params) { return request("cricbuzz-navigation", params); }
+    public Object newsStory(Map<String, ?> params) { return request("cricbuzz-news-story", params); }
     public Object newsTopics(Map<String, ?> params) { return request("cricbuzz-news-topics", params); }
     public Object rankings(Map<String, ?> params) { return request("cricbuzz-rankings", params); }
     public Object records(Map<String, ?> params) { return request("cricbuzz-records", params); }
@@ -218,6 +234,8 @@ public final class Client implements AutoCloseable {
     public Object scorecard(Map<String, ?> params) { return request("cricbuzz-scorecard", params); }
     public Object series(Map<String, ?> params) { return request("cricbuzz-series", params); }
     public Object seriesStats(Map<String, ?> params) { return request("cricbuzz-series-stats", params); }
+    public Object teamStats(Map<String, ?> params) { return request("cricbuzz-team-stats", params); }
+    public Object teamStatsOptions(Map<String, ?> params) { return request("cricbuzz-team-stats-options", params); }
     public Object teams(Map<String, ?> params) { return request("cricbuzz-teams", params); }
     public Object videoCategories(Map<String, ?> params) { return request("cricbuzz-video-categories", params); }
     public Object videoPlaylists(Map<String, ?> params) { return request("cricbuzz-video-playlists", params); }
