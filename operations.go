@@ -32,6 +32,8 @@ var operations = map[string]operationDefinition{
 	"cricbuzz-archives":                 operationDefinition{Method: "GET", Path: "/cricbuzz/archives", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "year", In: "query", Type: "integer"}, parameterDefinition{Name: "category", In: "query", Type: "string", Enum: []string{"international", "league", "domestic", "women"}}, parameterDefinition{Name: "q", In: "query", Type: "string"}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-auction-info":             operationDefinition{Method: "GET", Path: "/cricbuzz/auction/info", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "tournament", In: "query", Type: "string"}, parameterDefinition{Name: "year", In: "query", Type: "string"}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-auction-live":             operationDefinition{Method: "GET", Path: "/cricbuzz/auction/live", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "tournament", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "year", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "currency", In: "query", Type: "string", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
+	"cricbuzz-auction-live-blog":        operationDefinition{Method: "GET", Path: "/cricbuzz/auction/live-blog", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "tournament", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "year", In: "query", Type: "string", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
+	"cricbuzz-auction-news":             operationDefinition{Method: "GET", Path: "/cricbuzz/auction/news", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "tournament", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "year", In: "query", Type: "string", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-auction-options":          operationDefinition{Method: "GET", Path: "/cricbuzz/auction/options", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "tournament", In: "query", Type: "string"}, parameterDefinition{Name: "year", In: "query", Type: "string"}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-auction-player-detail":    operationDefinition{Method: "GET", Path: "/cricbuzz/auction/player", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "tournament", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "year", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "currency", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "player_id", In: "query", Type: "integer", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-auction-player-search":    operationDefinition{Method: "GET", Path: "/cricbuzz/auction/player-search", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "tournament", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "year", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "q", In: "query", Type: "string", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
@@ -42,11 +44,13 @@ var operations = map[string]operationDefinition{
 	"cricbuzz-auction-teams-options":    operationDefinition{Method: "GET", Path: "/cricbuzz/auction/teams/options", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "tournament", In: "query", Type: "string"}, parameterDefinition{Name: "year", In: "query", Type: "string"}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-auction-upcoming":         operationDefinition{Method: "GET", Path: "/cricbuzz/auction/upcoming", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "tournament", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "year", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "currency", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "page", In: "query", Type: "integer"}, parameterDefinition{Name: "country_ids", In: "query", Type: "string"}, parameterDefinition{Name: "role", In: "query", Type: "string"}, parameterDefinition{Name: "cap", In: "query", Type: "string"}, parameterDefinition{Name: "sort", In: "query", Type: "string"}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-auction-upcoming-options": operationDefinition{Method: "GET", Path: "/cricbuzz/auction/upcoming/options", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "tournament", In: "query", Type: "string"}, parameterDefinition{Name: "year", In: "query", Type: "string"}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
+	"cricbuzz-auction-videos":           operationDefinition{Method: "GET", Path: "/cricbuzz/auction/videos", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "tournament", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "year", In: "query", Type: "string", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-match-facts":              operationDefinition{Method: "GET", Path: "/cricbuzz/match-facts", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "match_url", In: "query", Type: "string", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-match-graphs":             operationDefinition{Method: "GET", Path: "/cricbuzz/match-graphs", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "match_url", In: "query", Type: "string", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-match-overs":              operationDefinition{Method: "GET", Path: "/cricbuzz/match-overs", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "match_url", In: "query", Type: "string", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-matches":                  operationDefinition{Method: "GET", Path: "/cricbuzz/matches", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "status", In: "query", Type: "string", Enum: []string{"live", "recent", "upcoming"}}, parameterDefinition{Name: "category", In: "query", Type: "string", Enum: []string{"all", "international", "league", "domestic", "women"}}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-navigation":               operationDefinition{Method: "GET", Path: "/cricbuzz/navigation", PathParams: nil, QueryParams: nil, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
+	"cricbuzz-news-story":               operationDefinition{Method: "GET", Path: "/cricbuzz/news/story", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "url", In: "query", Type: "string", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-news-topics":              operationDefinition{Method: "GET", Path: "/cricbuzz/news/topics", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "q", In: "query", Type: "string"}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-rankings":                 operationDefinition{Method: "GET", Path: "/cricbuzz/rankings", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "gender", In: "query", Type: "string", Enum: []string{"men", "women"}}, parameterDefinition{Name: "type", In: "query", Type: "string", Enum: []string{"batting", "bowling", "all-rounder", "teams"}}, parameterDefinition{Name: "format", In: "query", Type: "string", Enum: []string{"test", "odi", "t20"}}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-records":                  operationDefinition{Method: "GET", Path: "/cricbuzz/records", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "stat", In: "query", Type: "string", Enum: []string{"mostRuns", "highestScore", "highestAvg", "highestSr", "mostHundreds", "mostFifties", "mostFours", "mostSixes", "mostNineties", "mostWickets", "lowestAvg", "bestBowlingInnings", "mostFiveWickets", "lowestEcon", "lowestSr"}}, parameterDefinition{Name: "format", In: "query", Type: "string", Enum: []string{"test", "odi", "t20"}}, parameterDefinition{Name: "year", In: "query", Type: "string"}, parameterDefinition{Name: "team", In: "query", Type: "string"}, parameterDefinition{Name: "opponent", In: "query", Type: "string"}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
@@ -54,6 +58,8 @@ var operations = map[string]operationDefinition{
 	"cricbuzz-scorecard":                operationDefinition{Method: "GET", Path: "/cricbuzz/scorecard", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "match_url", In: "query", Type: "string", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-series":                   operationDefinition{Method: "GET", Path: "/cricbuzz/series", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "category", In: "query", Type: "string", Enum: []string{"all", "international", "domestic", "league", "women"}}, parameterDefinition{Name: "live_stream", In: "query", Type: "boolean"}, parameterDefinition{Name: "q", In: "query", Type: "string"}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-series-stats":             operationDefinition{Method: "GET", Path: "/cricbuzz/series/stats", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "series_url", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "stat", In: "query", Type: "string", Enum: []string{"mostRuns", "highestScore", "highestAvg", "highestSr", "mostHundreds", "mostFifties", "mostFours", "mostSixes", "mostNineties", "mostWickets", "lowestAvg", "bestBowlingInnings", "mostFiveWickets", "lowestEcon", "lowestSr"}}, parameterDefinition{Name: "format", In: "query", Type: "string"}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
+	"cricbuzz-team-stats":               operationDefinition{Method: "GET", Path: "/cricbuzz/team/stats", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "category", In: "query", Type: "string", Required: true, Enum: []string{"international", "domestic", "league", "women"}}, parameterDefinition{Name: "team_id", In: "query", Type: "integer", Required: true}, parameterDefinition{Name: "stat", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "format_id", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "year", In: "query", Type: "string", Required: true}, parameterDefinition{Name: "opponent_id", In: "query", Type: "string", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
+	"cricbuzz-team-stats-options":       operationDefinition{Method: "GET", Path: "/cricbuzz/team/stats/options", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "category", In: "query", Type: "string", Required: true, Enum: []string{"international", "domestic", "league", "women"}}, parameterDefinition{Name: "team_id", In: "query", Type: "integer", Required: true}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-teams":                    operationDefinition{Method: "GET", Path: "/cricbuzz/teams", PathParams: nil, QueryParams: []parameterDefinition{parameterDefinition{Name: "category", In: "query", Type: "string", Enum: []string{"international", "domestic", "league", "women"}}, parameterDefinition{Name: "q", In: "query", Type: "string"}}, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-video-categories":         operationDefinition{Method: "GET", Path: "/cricbuzz/videos/categories", PathParams: nil, QueryParams: nil, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
 	"cricbuzz-video-playlists":          operationDefinition{Method: "GET", Path: "/cricbuzz/videos/playlists", PathParams: nil, QueryParams: nil, Produces: []string{"application/json"}, Security: []string{"ApiKeyAuth"}},
@@ -61,7 +67,7 @@ var operations = map[string]operationDefinition{
 }
 
 // OperationCount reports how many selected-platform operations this module exposes.
-const OperationCount = 29
+const OperationCount = 35
 
 // OperationIDs returns the selected operation IDs in stable sorted order.
 func OperationIDs() []string {
@@ -86,6 +92,16 @@ func (c *Client) AuctionInfo(ctx context.Context, params Params) (any, error) {
 // AuctionLive calls the cricbuzz-auction-live operation.
 func (c *Client) AuctionLive(ctx context.Context, params Params) (any, error) {
 	return c.Call(ctx, "cricbuzz-auction-live", params)
+}
+
+// AuctionLiveBlog calls the cricbuzz-auction-live-blog operation.
+func (c *Client) AuctionLiveBlog(ctx context.Context, params Params) (any, error) {
+	return c.Call(ctx, "cricbuzz-auction-live-blog", params)
+}
+
+// AuctionNews calls the cricbuzz-auction-news operation.
+func (c *Client) AuctionNews(ctx context.Context, params Params) (any, error) {
+	return c.Call(ctx, "cricbuzz-auction-news", params)
 }
 
 // AuctionOptions calls the cricbuzz-auction-options operation.
@@ -138,6 +154,11 @@ func (c *Client) AuctionUpcomingOptions(ctx context.Context, params Params) (any
 	return c.Call(ctx, "cricbuzz-auction-upcoming-options", params)
 }
 
+// AuctionVideos calls the cricbuzz-auction-videos operation.
+func (c *Client) AuctionVideos(ctx context.Context, params Params) (any, error) {
+	return c.Call(ctx, "cricbuzz-auction-videos", params)
+}
+
 // MatchFacts calls the cricbuzz-match-facts operation.
 func (c *Client) MatchFacts(ctx context.Context, params Params) (any, error) {
 	return c.Call(ctx, "cricbuzz-match-facts", params)
@@ -161,6 +182,11 @@ func (c *Client) Matches(ctx context.Context, params Params) (any, error) {
 // Navigation calls the cricbuzz-navigation operation.
 func (c *Client) Navigation(ctx context.Context, params Params) (any, error) {
 	return c.Call(ctx, "cricbuzz-navigation", params)
+}
+
+// NewsStory calls the cricbuzz-news-story operation.
+func (c *Client) NewsStory(ctx context.Context, params Params) (any, error) {
+	return c.Call(ctx, "cricbuzz-news-story", params)
 }
 
 // NewsTopics calls the cricbuzz-news-topics operation.
@@ -196,6 +222,16 @@ func (c *Client) Series(ctx context.Context, params Params) (any, error) {
 // SeriesStats calls the cricbuzz-series-stats operation.
 func (c *Client) SeriesStats(ctx context.Context, params Params) (any, error) {
 	return c.Call(ctx, "cricbuzz-series-stats", params)
+}
+
+// TeamStats calls the cricbuzz-team-stats operation.
+func (c *Client) TeamStats(ctx context.Context, params Params) (any, error) {
+	return c.Call(ctx, "cricbuzz-team-stats", params)
+}
+
+// TeamStatsOptions calls the cricbuzz-team-stats-options operation.
+func (c *Client) TeamStatsOptions(ctx context.Context, params Params) (any, error) {
+	return c.Call(ctx, "cricbuzz-team-stats-options", params)
 }
 
 // Teams calls the cricbuzz-teams operation.

@@ -1,10 +1,12 @@
 {
   "platform": "cricbuzz",
-  "operationCount": 29,
+  "operationCount": 35,
   "operationIds": [
     "cricbuzz-archives",
     "cricbuzz-auction-info",
     "cricbuzz-auction-live",
+    "cricbuzz-auction-live-blog",
+    "cricbuzz-auction-news",
     "cricbuzz-auction-options",
     "cricbuzz-auction-player-detail",
     "cricbuzz-auction-player-search",
@@ -15,11 +17,13 @@
     "cricbuzz-auction-teams-options",
     "cricbuzz-auction-upcoming",
     "cricbuzz-auction-upcoming-options",
+    "cricbuzz-auction-videos",
     "cricbuzz-match-facts",
     "cricbuzz-match-graphs",
     "cricbuzz-match-overs",
     "cricbuzz-matches",
     "cricbuzz-navigation",
+    "cricbuzz-news-story",
     "cricbuzz-news-topics",
     "cricbuzz-rankings",
     "cricbuzz-records",
@@ -27,6 +31,8 @@
     "cricbuzz-scorecard",
     "cricbuzz-series",
     "cricbuzz-series-stats",
+    "cricbuzz-team-stats",
+    "cricbuzz-team-stats-options",
     "cricbuzz-teams",
     "cricbuzz-video-categories",
     "cricbuzz-video-playlists",
@@ -36,6 +42,8 @@
     "archives": "cricbuzz-archives",
     "auction_info": "cricbuzz-auction-info",
     "auction_live": "cricbuzz-auction-live",
+    "auction_live_blog": "cricbuzz-auction-live-blog",
+    "auction_news": "cricbuzz-auction-news",
     "auction_options": "cricbuzz-auction-options",
     "auction_player_detail": "cricbuzz-auction-player-detail",
     "auction_player_search": "cricbuzz-auction-player-search",
@@ -46,11 +54,13 @@
     "auction_teams_options": "cricbuzz-auction-teams-options",
     "auction_upcoming": "cricbuzz-auction-upcoming",
     "auction_upcoming_options": "cricbuzz-auction-upcoming-options",
+    "auction_videos": "cricbuzz-auction-videos",
     "match_facts": "cricbuzz-match-facts",
     "match_graphs": "cricbuzz-match-graphs",
     "match_overs": "cricbuzz-match-overs",
     "matches": "cricbuzz-matches",
     "navigation": "cricbuzz-navigation",
+    "news_story": "cricbuzz-news-story",
     "news_topics": "cricbuzz-news-topics",
     "rankings": "cricbuzz-rankings",
     "records": "cricbuzz-records",
@@ -58,6 +68,8 @@
     "scorecard": "cricbuzz-scorecard",
     "series": "cricbuzz-series",
     "series_stats": "cricbuzz-series-stats",
+    "team_stats": "cricbuzz-team-stats",
+    "team_stats_options": "cricbuzz-team-stats-options",
     "teams": "cricbuzz-teams",
     "video_categories": "cricbuzz-video-categories",
     "video_playlists": "cricbuzz-video-playlists",
@@ -223,6 +235,98 @@
           "required": true,
           "type": "string",
           "x-example": "ZAR"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "cricbuzz-auction-live-blog": {
+      "id": "cricbuzz-auction-live-blog",
+      "method": "GET",
+      "path": "/cricbuzz/auction/live-blog",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "tournament",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "year",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Tournament identifier from cricbuzz/auction/seasons: ipl, wpl, sa20, hunm, hunw",
+          "in": "query",
+          "name": "tournament",
+          "required": true,
+          "type": "string",
+          "x-example": "ipl"
+        },
+        {
+          "description": "Edition from cricbuzz/auction/seasons: IPL 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; WPL 2023, 2024, 2025, 2026, 2027; SA20 2027; HUNM 2026; HUNW 2026",
+          "in": "query",
+          "name": "year",
+          "required": true,
+          "type": "string",
+          "x-example": "2026"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "cricbuzz-auction-news": {
+      "id": "cricbuzz-auction-news",
+      "method": "GET",
+      "path": "/cricbuzz/auction/news",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "tournament",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "year",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Tournament identifier from cricbuzz/auction/seasons: ipl, wpl, sa20, hunm, hunw",
+          "in": "query",
+          "name": "tournament",
+          "required": true,
+          "type": "string",
+          "x-example": "sa20"
+        },
+        {
+          "description": "Edition from cricbuzz/auction/seasons: IPL 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; WPL 2023, 2024, 2025, 2026, 2027; SA20 2027; HUNM 2026; HUNW 2026",
+          "in": "query",
+          "name": "year",
+          "required": true,
+          "type": "string",
+          "x-example": "2027"
         }
       ],
       "produces": [
@@ -918,6 +1022,52 @@
         "ApiKeyAuth"
       ]
     },
+    "cricbuzz-auction-videos": {
+      "id": "cricbuzz-auction-videos",
+      "method": "GET",
+      "path": "/cricbuzz/auction/videos",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "tournament",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "year",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Tournament identifier from cricbuzz/auction/seasons: ipl, wpl, sa20, hunm, hunw",
+          "in": "query",
+          "name": "tournament",
+          "required": true,
+          "type": "string",
+          "x-example": "ipl"
+        },
+        {
+          "description": "Edition from cricbuzz/auction/seasons: IPL 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026; WPL 2023, 2024, 2025, 2026, 2027; SA20 2027; HUNM 2026; HUNW 2026",
+          "in": "query",
+          "name": "year",
+          "required": true,
+          "type": "string",
+          "x-example": "2026"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
     "cricbuzz-match-facts": {
       "id": "cricbuzz-match-facts",
       "method": "GET",
@@ -1089,6 +1239,38 @@
       "bodyParam": null,
       "bodyRequired": false,
       "params": [],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "cricbuzz-news-story": {
+      "id": "cricbuzz-news-story",
+      "method": "GET",
+      "path": "/cricbuzz/news/story",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "url",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Canonical public Cricbuzz story URL: https://www.cricbuzz.com/cricket-news/{numeric_id}/{slug}",
+          "in": "query",
+          "name": "url",
+          "required": true,
+          "type": "string",
+          "x-example": "https://www.cricbuzz.com/cricket-news/136912/live-blog-ipl-2026-player-auction"
+        }
+      ],
       "produces": [
         "application/json"
       ],
@@ -1536,7 +1718,8 @@
           "in": "query",
           "name": "series_url",
           "required": true,
-          "type": "string"
+          "type": "string",
+          "x-example": "https://www.cricbuzz.com/cricket-series/11595/australia-tour-of-south-africa-2026/matches"
         },
         {
           "description": "Stat topic; defaults to the currently selected topic",
@@ -1568,6 +1751,178 @@
           "name": "format",
           "type": "string",
           "x-example": "1"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "cricbuzz-team-stats": {
+      "id": "cricbuzz-team-stats",
+      "method": "GET",
+      "path": "/cricbuzz/team/stats",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "category",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "international",
+            "domestic",
+            "league",
+            "women"
+          ]
+        },
+        {
+          "name": "team_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        },
+        {
+          "name": "stat",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "format_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "year",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "opponent_id",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Team-directory category from /cricbuzz/teams",
+          "enum": [
+            "international",
+            "domestic",
+            "league",
+            "women"
+          ],
+          "in": "query",
+          "name": "category",
+          "required": true,
+          "type": "string",
+          "x-example": "international"
+        },
+        {
+          "description": "Team ID returned by /cricbuzz/teams for the selected category",
+          "in": "query",
+          "name": "team_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 2
+        },
+        {
+          "description": "A value returned for the selected team by /cricbuzz/team/stats/options; current India values are mostRuns, highestScore, highestAvg, highestSr, mostHundreds, mostFifties, mostFours, mostSixes, mostNineties, mostWickets, lowestAvg, bestBowlingInnings, mostFiveWickets, lowestEcon, lowestSr",
+          "in": "query",
+          "name": "stat",
+          "required": true,
+          "type": "string",
+          "x-example": "mostRuns"
+        },
+        {
+          "description": "Format ID returned by /cricbuzz/team/stats/options",
+          "in": "query",
+          "name": "format_id",
+          "required": true,
+          "type": "string",
+          "x-example": "2"
+        },
+        {
+          "description": "Year value returned by /cricbuzz/team/stats/options, including all when offered",
+          "in": "query",
+          "name": "year",
+          "required": true,
+          "type": "string",
+          "x-example": "2025"
+        },
+        {
+          "description": "Opponent ID returned by /cricbuzz/team/stats/options, including all when offered",
+          "in": "query",
+          "name": "opponent_id",
+          "required": true,
+          "type": "string",
+          "x-example": "4"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "cricbuzz-team-stats-options": {
+      "id": "cricbuzz-team-stats-options",
+      "method": "GET",
+      "path": "/cricbuzz/team/stats/options",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "category",
+          "in": "query",
+          "type": "string",
+          "required": true,
+          "enum": [
+            "international",
+            "domestic",
+            "league",
+            "women"
+          ]
+        },
+        {
+          "name": "team_id",
+          "in": "query",
+          "type": "integer",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Team-directory category from /cricbuzz/teams",
+          "enum": [
+            "international",
+            "domestic",
+            "league",
+            "women"
+          ],
+          "in": "query",
+          "name": "category",
+          "required": true,
+          "type": "string",
+          "x-example": "international"
+        },
+        {
+          "description": "Team ID returned by /cricbuzz/teams for the selected category",
+          "in": "query",
+          "name": "team_id",
+          "required": true,
+          "type": "integer",
+          "x-example": 2
         }
       ],
       "produces": [

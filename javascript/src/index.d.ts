@@ -88,6 +88,8 @@ export class CricbuzzClient extends CrawloraClient {
   archives(params?: OperationParamsMap["cricbuzz-archives"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   auctionInfo(params?: OperationParamsMap["cricbuzz-auction-info"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   auctionLive(params: OperationParamsMap["cricbuzz-auction-live"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
+  auctionLiveBlog(params: OperationParamsMap["cricbuzz-auction-live-blog"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
+  auctionNews(params: OperationParamsMap["cricbuzz-auction-news"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   auctionOptions(params?: OperationParamsMap["cricbuzz-auction-options"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   auctionPlayerDetail(params: OperationParamsMap["cricbuzz-auction-player-detail"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   auctionPlayerSearch(params: OperationParamsMap["cricbuzz-auction-player-search"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
@@ -98,11 +100,13 @@ export class CricbuzzClient extends CrawloraClient {
   auctionTeamsOptions(params?: OperationParamsMap["cricbuzz-auction-teams-options"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   auctionUpcoming(params: OperationParamsMap["cricbuzz-auction-upcoming"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   auctionUpcomingOptions(params?: OperationParamsMap["cricbuzz-auction-upcoming-options"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
+  auctionVideos(params: OperationParamsMap["cricbuzz-auction-videos"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   matchFacts(params: OperationParamsMap["cricbuzz-match-facts"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   matchGraphs(params: OperationParamsMap["cricbuzz-match-graphs"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   matchOvers(params: OperationParamsMap["cricbuzz-match-overs"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   matches(params?: OperationParamsMap["cricbuzz-matches"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   navigation(params?: OperationParamsMap["cricbuzz-navigation"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
+  newsStory(params: OperationParamsMap["cricbuzz-news-story"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   newsTopics(params?: OperationParamsMap["cricbuzz-news-topics"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   rankings(params?: OperationParamsMap["cricbuzz-rankings"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   records(params?: OperationParamsMap["cricbuzz-records"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
@@ -110,6 +114,8 @@ export class CricbuzzClient extends CrawloraClient {
   scorecard(params: OperationParamsMap["cricbuzz-scorecard"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   series(params?: OperationParamsMap["cricbuzz-series"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   seriesStats(params: OperationParamsMap["cricbuzz-series-stats"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
+  teamStats(params: OperationParamsMap["cricbuzz-team-stats"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
+  teamStatsOptions(params: OperationParamsMap["cricbuzz-team-stats-options"], options: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   teams(params?: OperationParamsMap["cricbuzz-teams"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   videoCategories(params?: OperationParamsMap["cricbuzz-video-categories"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
   videoPlaylists(params?: OperationParamsMap["cricbuzz-video-playlists"], options?: CrawloraRequestOptions & { responseType: "stream" }): Promise<Response>;
@@ -119,6 +125,8 @@ export class CricbuzzClient extends CrawloraClient {
   archives(params?: OperationParamsMap["cricbuzz-archives"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   auctionInfo(params?: OperationParamsMap["cricbuzz-auction-info"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   auctionLive(params: OperationParamsMap["cricbuzz-auction-live"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
+  auctionLiveBlog(params: OperationParamsMap["cricbuzz-auction-live-blog"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
+  auctionNews(params: OperationParamsMap["cricbuzz-auction-news"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   auctionOptions(params?: OperationParamsMap["cricbuzz-auction-options"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   auctionPlayerDetail(params: OperationParamsMap["cricbuzz-auction-player-detail"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   auctionPlayerSearch(params: OperationParamsMap["cricbuzz-auction-player-search"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
@@ -129,11 +137,13 @@ export class CricbuzzClient extends CrawloraClient {
   auctionTeamsOptions(params?: OperationParamsMap["cricbuzz-auction-teams-options"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   auctionUpcoming(params: OperationParamsMap["cricbuzz-auction-upcoming"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   auctionUpcomingOptions(params?: OperationParamsMap["cricbuzz-auction-upcoming-options"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
+  auctionVideos(params: OperationParamsMap["cricbuzz-auction-videos"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   matchFacts(params: OperationParamsMap["cricbuzz-match-facts"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   matchGraphs(params: OperationParamsMap["cricbuzz-match-graphs"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   matchOvers(params: OperationParamsMap["cricbuzz-match-overs"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   matches(params?: OperationParamsMap["cricbuzz-matches"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   navigation(params?: OperationParamsMap["cricbuzz-navigation"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
+  newsStory(params: OperationParamsMap["cricbuzz-news-story"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   newsTopics(params?: OperationParamsMap["cricbuzz-news-topics"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   rankings(params?: OperationParamsMap["cricbuzz-rankings"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   records(params?: OperationParamsMap["cricbuzz-records"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
@@ -141,6 +151,8 @@ export class CricbuzzClient extends CrawloraClient {
   scorecard(params: OperationParamsMap["cricbuzz-scorecard"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   series(params?: OperationParamsMap["cricbuzz-series"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   seriesStats(params: OperationParamsMap["cricbuzz-series-stats"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
+  teamStats(params: OperationParamsMap["cricbuzz-team-stats"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
+  teamStatsOptions(params: OperationParamsMap["cricbuzz-team-stats-options"], options: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   teams(params?: OperationParamsMap["cricbuzz-teams"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   videoCategories(params?: OperationParamsMap["cricbuzz-video-categories"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
   videoPlaylists(params?: OperationParamsMap["cricbuzz-video-playlists"], options?: CrawloraRequestOptions & { responseType: "text" }): Promise<string>;
@@ -153,6 +165,8 @@ export class CricbuzzClient extends CrawloraClient {
   archives(...args: OperationRequestArgs<"cricbuzz-archives">): Promise<OperationResponseMap["cricbuzz-archives"]>;
   auctionInfo(...args: OperationRequestArgs<"cricbuzz-auction-info">): Promise<OperationResponseMap["cricbuzz-auction-info"]>;
   auctionLive(...args: OperationRequestArgs<"cricbuzz-auction-live">): Promise<OperationResponseMap["cricbuzz-auction-live"]>;
+  auctionLiveBlog(...args: OperationRequestArgs<"cricbuzz-auction-live-blog">): Promise<OperationResponseMap["cricbuzz-auction-live-blog"]>;
+  auctionNews(...args: OperationRequestArgs<"cricbuzz-auction-news">): Promise<OperationResponseMap["cricbuzz-auction-news"]>;
   auctionOptions(...args: OperationRequestArgs<"cricbuzz-auction-options">): Promise<OperationResponseMap["cricbuzz-auction-options"]>;
   auctionPlayerDetail(...args: OperationRequestArgs<"cricbuzz-auction-player-detail">): Promise<OperationResponseMap["cricbuzz-auction-player-detail"]>;
   auctionPlayerSearch(...args: OperationRequestArgs<"cricbuzz-auction-player-search">): Promise<OperationResponseMap["cricbuzz-auction-player-search"]>;
@@ -163,11 +177,13 @@ export class CricbuzzClient extends CrawloraClient {
   auctionTeamsOptions(...args: OperationRequestArgs<"cricbuzz-auction-teams-options">): Promise<OperationResponseMap["cricbuzz-auction-teams-options"]>;
   auctionUpcoming(...args: OperationRequestArgs<"cricbuzz-auction-upcoming">): Promise<OperationResponseMap["cricbuzz-auction-upcoming"]>;
   auctionUpcomingOptions(...args: OperationRequestArgs<"cricbuzz-auction-upcoming-options">): Promise<OperationResponseMap["cricbuzz-auction-upcoming-options"]>;
+  auctionVideos(...args: OperationRequestArgs<"cricbuzz-auction-videos">): Promise<OperationResponseMap["cricbuzz-auction-videos"]>;
   matchFacts(...args: OperationRequestArgs<"cricbuzz-match-facts">): Promise<OperationResponseMap["cricbuzz-match-facts"]>;
   matchGraphs(...args: OperationRequestArgs<"cricbuzz-match-graphs">): Promise<OperationResponseMap["cricbuzz-match-graphs"]>;
   matchOvers(...args: OperationRequestArgs<"cricbuzz-match-overs">): Promise<OperationResponseMap["cricbuzz-match-overs"]>;
   matches(...args: OperationRequestArgs<"cricbuzz-matches">): Promise<OperationResponseMap["cricbuzz-matches"]>;
   navigation(...args: OperationRequestArgs<"cricbuzz-navigation">): Promise<OperationResponseMap["cricbuzz-navigation"]>;
+  newsStory(...args: OperationRequestArgs<"cricbuzz-news-story">): Promise<OperationResponseMap["cricbuzz-news-story"]>;
   newsTopics(...args: OperationRequestArgs<"cricbuzz-news-topics">): Promise<OperationResponseMap["cricbuzz-news-topics"]>;
   rankings(...args: OperationRequestArgs<"cricbuzz-rankings">): Promise<OperationResponseMap["cricbuzz-rankings"]>;
   records(...args: OperationRequestArgs<"cricbuzz-records">): Promise<OperationResponseMap["cricbuzz-records"]>;
@@ -175,6 +191,8 @@ export class CricbuzzClient extends CrawloraClient {
   scorecard(...args: OperationRequestArgs<"cricbuzz-scorecard">): Promise<OperationResponseMap["cricbuzz-scorecard"]>;
   series(...args: OperationRequestArgs<"cricbuzz-series">): Promise<OperationResponseMap["cricbuzz-series"]>;
   seriesStats(...args: OperationRequestArgs<"cricbuzz-series-stats">): Promise<OperationResponseMap["cricbuzz-series-stats"]>;
+  teamStats(...args: OperationRequestArgs<"cricbuzz-team-stats">): Promise<OperationResponseMap["cricbuzz-team-stats"]>;
+  teamStatsOptions(...args: OperationRequestArgs<"cricbuzz-team-stats-options">): Promise<OperationResponseMap["cricbuzz-team-stats-options"]>;
   teams(...args: OperationRequestArgs<"cricbuzz-teams">): Promise<OperationResponseMap["cricbuzz-teams"]>;
   videoCategories(...args: OperationRequestArgs<"cricbuzz-video-categories">): Promise<OperationResponseMap["cricbuzz-video-categories"]>;
   videoPlaylists(...args: OperationRequestArgs<"cricbuzz-video-playlists">): Promise<OperationResponseMap["cricbuzz-video-playlists"]>;

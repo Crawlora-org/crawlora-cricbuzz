@@ -2,11 +2,11 @@
   "api_path_prefix": "/cricbuzz/",
   "async_class_name": "AsyncCricbuzzClient",
   "class_name": "CricbuzzClient",
-  "contract_revision": "sha256:24090022ab422946e7b2a0693ba68ff52b3751b406e29ef04e14c88905c28a6b",
+  "contract_revision": "sha256:1e46ae7c209d4dd81abf58d240cc7c9d37e3a1500c184439486584dd49d96b5b",
   "display_name": "Cricbuzz",
   "general_sdk_version": "1.50.0-sdk.1",
   "golang_module_name": "github.com/Crawlora-org/crawlora-cricbuzz",
-  "golang_version": "0.1.0",
+  "golang_version": "0.2.0",
   "group_name": "cricbuzz",
   "java_description": "Java client for Crawlora's hosted Cricbuzz API, with cricket matches, schedules, news, rankings, series, and records. Requires a Crawlora API key.",
   "maven_artifact_id": "crawlora-cricbuzz",
@@ -17,10 +17,28 @@
   "php_repository": "https://github.com/Crawlora-org/crawlora-cricbuzz",
   "platform": "cricbuzz",
   "python_name": "crawlora-cricbuzz",
+  "releases": [
+    {
+      "changes": [
+        "Added operations: cricbuzz-auction-live-blog, cricbuzz-auction-news, cricbuzz-auction-videos, cricbuzz-news-story, cricbuzz-team-stats, cricbuzz-team-stats-options.",
+        "Updated operation contracts: cricbuzz-series, cricbuzz-series-stats."
+      ],
+      "date": "2026-11-13",
+      "version": "0.2.0"
+    },
+    {
+      "changes": [
+        "Initial Cricbuzz platform clients for Crawlora's hosted API across JavaScript/TypeScript, Python, Go, Ruby, Java, PHP, and Rust.",
+        "Includes typed endpoint methods generated from contract revision `sha256:24090022ab422946e7b2a0693ba68ff52b3751b406e29ef04e14c88905c28a6b`."
+      ],
+      "date": "2026-10-07",
+      "version": "0.1.0"
+    }
+  ],
   "repository": "https://github.com/Crawlora-org/crawlora-cricbuzz",
   "ruby_gem_name": "crawlora-cricbuzz",
   "rust_crate_name": "crawlora-cricbuzz",
   "rust_module_name": "crawlora_cricbuzz",
-  "source_contract_sha256": "24090022ab422946e7b2a0693ba68ff52b3751b406e29ef04e14c88905c28a6b",
-  "version": "0.1.0"
+  "source_contract_sha256": "123c5406ee3b92b07d2ef3dbe21a6ded54b79b25d26c13cbb905a34e3ecc7118",
+  "version": "0.2.0"
 }

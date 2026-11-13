@@ -128,6 +128,80 @@ export interface ModelCricbuzzTeam {
   "short_name"?: string;
 }
 
+export interface ModelCricbuzzTeamStatsOptionsResponseDoc {
+  "code"?: number;
+  "data"?: ModelCricbuzzTeamStatsOptionsResponse;
+  "msg"?: string;
+}
+
+export interface ModelCricbuzzTeamStatsOptionsResponse {
+  "category"?: string;
+  "fetched_at"?: string;
+  "formats"?: Array<ModelCricbuzzRecordOption>;
+  "opponents"?: Array<ModelCricbuzzRecordOption>;
+  "source_url"?: string;
+  "stale"?: boolean;
+  "stats"?: Array<ModelCricbuzzRecordCategory>;
+  "team"?: ModelCricbuzzTeam;
+  "years"?: Array<ModelCricbuzzRecordOption>;
+}
+
+export interface ModelCricbuzzRecordOption {
+  "id"?: string;
+  "label"?: string;
+}
+
+export interface ModelCricbuzzRecordCategory {
+  "name"?: string;
+  "stats"?: Array<ModelCricbuzzRecordType>;
+}
+
+export interface ModelCricbuzzRecordType {
+  "category"?: string;
+  "label"?: string;
+  "value"?: string;
+}
+
+export interface ModelCricbuzzTeamStatsResponseDoc {
+  "code"?: number;
+  "data"?: ModelCricbuzzTeamStatsResponse;
+  "msg"?: string;
+}
+
+export interface ModelCricbuzzTeamStatsResponse {
+  "data_url"?: string;
+  "empty_state"?: string;
+  "fetched_at"?: string;
+  "selected"?: ModelCricbuzzTeamStatsSelection;
+  "source_url"?: string;
+  "stale"?: boolean;
+  "table"?: ModelCricbuzzRecordTable;
+  "team"?: ModelCricbuzzTeam;
+}
+
+export interface ModelCricbuzzRecordTable {
+  "headers"?: Array<string>;
+  "rows"?: Array<ModelCricbuzzRecordRow>;
+  "total"?: number;
+}
+
+export interface ModelCricbuzzRecordRow {
+  "player_id"?: string;
+  "values"?: Array<string>;
+}
+
+export interface ModelCricbuzzTeamStatsSelection {
+  "category"?: string;
+  "format"?: string;
+  "format_id"?: string;
+  "opponent"?: string;
+  "opponent_id"?: string;
+  "stat"?: string;
+  "team_id"?: number;
+  "team_name"?: string;
+  "year"?: string;
+}
+
 export interface ModelCricbuzzSeriesStatsResponseDoc {
   "code"?: number;
   "data"?: ModelCricbuzzSeriesStatsResponse;
@@ -150,11 +224,6 @@ export interface ModelCricbuzzSeriesStatsResponse {
   "team_options"?: Array<ModelCricbuzzRecordOption>;
 }
 
-export interface ModelCricbuzzRecordOption {
-  "id"?: string;
-  "label"?: string;
-}
-
 export interface ModelCricbuzzSeriesStatsTable {
   "format"?: string;
   "headers"?: Array<string>;
@@ -162,26 +231,10 @@ export interface ModelCricbuzzSeriesStatsTable {
   "total"?: number;
 }
 
-export interface ModelCricbuzzRecordRow {
-  "player_id"?: string;
-  "values"?: Array<string>;
-}
-
-export interface ModelCricbuzzRecordType {
-  "category"?: string;
-  "label"?: string;
-  "value"?: string;
-}
-
 export interface ModelCricbuzzSeriesStatsSelection {
   "match_type_id"?: string;
   "season_id"?: string;
   "team_id"?: string;
-}
-
-export interface ModelCricbuzzRecordCategory {
-  "name"?: string;
-  "stats"?: Array<ModelCricbuzzRecordType>;
 }
 
 export interface ModelCricbuzzSeriesResponseDoc {
@@ -526,12 +579,6 @@ export interface ModelCricbuzzRecordFilter {
   "options"?: Array<ModelCricbuzzRecordOption>;
 }
 
-export interface ModelCricbuzzRecordTable {
-  "headers"?: Array<string>;
-  "rows"?: Array<ModelCricbuzzRecordRow>;
-  "total"?: number;
-}
-
 export interface ModelCricbuzzRankingsResponseDoc {
   "code"?: number;
   "data"?: ModelCricbuzzRankingsResponse;
@@ -597,6 +644,50 @@ export interface ModelCricbuzzNewsSection {
   "label"?: string;
   "path"?: string;
   "value"?: string;
+}
+
+export interface ModelCricbuzzNewsStoryResponseDoc {
+  "code"?: number;
+  "data"?: ModelCricbuzzNewsStoryResponse;
+  "msg"?: string;
+}
+
+export interface ModelCricbuzzNewsStoryResponse {
+  "fetched_at"?: string;
+  "source_url"?: string;
+  "story"?: ModelCricbuzzCricbuzzNewsStory;
+}
+
+export interface ModelCricbuzzCricbuzzNewsStory {
+  "abstract"?: string;
+  "authors"?: Array<ModelCricbuzzCricbuzzNewsAuthor>;
+  "backstory"?: string;
+  "body_html"?: string;
+  "body_links"?: Array<ModelCricbuzzCricbuzzNewsLink>;
+  "body_text"?: string;
+  "image_url"?: string;
+  "modified_at"?: string;
+  "published_at"?: string;
+  "story_id"?: number;
+  "tags"?: Array<ModelCricbuzzCricbuzzNewsTag>;
+  "title"?: string;
+  "url"?: string;
+}
+
+export interface ModelCricbuzzCricbuzzNewsTag {
+  "type"?: string;
+  "value"?: string;
+}
+
+export interface ModelCricbuzzCricbuzzNewsLink {
+  "text"?: string;
+  "url"?: string;
+}
+
+export interface ModelCricbuzzCricbuzzNewsAuthor {
+  "image_url"?: string;
+  "name"?: string;
+  "url"?: string;
 }
 
 export interface ModelCricbuzzNavigationResponseDoc {
@@ -831,6 +922,34 @@ export interface ModelCricbuzzMatchOfficials {
   "referee"?: string;
   "third_umpire"?: string;
   "umpires"?: Array<string>;
+}
+
+export interface ModelCricbuzzAuctionVideosResponseDoc {
+  "code"?: number;
+  "data"?: ModelCricbuzzAuctionVideosResponse;
+  "msg"?: string;
+}
+
+export interface ModelCricbuzzAuctionVideosResponse {
+  "empty_state"?: "no_videos";
+  "fetched_at"?: string;
+  "items"?: Array<ModelCricbuzzAuctionVideoItem>;
+  "returned_count"?: number;
+  "season"?: string;
+  "source_url"?: string;
+  "tournament"?: string;
+  "year"?: string;
+}
+
+export interface ModelCricbuzzAuctionVideoItem {
+  "duration"?: string;
+  "image_alt"?: string;
+  "image_id"?: number;
+  "slug"?: string;
+  "time_ago"?: string;
+  "title"?: string;
+  "url"?: string;
+  "video_id"?: number;
 }
 
 export interface ModelCricbuzzAuctionOptionsResponseDoc {
@@ -1118,6 +1237,49 @@ export interface ModelCricbuzzAuctionPlayerEarning {
   "year"?: number;
 }
 
+export interface ModelCricbuzzAuctionNewsResponseDoc {
+  "code"?: number;
+  "data"?: ModelCricbuzzAuctionNewsResponse;
+  "msg"?: string;
+}
+
+export interface ModelCricbuzzAuctionNewsResponse {
+  "empty_state"?: "no_results";
+  "fetched_at"?: string;
+  "items"?: Array<ModelCricbuzzAuctionNewsItem>;
+  "returned_count"?: number;
+  "season"?: string;
+  "source_url"?: string;
+  "topic"?: string;
+  "tournament"?: string;
+  "year"?: string;
+}
+
+export interface ModelCricbuzzAuctionNewsItem {
+  "image_alt"?: string;
+  "image_id"?: number;
+  "slug"?: string;
+  "story_id"?: number;
+  "time_ago"?: string;
+  "title"?: string;
+  "url"?: string;
+}
+
+export interface ModelCricbuzzAuctionLiveBlogResponseDoc {
+  "code"?: number;
+  "data"?: ModelCricbuzzAuctionLiveBlogResponse;
+  "msg"?: string;
+}
+
+export interface ModelCricbuzzAuctionLiveBlogResponse {
+  "fetched_at"?: string;
+  "season"?: string;
+  "source_url"?: string;
+  "story"?: ModelCricbuzzCricbuzzNewsStory;
+  "tournament"?: string;
+  "year"?: string;
+}
+
 export interface ModelCricbuzzAuctionLiveResponseDoc {
   "code"?: number;
   "data"?: ModelCricbuzzAuctionLiveResponse;
@@ -1215,6 +1377,18 @@ export interface CricbuzzAuctionLiveParams {
   "currency": string;
 }
 
+export type CricbuzzAuctionLiveBlogResponse = CrawloraResponse<ModelCricbuzzAuctionLiveBlogResponseDoc>;
+export interface CricbuzzAuctionLiveBlogParams {
+  "tournament": string;
+  "year": string;
+}
+
+export type CricbuzzAuctionNewsResponse = CrawloraResponse<ModelCricbuzzAuctionNewsResponseDoc>;
+export interface CricbuzzAuctionNewsParams {
+  "tournament": string;
+  "year": string;
+}
+
 export type CricbuzzAuctionOptionsResponse = CrawloraResponse<ModelCricbuzzAuctionOptionsResponseDoc>;
 export interface CricbuzzAuctionOptionsParams {
   "tournament"?: string;
@@ -1294,6 +1468,12 @@ export interface CricbuzzAuctionUpcomingOptionsParams {
   "year"?: string;
 }
 
+export type CricbuzzAuctionVideosResponse = CrawloraResponse<ModelCricbuzzAuctionVideosResponseDoc>;
+export interface CricbuzzAuctionVideosParams {
+  "tournament": string;
+  "year": string;
+}
+
 export type CricbuzzMatchFactsResponse = CrawloraResponse<ModelCricbuzzMatchFactsResponseDoc>;
 export interface CricbuzzMatchFactsParams {
   "match_url": string;
@@ -1317,6 +1497,11 @@ export interface CricbuzzMatchesParams {
 
 export type CricbuzzNavigationResponse = CrawloraResponse<ModelCricbuzzNavigationResponseDoc>;
 export interface CricbuzzNavigationParams {
+}
+
+export type CricbuzzNewsStoryResponse = CrawloraResponse<ModelCricbuzzNewsStoryResponseDoc>;
+export interface CricbuzzNewsStoryParams {
+  "url": string;
 }
 
 export type CricbuzzNewsTopicsResponse = CrawloraResponse<ModelCricbuzzNewsTopicsResponseDoc>;
@@ -1365,6 +1550,22 @@ export interface CricbuzzSeriesStatsParams {
   "format"?: string;
 }
 
+export type CricbuzzTeamStatsResponse = CrawloraResponse<ModelCricbuzzTeamStatsResponseDoc>;
+export interface CricbuzzTeamStatsParams {
+  "category": "international" | "domestic" | "league" | "women";
+  "team_id": number;
+  "stat": string;
+  "format_id": string;
+  "year": string;
+  "opponent_id": string;
+}
+
+export type CricbuzzTeamStatsOptionsResponse = CrawloraResponse<ModelCricbuzzTeamStatsOptionsResponseDoc>;
+export interface CricbuzzTeamStatsOptionsParams {
+  "category": "international" | "domestic" | "league" | "women";
+  "team_id": number;
+}
+
 export type CricbuzzTeamsResponse = CrawloraResponse<ModelCricbuzzTeamsResponseDoc>;
 export interface CricbuzzTeamsParams {
   "category"?: "international" | "domestic" | "league" | "women";
@@ -1387,6 +1588,8 @@ export interface CricbuzzService {
   archives<T = CricbuzzArchivesResponse>(params?: CricbuzzArchivesParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   auctionInfo<T = CricbuzzAuctionInfoResponse>(params?: CricbuzzAuctionInfoParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   auctionLive<T = CricbuzzAuctionLiveResponse>(params: CricbuzzAuctionLiveParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
+  auctionLiveBlog<T = CricbuzzAuctionLiveBlogResponse>(params: CricbuzzAuctionLiveBlogParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
+  auctionNews<T = CricbuzzAuctionNewsResponse>(params: CricbuzzAuctionNewsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   auctionOptions<T = CricbuzzAuctionOptionsResponse>(params?: CricbuzzAuctionOptionsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   auctionPlayerDetail<T = CricbuzzAuctionPlayerDetailResponse>(params: CricbuzzAuctionPlayerDetailParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   auctionPlayerSearch<T = CricbuzzAuctionPlayerSearchResponse>(params: CricbuzzAuctionPlayerSearchParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
@@ -1397,11 +1600,13 @@ export interface CricbuzzService {
   auctionTeamsOptions<T = CricbuzzAuctionTeamsOptionsResponse>(params?: CricbuzzAuctionTeamsOptionsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   auctionUpcoming<T = CricbuzzAuctionUpcomingResponse>(params: CricbuzzAuctionUpcomingParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   auctionUpcomingOptions<T = CricbuzzAuctionUpcomingOptionsResponse>(params?: CricbuzzAuctionUpcomingOptionsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
+  auctionVideos<T = CricbuzzAuctionVideosResponse>(params: CricbuzzAuctionVideosParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   matchFacts<T = CricbuzzMatchFactsResponse>(params: CricbuzzMatchFactsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   matchGraphs<T = CricbuzzMatchGraphsResponse>(params: CricbuzzMatchGraphsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   matchOvers<T = CricbuzzMatchOversResponse>(params: CricbuzzMatchOversParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   matches<T = CricbuzzMatchesResponse>(params?: CricbuzzMatchesParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   navigation<T = CricbuzzNavigationResponse>(params?: CricbuzzNavigationParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
+  newsStory<T = CricbuzzNewsStoryResponse>(params: CricbuzzNewsStoryParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   newsTopics<T = CricbuzzNewsTopicsResponse>(params?: CricbuzzNewsTopicsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   rankings<T = CricbuzzRankingsResponse>(params?: CricbuzzRankingsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   records<T = CricbuzzRecordsResponse>(params?: CricbuzzRecordsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
@@ -1409,6 +1614,8 @@ export interface CricbuzzService {
   scorecard<T = CricbuzzScorecardResponse>(params: CricbuzzScorecardParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   series<T = CricbuzzSeriesResponse>(params?: CricbuzzSeriesParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   seriesStats<T = CricbuzzSeriesStatsResponse>(params: CricbuzzSeriesStatsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
+  teamStats<T = CricbuzzTeamStatsResponse>(params: CricbuzzTeamStatsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
+  teamStatsOptions<T = CricbuzzTeamStatsOptionsResponse>(params: CricbuzzTeamStatsOptionsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   teams<T = CricbuzzTeamsResponse>(params?: CricbuzzTeamsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   videoCategories<T = CricbuzzVideoCategoriesResponse>(params?: CricbuzzVideoCategoriesParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
   videoPlaylists<T = CricbuzzVideoPlaylistsResponse>(params?: CricbuzzVideoPlaylistsParams, options?: import('./index.js').CrawloraRequestOptions): Promise<T>;
@@ -1423,6 +1630,8 @@ export interface OperationParamsMap {
   "cricbuzz-archives": CricbuzzArchivesParams;
   "cricbuzz-auction-info": CricbuzzAuctionInfoParams;
   "cricbuzz-auction-live": CricbuzzAuctionLiveParams;
+  "cricbuzz-auction-live-blog": CricbuzzAuctionLiveBlogParams;
+  "cricbuzz-auction-news": CricbuzzAuctionNewsParams;
   "cricbuzz-auction-options": CricbuzzAuctionOptionsParams;
   "cricbuzz-auction-player-detail": CricbuzzAuctionPlayerDetailParams;
   "cricbuzz-auction-player-search": CricbuzzAuctionPlayerSearchParams;
@@ -1433,11 +1642,13 @@ export interface OperationParamsMap {
   "cricbuzz-auction-teams-options": CricbuzzAuctionTeamsOptionsParams;
   "cricbuzz-auction-upcoming": CricbuzzAuctionUpcomingParams;
   "cricbuzz-auction-upcoming-options": CricbuzzAuctionUpcomingOptionsParams;
+  "cricbuzz-auction-videos": CricbuzzAuctionVideosParams;
   "cricbuzz-match-facts": CricbuzzMatchFactsParams;
   "cricbuzz-match-graphs": CricbuzzMatchGraphsParams;
   "cricbuzz-match-overs": CricbuzzMatchOversParams;
   "cricbuzz-matches": CricbuzzMatchesParams;
   "cricbuzz-navigation": CricbuzzNavigationParams;
+  "cricbuzz-news-story": CricbuzzNewsStoryParams;
   "cricbuzz-news-topics": CricbuzzNewsTopicsParams;
   "cricbuzz-rankings": CricbuzzRankingsParams;
   "cricbuzz-records": CricbuzzRecordsParams;
@@ -1445,6 +1656,8 @@ export interface OperationParamsMap {
   "cricbuzz-scorecard": CricbuzzScorecardParams;
   "cricbuzz-series": CricbuzzSeriesParams;
   "cricbuzz-series-stats": CricbuzzSeriesStatsParams;
+  "cricbuzz-team-stats": CricbuzzTeamStatsParams;
+  "cricbuzz-team-stats-options": CricbuzzTeamStatsOptionsParams;
   "cricbuzz-teams": CricbuzzTeamsParams;
   "cricbuzz-video-categories": CricbuzzVideoCategoriesParams;
   "cricbuzz-video-playlists": CricbuzzVideoPlaylistsParams;
@@ -1455,6 +1668,8 @@ export interface OperationResponseMap {
   "cricbuzz-archives": CricbuzzArchivesResponse;
   "cricbuzz-auction-info": CricbuzzAuctionInfoResponse;
   "cricbuzz-auction-live": CricbuzzAuctionLiveResponse;
+  "cricbuzz-auction-live-blog": CricbuzzAuctionLiveBlogResponse;
+  "cricbuzz-auction-news": CricbuzzAuctionNewsResponse;
   "cricbuzz-auction-options": CricbuzzAuctionOptionsResponse;
   "cricbuzz-auction-player-detail": CricbuzzAuctionPlayerDetailResponse;
   "cricbuzz-auction-player-search": CricbuzzAuctionPlayerSearchResponse;
@@ -1465,11 +1680,13 @@ export interface OperationResponseMap {
   "cricbuzz-auction-teams-options": CricbuzzAuctionTeamsOptionsResponse;
   "cricbuzz-auction-upcoming": CricbuzzAuctionUpcomingResponse;
   "cricbuzz-auction-upcoming-options": CricbuzzAuctionUpcomingOptionsResponse;
+  "cricbuzz-auction-videos": CricbuzzAuctionVideosResponse;
   "cricbuzz-match-facts": CricbuzzMatchFactsResponse;
   "cricbuzz-match-graphs": CricbuzzMatchGraphsResponse;
   "cricbuzz-match-overs": CricbuzzMatchOversResponse;
   "cricbuzz-matches": CricbuzzMatchesResponse;
   "cricbuzz-navigation": CricbuzzNavigationResponse;
+  "cricbuzz-news-story": CricbuzzNewsStoryResponse;
   "cricbuzz-news-topics": CricbuzzNewsTopicsResponse;
   "cricbuzz-rankings": CricbuzzRankingsResponse;
   "cricbuzz-records": CricbuzzRecordsResponse;
@@ -1477,6 +1694,8 @@ export interface OperationResponseMap {
   "cricbuzz-scorecard": CricbuzzScorecardResponse;
   "cricbuzz-series": CricbuzzSeriesResponse;
   "cricbuzz-series-stats": CricbuzzSeriesStatsResponse;
+  "cricbuzz-team-stats": CricbuzzTeamStatsResponse;
+  "cricbuzz-team-stats-options": CricbuzzTeamStatsOptionsResponse;
   "cricbuzz-teams": CricbuzzTeamsResponse;
   "cricbuzz-video-categories": CricbuzzVideoCategoriesResponse;
   "cricbuzz-video-playlists": CricbuzzVideoPlaylistsResponse;
@@ -1487,6 +1706,8 @@ export interface OperationRequiredParamsMap {
   "cricbuzz-archives": false;
   "cricbuzz-auction-info": false;
   "cricbuzz-auction-live": true;
+  "cricbuzz-auction-live-blog": true;
+  "cricbuzz-auction-news": true;
   "cricbuzz-auction-options": false;
   "cricbuzz-auction-player-detail": true;
   "cricbuzz-auction-player-search": true;
@@ -1497,11 +1718,13 @@ export interface OperationRequiredParamsMap {
   "cricbuzz-auction-teams-options": false;
   "cricbuzz-auction-upcoming": true;
   "cricbuzz-auction-upcoming-options": false;
+  "cricbuzz-auction-videos": true;
   "cricbuzz-match-facts": true;
   "cricbuzz-match-graphs": true;
   "cricbuzz-match-overs": true;
   "cricbuzz-matches": false;
   "cricbuzz-navigation": false;
+  "cricbuzz-news-story": true;
   "cricbuzz-news-topics": false;
   "cricbuzz-rankings": false;
   "cricbuzz-records": false;
@@ -1509,6 +1732,8 @@ export interface OperationRequiredParamsMap {
   "cricbuzz-scorecard": true;
   "cricbuzz-series": false;
   "cricbuzz-series-stats": true;
+  "cricbuzz-team-stats": true;
+  "cricbuzz-team-stats-options": true;
   "cricbuzz-teams": false;
   "cricbuzz-video-categories": false;
   "cricbuzz-video-playlists": false;
@@ -1526,6 +1751,8 @@ export type OperationIdLiteral =
   | "cricbuzz-archives"
   | "cricbuzz-auction-info"
   | "cricbuzz-auction-live"
+  | "cricbuzz-auction-live-blog"
+  | "cricbuzz-auction-news"
   | "cricbuzz-auction-options"
   | "cricbuzz-auction-player-detail"
   | "cricbuzz-auction-player-search"
@@ -1536,11 +1763,13 @@ export type OperationIdLiteral =
   | "cricbuzz-auction-teams-options"
   | "cricbuzz-auction-upcoming"
   | "cricbuzz-auction-upcoming-options"
+  | "cricbuzz-auction-videos"
   | "cricbuzz-match-facts"
   | "cricbuzz-match-graphs"
   | "cricbuzz-match-overs"
   | "cricbuzz-matches"
   | "cricbuzz-navigation"
+  | "cricbuzz-news-story"
   | "cricbuzz-news-topics"
   | "cricbuzz-rankings"
   | "cricbuzz-records"
@@ -1548,6 +1777,8 @@ export type OperationIdLiteral =
   | "cricbuzz-scorecard"
   | "cricbuzz-series"
   | "cricbuzz-series-stats"
+  | "cricbuzz-team-stats"
+  | "cricbuzz-team-stats-options"
   | "cricbuzz-teams"
   | "cricbuzz-video-categories"
   | "cricbuzz-video-playlists"
@@ -1557,6 +1788,8 @@ export declare const OperationIds: Readonly<{
   CricbuzzArchives: "cricbuzz-archives";
   CricbuzzAuctionInfo: "cricbuzz-auction-info";
   CricbuzzAuctionLive: "cricbuzz-auction-live";
+  CricbuzzAuctionLiveBlog: "cricbuzz-auction-live-blog";
+  CricbuzzAuctionNews: "cricbuzz-auction-news";
   CricbuzzAuctionOptions: "cricbuzz-auction-options";
   CricbuzzAuctionPlayerDetail: "cricbuzz-auction-player-detail";
   CricbuzzAuctionPlayerSearch: "cricbuzz-auction-player-search";
@@ -1567,11 +1800,13 @@ export declare const OperationIds: Readonly<{
   CricbuzzAuctionTeamsOptions: "cricbuzz-auction-teams-options";
   CricbuzzAuctionUpcoming: "cricbuzz-auction-upcoming";
   CricbuzzAuctionUpcomingOptions: "cricbuzz-auction-upcoming-options";
+  CricbuzzAuctionVideos: "cricbuzz-auction-videos";
   CricbuzzMatchFacts: "cricbuzz-match-facts";
   CricbuzzMatchGraphs: "cricbuzz-match-graphs";
   CricbuzzMatchOvers: "cricbuzz-match-overs";
   CricbuzzMatches: "cricbuzz-matches";
   CricbuzzNavigation: "cricbuzz-navigation";
+  CricbuzzNewsStory: "cricbuzz-news-story";
   CricbuzzNewsTopics: "cricbuzz-news-topics";
   CricbuzzRankings: "cricbuzz-rankings";
   CricbuzzRecords: "cricbuzz-records";
@@ -1579,6 +1814,8 @@ export declare const OperationIds: Readonly<{
   CricbuzzScorecard: "cricbuzz-scorecard";
   CricbuzzSeries: "cricbuzz-series";
   CricbuzzSeriesStats: "cricbuzz-series-stats";
+  CricbuzzTeamStats: "cricbuzz-team-stats";
+  CricbuzzTeamStatsOptions: "cricbuzz-team-stats-options";
   CricbuzzTeams: "cricbuzz-teams";
   CricbuzzVideoCategories: "cricbuzz-video-categories";
   CricbuzzVideoPlaylists: "cricbuzz-video-playlists";

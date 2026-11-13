@@ -196,6 +196,36 @@ pub struct ModelCricbuzzAuctionInfoResponse {
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzAuctionLiveBlogResponse {
+    #[serde(
+        rename = "fetched_at",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub fetched_at: Option<String>,
+    #[serde(rename = "season", default, skip_serializing_if = "Option::is_none")]
+    pub season: Option<String>,
+    #[serde(
+        rename = "source_url",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub source_url: Option<String>,
+    #[serde(rename = "story", default, skip_serializing_if = "Option::is_none")]
+    pub story: Option<ModelCricbuzzCricbuzzNewsStory>,
+    #[serde(
+        rename = "tournament",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub tournament: Option<String>,
+    #[serde(rename = "year", default, skip_serializing_if = "Option::is_none")]
+    pub year: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct ModelCricbuzzAuctionLiveResponse {
     #[serde(
         rename = "auction_title",
@@ -239,6 +269,70 @@ pub struct ModelCricbuzzAuctionLiveResponse {
     pub source_url: Option<String>,
     #[serde(rename = "state", default, skip_serializing_if = "Option::is_none")]
     pub state: Option<String>,
+    #[serde(
+        rename = "tournament",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub tournament: Option<String>,
+    #[serde(rename = "year", default, skip_serializing_if = "Option::is_none")]
+    pub year: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzAuctionNewsItem {
+    #[serde(rename = "image_alt", default, skip_serializing_if = "Option::is_none")]
+    pub image_alt: Option<String>,
+    #[serde(rename = "image_id", default, skip_serializing_if = "Option::is_none")]
+    pub image_id: Option<i64>,
+    #[serde(rename = "slug", default, skip_serializing_if = "Option::is_none")]
+    pub slug: Option<String>,
+    #[serde(rename = "story_id", default, skip_serializing_if = "Option::is_none")]
+    pub story_id: Option<i64>,
+    #[serde(rename = "time_ago", default, skip_serializing_if = "Option::is_none")]
+    pub time_ago: Option<String>,
+    #[serde(rename = "title", default, skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
+    #[serde(rename = "url", default, skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzAuctionNewsResponse {
+    #[serde(
+        rename = "empty_state",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub empty_state: Option<String>,
+    #[serde(
+        rename = "fetched_at",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub fetched_at: Option<String>,
+    #[serde(rename = "items", default, skip_serializing_if = "Option::is_none")]
+    pub items: Option<Vec<ModelCricbuzzAuctionNewsItem>>,
+    #[serde(
+        rename = "returned_count",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub returned_count: Option<i64>,
+    #[serde(rename = "season", default, skip_serializing_if = "Option::is_none")]
+    pub season: Option<String>,
+    #[serde(
+        rename = "source_url",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub source_url: Option<String>,
+    #[serde(rename = "topic", default, skip_serializing_if = "Option::is_none")]
+    pub topic: Option<String>,
     #[serde(
         rename = "tournament",
         default,
@@ -940,6 +1034,146 @@ pub struct ModelCricbuzzAuctionUpcomingSelection {
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzAuctionVideoItem {
+    #[serde(rename = "duration", default, skip_serializing_if = "Option::is_none")]
+    pub duration: Option<String>,
+    #[serde(rename = "image_alt", default, skip_serializing_if = "Option::is_none")]
+    pub image_alt: Option<String>,
+    #[serde(rename = "image_id", default, skip_serializing_if = "Option::is_none")]
+    pub image_id: Option<i64>,
+    #[serde(rename = "slug", default, skip_serializing_if = "Option::is_none")]
+    pub slug: Option<String>,
+    #[serde(rename = "time_ago", default, skip_serializing_if = "Option::is_none")]
+    pub time_ago: Option<String>,
+    #[serde(rename = "title", default, skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
+    #[serde(rename = "url", default, skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
+    #[serde(rename = "video_id", default, skip_serializing_if = "Option::is_none")]
+    pub video_id: Option<i64>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzAuctionVideosResponse {
+    #[serde(
+        rename = "empty_state",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub empty_state: Option<String>,
+    #[serde(
+        rename = "fetched_at",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub fetched_at: Option<String>,
+    #[serde(rename = "items", default, skip_serializing_if = "Option::is_none")]
+    pub items: Option<Vec<ModelCricbuzzAuctionVideoItem>>,
+    #[serde(
+        rename = "returned_count",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub returned_count: Option<i64>,
+    #[serde(rename = "season", default, skip_serializing_if = "Option::is_none")]
+    pub season: Option<String>,
+    #[serde(
+        rename = "source_url",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub source_url: Option<String>,
+    #[serde(
+        rename = "tournament",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub tournament: Option<String>,
+    #[serde(rename = "year", default, skip_serializing_if = "Option::is_none")]
+    pub year: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzCricbuzzNewsAuthor {
+    #[serde(rename = "image_url", default, skip_serializing_if = "Option::is_none")]
+    pub image_url: Option<String>,
+    #[serde(rename = "name", default, skip_serializing_if = "Option::is_none")]
+    pub name: Option<String>,
+    #[serde(rename = "url", default, skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzCricbuzzNewsLink {
+    #[serde(rename = "text", default, skip_serializing_if = "Option::is_none")]
+    pub text: Option<String>,
+    #[serde(rename = "url", default, skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzCricbuzzNewsStory {
+    #[serde(rename = "abstract", default, skip_serializing_if = "Option::is_none")]
+    pub abstract_: Option<String>,
+    #[serde(rename = "authors", default, skip_serializing_if = "Option::is_none")]
+    pub authors: Option<Vec<ModelCricbuzzCricbuzzNewsAuthor>>,
+    #[serde(rename = "backstory", default, skip_serializing_if = "Option::is_none")]
+    pub backstory: Option<String>,
+    #[serde(rename = "body_html", default, skip_serializing_if = "Option::is_none")]
+    pub body_html: Option<String>,
+    #[serde(
+        rename = "body_links",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub body_links: Option<Vec<ModelCricbuzzCricbuzzNewsLink>>,
+    #[serde(rename = "body_text", default, skip_serializing_if = "Option::is_none")]
+    pub body_text: Option<String>,
+    #[serde(rename = "image_url", default, skip_serializing_if = "Option::is_none")]
+    pub image_url: Option<String>,
+    #[serde(
+        rename = "modified_at",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub modified_at: Option<String>,
+    #[serde(
+        rename = "published_at",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub published_at: Option<String>,
+    #[serde(rename = "story_id", default, skip_serializing_if = "Option::is_none")]
+    pub story_id: Option<i64>,
+    #[serde(rename = "tags", default, skip_serializing_if = "Option::is_none")]
+    pub tags: Option<Vec<ModelCricbuzzCricbuzzNewsTag>>,
+    #[serde(rename = "title", default, skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
+    #[serde(rename = "url", default, skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzCricbuzzNewsTag {
+    #[serde(rename = "type", default, skip_serializing_if = "Option::is_none")]
+    pub type_: Option<String>,
+    #[serde(rename = "value", default, skip_serializing_if = "Option::is_none")]
+    pub value: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct ModelCricbuzzGraphInnings {
     #[serde(rename = "color", default, skip_serializing_if = "Option::is_none")]
     pub color: Option<String>,
@@ -1388,6 +1622,26 @@ pub struct ModelCricbuzzNewsSection {
     pub path: Option<String>,
     #[serde(rename = "value", default, skip_serializing_if = "Option::is_none")]
     pub value: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzNewsStoryResponse {
+    #[serde(
+        rename = "fetched_at",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub fetched_at: Option<String>,
+    #[serde(
+        rename = "source_url",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub source_url: Option<String>,
+    #[serde(rename = "story", default, skip_serializing_if = "Option::is_none")]
+    pub story: Option<ModelCricbuzzCricbuzzNewsStory>,
     #[serde(flatten)]
     pub additional: BTreeMap<String, Value>,
 }
@@ -2891,6 +3145,100 @@ pub struct ModelCricbuzzTeamGroup {
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzTeamStatsOptionsResponse {
+    #[serde(rename = "category", default, skip_serializing_if = "Option::is_none")]
+    pub category: Option<String>,
+    #[serde(
+        rename = "fetched_at",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub fetched_at: Option<String>,
+    #[serde(rename = "formats", default, skip_serializing_if = "Option::is_none")]
+    pub formats: Option<Vec<ModelCricbuzzRecordOption>>,
+    #[serde(rename = "opponents", default, skip_serializing_if = "Option::is_none")]
+    pub opponents: Option<Vec<ModelCricbuzzRecordOption>>,
+    #[serde(
+        rename = "source_url",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub source_url: Option<String>,
+    #[serde(rename = "stale", default, skip_serializing_if = "Option::is_none")]
+    pub stale: Option<bool>,
+    #[serde(rename = "stats", default, skip_serializing_if = "Option::is_none")]
+    pub stats: Option<Vec<ModelCricbuzzRecordCategory>>,
+    #[serde(rename = "team", default, skip_serializing_if = "Option::is_none")]
+    pub team: Option<ModelCricbuzzTeam>,
+    #[serde(rename = "years", default, skip_serializing_if = "Option::is_none")]
+    pub years: Option<Vec<ModelCricbuzzRecordOption>>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzTeamStatsResponse {
+    #[serde(rename = "data_url", default, skip_serializing_if = "Option::is_none")]
+    pub data_url: Option<String>,
+    #[serde(
+        rename = "empty_state",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub empty_state: Option<String>,
+    #[serde(
+        rename = "fetched_at",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub fetched_at: Option<String>,
+    #[serde(rename = "selected", default, skip_serializing_if = "Option::is_none")]
+    pub selected: Option<ModelCricbuzzTeamStatsSelection>,
+    #[serde(
+        rename = "source_url",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub source_url: Option<String>,
+    #[serde(rename = "stale", default, skip_serializing_if = "Option::is_none")]
+    pub stale: Option<bool>,
+    #[serde(rename = "table", default, skip_serializing_if = "Option::is_none")]
+    pub table: Option<ModelCricbuzzRecordTable>,
+    #[serde(rename = "team", default, skip_serializing_if = "Option::is_none")]
+    pub team: Option<ModelCricbuzzTeam>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzTeamStatsSelection {
+    #[serde(rename = "category", default, skip_serializing_if = "Option::is_none")]
+    pub category: Option<String>,
+    #[serde(rename = "format", default, skip_serializing_if = "Option::is_none")]
+    pub format: Option<String>,
+    #[serde(rename = "format_id", default, skip_serializing_if = "Option::is_none")]
+    pub format_id: Option<String>,
+    #[serde(rename = "opponent", default, skip_serializing_if = "Option::is_none")]
+    pub opponent: Option<String>,
+    #[serde(
+        rename = "opponent_id",
+        default,
+        skip_serializing_if = "Option::is_none"
+    )]
+    pub opponent_id: Option<String>,
+    #[serde(rename = "stat", default, skip_serializing_if = "Option::is_none")]
+    pub stat: Option<String>,
+    #[serde(rename = "team_id", default, skip_serializing_if = "Option::is_none")]
+    pub team_id: Option<i64>,
+    #[serde(rename = "team_name", default, skip_serializing_if = "Option::is_none")]
+    pub team_name: Option<String>,
+    #[serde(rename = "year", default, skip_serializing_if = "Option::is_none")]
+    pub year: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct ModelCricbuzzTeamsResponse {
     #[serde(rename = "category", default, skip_serializing_if = "Option::is_none")]
     pub category: Option<String>,
@@ -3169,11 +3517,35 @@ pub struct ModelCricbuzzAuctionInfoResponseDoc {
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzAuctionLiveBlogResponseDoc {
+    #[serde(rename = "code", default, skip_serializing_if = "Option::is_none")]
+    pub code: Option<i64>,
+    #[serde(rename = "data", default, skip_serializing_if = "Option::is_none")]
+    pub data: Option<ModelCricbuzzAuctionLiveBlogResponse>,
+    #[serde(rename = "msg", default, skip_serializing_if = "Option::is_none")]
+    pub msg: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct ModelCricbuzzAuctionLiveResponseDoc {
     #[serde(rename = "code", default, skip_serializing_if = "Option::is_none")]
     pub code: Option<i64>,
     #[serde(rename = "data", default, skip_serializing_if = "Option::is_none")]
     pub data: Option<ModelCricbuzzAuctionLiveResponse>,
+    #[serde(rename = "msg", default, skip_serializing_if = "Option::is_none")]
+    pub msg: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzAuctionNewsResponseDoc {
+    #[serde(rename = "code", default, skip_serializing_if = "Option::is_none")]
+    pub code: Option<i64>,
+    #[serde(rename = "data", default, skip_serializing_if = "Option::is_none")]
+    pub data: Option<ModelCricbuzzAuctionNewsResponse>,
     #[serde(rename = "msg", default, skip_serializing_if = "Option::is_none")]
     pub msg: Option<String>,
     #[serde(flatten)]
@@ -3289,6 +3661,18 @@ pub struct ModelCricbuzzAuctionUpcomingResponseDoc {
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzAuctionVideosResponseDoc {
+    #[serde(rename = "code", default, skip_serializing_if = "Option::is_none")]
+    pub code: Option<i64>,
+    #[serde(rename = "data", default, skip_serializing_if = "Option::is_none")]
+    pub data: Option<ModelCricbuzzAuctionVideosResponse>,
+    #[serde(rename = "msg", default, skip_serializing_if = "Option::is_none")]
+    pub msg: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct ModelCricbuzzGraphsResponseDoc {
     #[serde(rename = "code", default, skip_serializing_if = "Option::is_none")]
     pub code: Option<i64>,
@@ -3330,6 +3714,18 @@ pub struct ModelCricbuzzNavigationResponseDoc {
     pub code: Option<i64>,
     #[serde(rename = "data", default, skip_serializing_if = "Option::is_none")]
     pub data: Option<ModelCricbuzzNavigationResponse>,
+    #[serde(rename = "msg", default, skip_serializing_if = "Option::is_none")]
+    pub msg: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzNewsStoryResponseDoc {
+    #[serde(rename = "code", default, skip_serializing_if = "Option::is_none")]
+    pub code: Option<i64>,
+    #[serde(rename = "data", default, skip_serializing_if = "Option::is_none")]
+    pub data: Option<ModelCricbuzzNewsStoryResponse>,
     #[serde(rename = "msg", default, skip_serializing_if = "Option::is_none")]
     pub msg: Option<String>,
     #[serde(flatten)]
@@ -3426,6 +3822,30 @@ pub struct ModelCricbuzzSeriesStatsResponseDoc {
     pub code: Option<i64>,
     #[serde(rename = "data", default, skip_serializing_if = "Option::is_none")]
     pub data: Option<ModelCricbuzzSeriesStatsResponse>,
+    #[serde(rename = "msg", default, skip_serializing_if = "Option::is_none")]
+    pub msg: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzTeamStatsOptionsResponseDoc {
+    #[serde(rename = "code", default, skip_serializing_if = "Option::is_none")]
+    pub code: Option<i64>,
+    #[serde(rename = "data", default, skip_serializing_if = "Option::is_none")]
+    pub data: Option<ModelCricbuzzTeamStatsOptionsResponse>,
+    #[serde(rename = "msg", default, skip_serializing_if = "Option::is_none")]
+    pub msg: Option<String>,
+    #[serde(flatten)]
+    pub additional: BTreeMap<String, Value>,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ModelCricbuzzTeamStatsResponseDoc {
+    #[serde(rename = "code", default, skip_serializing_if = "Option::is_none")]
+    pub code: Option<i64>,
+    #[serde(rename = "data", default, skip_serializing_if = "Option::is_none")]
+    pub data: Option<ModelCricbuzzTeamStatsResponse>,
     #[serde(rename = "msg", default, skip_serializing_if = "Option::is_none")]
     pub msg: Option<String>,
     #[serde(flatten)]

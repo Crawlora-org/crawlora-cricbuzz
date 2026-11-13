@@ -26,7 +26,7 @@ test("serializes required query/path values, adds API key and platform User-Agen
   await client.request("cricbuzz-auction-live", {"tournament": "sample", "year": "sample", "currency": "sample"});
   assert.match(seen.url, /\/cricbuzz\/auction\/live/);
   assert.equal(seen.headers["x-api-key"], "secret");
-  assert.equal(seen.headers["user-agent"], "crawlora-cricbuzz-js/0.1.0");
+  assert.equal(seen.headers["user-agent"], "crawlora-cricbuzz-js/0.2.0");
 });
 
 test("allows caller User-Agent override and response text mode", async () => {

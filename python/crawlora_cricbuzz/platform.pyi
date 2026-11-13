@@ -153,6 +153,80 @@ ModelCricbuzzTeam = TypedDict('ModelCricbuzzTeam', {
     'short_name': NotRequired[str],
 }, total=False)
 
+ModelCricbuzzTeamStatsOptionsResponseDoc = TypedDict('ModelCricbuzzTeamStatsOptionsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCricbuzzTeamStatsOptionsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzTeamStatsOptionsResponse = TypedDict('ModelCricbuzzTeamStatsOptionsResponse', {
+    'category': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'formats': NotRequired[list[ModelCricbuzzRecordOption]],
+    'opponents': NotRequired[list[ModelCricbuzzRecordOption]],
+    'source_url': NotRequired[str],
+    'stale': NotRequired[bool],
+    'stats': NotRequired[list[ModelCricbuzzRecordCategory]],
+    'team': NotRequired[ModelCricbuzzTeam],
+    'years': NotRequired[list[ModelCricbuzzRecordOption]],
+}, total=False)
+
+ModelCricbuzzRecordOption = TypedDict('ModelCricbuzzRecordOption', {
+    'id': NotRequired[str],
+    'label': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzRecordCategory = TypedDict('ModelCricbuzzRecordCategory', {
+    'name': NotRequired[str],
+    'stats': NotRequired[list[ModelCricbuzzRecordType]],
+}, total=False)
+
+ModelCricbuzzRecordType = TypedDict('ModelCricbuzzRecordType', {
+    'category': NotRequired[str],
+    'label': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzTeamStatsResponseDoc = TypedDict('ModelCricbuzzTeamStatsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCricbuzzTeamStatsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzTeamStatsResponse = TypedDict('ModelCricbuzzTeamStatsResponse', {
+    'data_url': NotRequired[str],
+    'empty_state': NotRequired[str],
+    'fetched_at': NotRequired[str],
+    'selected': NotRequired[ModelCricbuzzTeamStatsSelection],
+    'source_url': NotRequired[str],
+    'stale': NotRequired[bool],
+    'table': NotRequired[ModelCricbuzzRecordTable],
+    'team': NotRequired[ModelCricbuzzTeam],
+}, total=False)
+
+ModelCricbuzzRecordTable = TypedDict('ModelCricbuzzRecordTable', {
+    'headers': NotRequired[list[str]],
+    'rows': NotRequired[list[ModelCricbuzzRecordRow]],
+    'total': NotRequired[int],
+}, total=False)
+
+ModelCricbuzzRecordRow = TypedDict('ModelCricbuzzRecordRow', {
+    'player_id': NotRequired[str],
+    'values': NotRequired[list[str]],
+}, total=False)
+
+ModelCricbuzzTeamStatsSelection = TypedDict('ModelCricbuzzTeamStatsSelection', {
+    'category': NotRequired[str],
+    'format': NotRequired[str],
+    'format_id': NotRequired[str],
+    'opponent': NotRequired[str],
+    'opponent_id': NotRequired[str],
+    'stat': NotRequired[str],
+    'team_id': NotRequired[int],
+    'team_name': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
 ModelCricbuzzSeriesStatsResponseDoc = TypedDict('ModelCricbuzzSeriesStatsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelCricbuzzSeriesStatsResponse],
@@ -175,11 +249,6 @@ ModelCricbuzzSeriesStatsResponse = TypedDict('ModelCricbuzzSeriesStatsResponse',
     'team_options': NotRequired[list[ModelCricbuzzRecordOption]],
 }, total=False)
 
-ModelCricbuzzRecordOption = TypedDict('ModelCricbuzzRecordOption', {
-    'id': NotRequired[str],
-    'label': NotRequired[str],
-}, total=False)
-
 ModelCricbuzzSeriesStatsTable = TypedDict('ModelCricbuzzSeriesStatsTable', {
     'format': NotRequired[str],
     'headers': NotRequired[list[str]],
@@ -187,26 +256,10 @@ ModelCricbuzzSeriesStatsTable = TypedDict('ModelCricbuzzSeriesStatsTable', {
     'total': NotRequired[int],
 }, total=False)
 
-ModelCricbuzzRecordRow = TypedDict('ModelCricbuzzRecordRow', {
-    'player_id': NotRequired[str],
-    'values': NotRequired[list[str]],
-}, total=False)
-
-ModelCricbuzzRecordType = TypedDict('ModelCricbuzzRecordType', {
-    'category': NotRequired[str],
-    'label': NotRequired[str],
-    'value': NotRequired[str],
-}, total=False)
-
 ModelCricbuzzSeriesStatsSelection = TypedDict('ModelCricbuzzSeriesStatsSelection', {
     'match_type_id': NotRequired[str],
     'season_id': NotRequired[str],
     'team_id': NotRequired[str],
-}, total=False)
-
-ModelCricbuzzRecordCategory = TypedDict('ModelCricbuzzRecordCategory', {
-    'name': NotRequired[str],
-    'stats': NotRequired[list[ModelCricbuzzRecordType]],
 }, total=False)
 
 ModelCricbuzzSeriesResponseDoc = TypedDict('ModelCricbuzzSeriesResponseDoc', {
@@ -551,12 +604,6 @@ ModelCricbuzzRecordFilter = TypedDict('ModelCricbuzzRecordFilter', {
     'options': NotRequired[list[ModelCricbuzzRecordOption]],
 }, total=False)
 
-ModelCricbuzzRecordTable = TypedDict('ModelCricbuzzRecordTable', {
-    'headers': NotRequired[list[str]],
-    'rows': NotRequired[list[ModelCricbuzzRecordRow]],
-    'total': NotRequired[int],
-}, total=False)
-
 ModelCricbuzzRankingsResponseDoc = TypedDict('ModelCricbuzzRankingsResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelCricbuzzRankingsResponse],
@@ -622,6 +669,50 @@ ModelCricbuzzNewsSection = TypedDict('ModelCricbuzzNewsSection', {
     'label': NotRequired[str],
     'path': NotRequired[str],
     'value': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzNewsStoryResponseDoc = TypedDict('ModelCricbuzzNewsStoryResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCricbuzzNewsStoryResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzNewsStoryResponse = TypedDict('ModelCricbuzzNewsStoryResponse', {
+    'fetched_at': NotRequired[str],
+    'source_url': NotRequired[str],
+    'story': NotRequired[ModelCricbuzzCricbuzzNewsStory],
+}, total=False)
+
+ModelCricbuzzCricbuzzNewsStory = TypedDict('ModelCricbuzzCricbuzzNewsStory', {
+    'abstract': NotRequired[str],
+    'authors': NotRequired[list[ModelCricbuzzCricbuzzNewsAuthor]],
+    'backstory': NotRequired[str],
+    'body_html': NotRequired[str],
+    'body_links': NotRequired[list[ModelCricbuzzCricbuzzNewsLink]],
+    'body_text': NotRequired[str],
+    'image_url': NotRequired[str],
+    'modified_at': NotRequired[str],
+    'published_at': NotRequired[str],
+    'story_id': NotRequired[int],
+    'tags': NotRequired[list[ModelCricbuzzCricbuzzNewsTag]],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzCricbuzzNewsTag = TypedDict('ModelCricbuzzCricbuzzNewsTag', {
+    'type': NotRequired[str],
+    'value': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzCricbuzzNewsLink = TypedDict('ModelCricbuzzCricbuzzNewsLink', {
+    'text': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzCricbuzzNewsAuthor = TypedDict('ModelCricbuzzCricbuzzNewsAuthor', {
+    'image_url': NotRequired[str],
+    'name': NotRequired[str],
+    'url': NotRequired[str],
 }, total=False)
 
 ModelCricbuzzNavigationResponseDoc = TypedDict('ModelCricbuzzNavigationResponseDoc', {
@@ -856,6 +947,34 @@ ModelCricbuzzMatchOfficials = TypedDict('ModelCricbuzzMatchOfficials', {
     'referee': NotRequired[str],
     'third_umpire': NotRequired[str],
     'umpires': NotRequired[list[str]],
+}, total=False)
+
+ModelCricbuzzAuctionVideosResponseDoc = TypedDict('ModelCricbuzzAuctionVideosResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCricbuzzAuctionVideosResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzAuctionVideosResponse = TypedDict('ModelCricbuzzAuctionVideosResponse', {
+    'empty_state': NotRequired[Literal['no_videos']],
+    'fetched_at': NotRequired[str],
+    'items': NotRequired[list[ModelCricbuzzAuctionVideoItem]],
+    'returned_count': NotRequired[int],
+    'season': NotRequired[str],
+    'source_url': NotRequired[str],
+    'tournament': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzAuctionVideoItem = TypedDict('ModelCricbuzzAuctionVideoItem', {
+    'duration': NotRequired[str],
+    'image_alt': NotRequired[str],
+    'image_id': NotRequired[int],
+    'slug': NotRequired[str],
+    'time_ago': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+    'video_id': NotRequired[int],
 }, total=False)
 
 ModelCricbuzzAuctionOptionsResponseDoc = TypedDict('ModelCricbuzzAuctionOptionsResponseDoc', {
@@ -1143,6 +1262,49 @@ ModelCricbuzzAuctionPlayerEarning = TypedDict('ModelCricbuzzAuctionPlayerEarning
     'year': NotRequired[int],
 }, total=False)
 
+ModelCricbuzzAuctionNewsResponseDoc = TypedDict('ModelCricbuzzAuctionNewsResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCricbuzzAuctionNewsResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzAuctionNewsResponse = TypedDict('ModelCricbuzzAuctionNewsResponse', {
+    'empty_state': NotRequired[Literal['no_results']],
+    'fetched_at': NotRequired[str],
+    'items': NotRequired[list[ModelCricbuzzAuctionNewsItem]],
+    'returned_count': NotRequired[int],
+    'season': NotRequired[str],
+    'source_url': NotRequired[str],
+    'topic': NotRequired[str],
+    'tournament': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzAuctionNewsItem = TypedDict('ModelCricbuzzAuctionNewsItem', {
+    'image_alt': NotRequired[str],
+    'image_id': NotRequired[int],
+    'slug': NotRequired[str],
+    'story_id': NotRequired[int],
+    'time_ago': NotRequired[str],
+    'title': NotRequired[str],
+    'url': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzAuctionLiveBlogResponseDoc = TypedDict('ModelCricbuzzAuctionLiveBlogResponseDoc', {
+    'code': NotRequired[int],
+    'data': NotRequired[ModelCricbuzzAuctionLiveBlogResponse],
+    'msg': NotRequired[str],
+}, total=False)
+
+ModelCricbuzzAuctionLiveBlogResponse = TypedDict('ModelCricbuzzAuctionLiveBlogResponse', {
+    'fetched_at': NotRequired[str],
+    'season': NotRequired[str],
+    'source_url': NotRequired[str],
+    'story': NotRequired[ModelCricbuzzCricbuzzNewsStory],
+    'tournament': NotRequired[str],
+    'year': NotRequired[str],
+}, total=False)
+
 ModelCricbuzzAuctionLiveResponseDoc = TypedDict('ModelCricbuzzAuctionLiveResponseDoc', {
     'code': NotRequired[int],
     'data': NotRequired[ModelCricbuzzAuctionLiveResponse],
@@ -1247,6 +1409,24 @@ CricbuzzAuctionLiveParams = TypedDict('CricbuzzAuctionLiveParams', {
     'tournament': Required[str],
     'year': Required[str],
     'currency': Required[str],
+}, total=False)
+
+CricbuzzAuctionLiveBlogResponse = ModelCricbuzzAuctionLiveBlogResponseDoc
+CricbuzzAuctionLiveBlogParams = TypedDict('CricbuzzAuctionLiveBlogParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tournament': Required[str],
+    'year': Required[str],
+}, total=False)
+
+CricbuzzAuctionNewsResponse = ModelCricbuzzAuctionNewsResponseDoc
+CricbuzzAuctionNewsParams = TypedDict('CricbuzzAuctionNewsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tournament': Required[str],
+    'year': Required[str],
 }, total=False)
 
 CricbuzzAuctionOptionsResponse = ModelCricbuzzAuctionOptionsResponseDoc
@@ -1358,6 +1538,15 @@ CricbuzzAuctionUpcomingOptionsParams = TypedDict('CricbuzzAuctionUpcomingOptions
     'year': NotRequired[str],
 }, total=False)
 
+CricbuzzAuctionVideosResponse = ModelCricbuzzAuctionVideosResponseDoc
+CricbuzzAuctionVideosParams = TypedDict('CricbuzzAuctionVideosParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'tournament': Required[str],
+    'year': Required[str],
+}, total=False)
+
 CricbuzzMatchFactsResponse = ModelCricbuzzMatchFactsResponseDoc
 CricbuzzMatchFactsParams = TypedDict('CricbuzzMatchFactsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -1396,6 +1585,14 @@ CricbuzzNavigationParams = TypedDict('CricbuzzNavigationParams', {
     '_response_type': NotRequired[ResponseType],
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
+}, total=False)
+
+CricbuzzNewsStoryResponse = ModelCricbuzzNewsStoryResponseDoc
+CricbuzzNewsStoryParams = TypedDict('CricbuzzNewsStoryParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'url': Required[str],
 }, total=False)
 
 CricbuzzNewsTopicsResponse = ModelCricbuzzNewsTopicsResponseDoc
@@ -1465,6 +1662,28 @@ CricbuzzSeriesStatsParams = TypedDict('CricbuzzSeriesStatsParams', {
     'format': NotRequired[str],
 }, total=False)
 
+CricbuzzTeamStatsResponse = ModelCricbuzzTeamStatsResponseDoc
+CricbuzzTeamStatsParams = TypedDict('CricbuzzTeamStatsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category': Required[Literal['international', 'domestic', 'league', 'women']],
+    'team_id': Required[int],
+    'stat': Required[str],
+    'format_id': Required[str],
+    'year': Required[str],
+    'opponent_id': Required[str],
+}, total=False)
+
+CricbuzzTeamStatsOptionsResponse = ModelCricbuzzTeamStatsOptionsResponseDoc
+CricbuzzTeamStatsOptionsParams = TypedDict('CricbuzzTeamStatsOptionsParams', {
+    '_response_type': NotRequired[ResponseType],
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    'category': Required[Literal['international', 'domestic', 'league', 'women']],
+    'team_id': Required[int],
+}, total=False)
+
 CricbuzzTeamsResponse = ModelCricbuzzTeamsResponseDoc
 CricbuzzTeamsParams = TypedDict('CricbuzzTeamsParams', {
     '_response_type': NotRequired[ResponseType],
@@ -1514,6 +1733,18 @@ class CricbuzzGroup:
     def auction_live(self, **params: Unpack[CricbuzzAuctionLiveTextResponseParams]) -> str: ...
     @overload
     def auction_live(self, **params: Unpack[CricbuzzAuctionLiveDefaultParams]) -> CricbuzzAuctionLiveResponse: ...
+    @overload
+    def auction_live_blog(self, **params: Unpack[CricbuzzAuctionLiveBlogStreamParams]) -> BinaryIO: ...
+    @overload
+    def auction_live_blog(self, **params: Unpack[CricbuzzAuctionLiveBlogTextResponseParams]) -> str: ...
+    @overload
+    def auction_live_blog(self, **params: Unpack[CricbuzzAuctionLiveBlogDefaultParams]) -> CricbuzzAuctionLiveBlogResponse: ...
+    @overload
+    def auction_news(self, **params: Unpack[CricbuzzAuctionNewsStreamParams]) -> BinaryIO: ...
+    @overload
+    def auction_news(self, **params: Unpack[CricbuzzAuctionNewsTextResponseParams]) -> str: ...
+    @overload
+    def auction_news(self, **params: Unpack[CricbuzzAuctionNewsDefaultParams]) -> CricbuzzAuctionNewsResponse: ...
     @overload
     def auction_options(self, **params: Unpack[CricbuzzAuctionOptionsStreamParams]) -> BinaryIO: ...
     @overload
@@ -1575,6 +1806,12 @@ class CricbuzzGroup:
     @overload
     def auction_upcoming_options(self, **params: Unpack[CricbuzzAuctionUpcomingOptionsDefaultParams]) -> CricbuzzAuctionUpcomingOptionsResponse: ...
     @overload
+    def auction_videos(self, **params: Unpack[CricbuzzAuctionVideosStreamParams]) -> BinaryIO: ...
+    @overload
+    def auction_videos(self, **params: Unpack[CricbuzzAuctionVideosTextResponseParams]) -> str: ...
+    @overload
+    def auction_videos(self, **params: Unpack[CricbuzzAuctionVideosDefaultParams]) -> CricbuzzAuctionVideosResponse: ...
+    @overload
     def match_facts(self, **params: Unpack[CricbuzzMatchFactsStreamParams]) -> BinaryIO: ...
     @overload
     def match_facts(self, **params: Unpack[CricbuzzMatchFactsTextResponseParams]) -> str: ...
@@ -1604,6 +1841,12 @@ class CricbuzzGroup:
     def navigation(self, **params: Unpack[CricbuzzNavigationTextResponseParams]) -> str: ...
     @overload
     def navigation(self, **params: Unpack[CricbuzzNavigationDefaultParams]) -> CricbuzzNavigationResponse: ...
+    @overload
+    def news_story(self, **params: Unpack[CricbuzzNewsStoryStreamParams]) -> BinaryIO: ...
+    @overload
+    def news_story(self, **params: Unpack[CricbuzzNewsStoryTextResponseParams]) -> str: ...
+    @overload
+    def news_story(self, **params: Unpack[CricbuzzNewsStoryDefaultParams]) -> CricbuzzNewsStoryResponse: ...
     @overload
     def news_topics(self, **params: Unpack[CricbuzzNewsTopicsStreamParams]) -> BinaryIO: ...
     @overload
@@ -1647,6 +1890,18 @@ class CricbuzzGroup:
     @overload
     def series_stats(self, **params: Unpack[CricbuzzSeriesStatsDefaultParams]) -> CricbuzzSeriesStatsResponse: ...
     @overload
+    def team_stats(self, **params: Unpack[CricbuzzTeamStatsStreamParams]) -> BinaryIO: ...
+    @overload
+    def team_stats(self, **params: Unpack[CricbuzzTeamStatsTextResponseParams]) -> str: ...
+    @overload
+    def team_stats(self, **params: Unpack[CricbuzzTeamStatsDefaultParams]) -> CricbuzzTeamStatsResponse: ...
+    @overload
+    def team_stats_options(self, **params: Unpack[CricbuzzTeamStatsOptionsStreamParams]) -> BinaryIO: ...
+    @overload
+    def team_stats_options(self, **params: Unpack[CricbuzzTeamStatsOptionsTextResponseParams]) -> str: ...
+    @overload
+    def team_stats_options(self, **params: Unpack[CricbuzzTeamStatsOptionsDefaultParams]) -> CricbuzzTeamStatsOptionsResponse: ...
+    @overload
     def teams(self, **params: Unpack[CricbuzzTeamsStreamParams]) -> BinaryIO: ...
     @overload
     def teams(self, **params: Unpack[CricbuzzTeamsTextResponseParams]) -> str: ...
@@ -1675,6 +1930,8 @@ OperationId = Literal[
     'cricbuzz-archives',
     'cricbuzz-auction-info',
     'cricbuzz-auction-live',
+    'cricbuzz-auction-live-blog',
+    'cricbuzz-auction-news',
     'cricbuzz-auction-options',
     'cricbuzz-auction-player-detail',
     'cricbuzz-auction-player-search',
@@ -1685,11 +1942,13 @@ OperationId = Literal[
     'cricbuzz-auction-teams-options',
     'cricbuzz-auction-upcoming',
     'cricbuzz-auction-upcoming-options',
+    'cricbuzz-auction-videos',
     'cricbuzz-match-facts',
     'cricbuzz-match-graphs',
     'cricbuzz-match-overs',
     'cricbuzz-matches',
     'cricbuzz-navigation',
+    'cricbuzz-news-story',
     'cricbuzz-news-topics',
     'cricbuzz-rankings',
     'cricbuzz-records',
@@ -1697,6 +1956,8 @@ OperationId = Literal[
     'cricbuzz-scorecard',
     'cricbuzz-series',
     'cricbuzz-series-stats',
+    'cricbuzz-team-stats',
+    'cricbuzz-team-stats-options',
     'cricbuzz-teams',
     'cricbuzz-video-categories',
     'cricbuzz-video-playlists',
@@ -1824,6 +2085,30 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['cricbuzz-auction-live-blog'],
+        params: CricbuzzAuctionLiveBlogParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CricbuzzAuctionLiveBlogResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['cricbuzz-auction-news'],
+        params: CricbuzzAuctionNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CricbuzzAuctionNewsResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['cricbuzz-auction-options'],
         params: CricbuzzAuctionOptionsParams = ...,
         *,
@@ -1944,6 +2229,18 @@ class CrawloraClient:
     @overload
     def operation(
         self,
+        operation_id: Literal['cricbuzz-auction-videos'],
+        params: CricbuzzAuctionVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CricbuzzAuctionVideosResponse: ...
+    @overload
+    def operation(
+        self,
         operation_id: Literal['cricbuzz-match-facts'],
         params: CricbuzzMatchFactsParams,
         *,
@@ -2001,6 +2298,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CricbuzzNavigationResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['cricbuzz-news-story'],
+        params: CricbuzzNewsStoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CricbuzzNewsStoryResponse: ...
     @overload
     def operation(
         self,
@@ -2085,6 +2394,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CricbuzzSeriesStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['cricbuzz-team-stats'],
+        params: CricbuzzTeamStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CricbuzzTeamStatsResponse: ...
+    @overload
+    def operation(
+        self,
+        operation_id: Literal['cricbuzz-team-stats-options'],
+        params: CricbuzzTeamStatsOptionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CricbuzzTeamStatsOptionsResponse: ...
     @overload
     def operation(
         self,
@@ -2184,6 +2517,30 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['cricbuzz-auction-live-blog'],
+        params: CricbuzzAuctionLiveBlogParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CricbuzzAuctionLiveBlogResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['cricbuzz-auction-news'],
+        params: CricbuzzAuctionNewsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CricbuzzAuctionNewsResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['cricbuzz-auction-options'],
         params: CricbuzzAuctionOptionsParams = ...,
         *,
@@ -2304,6 +2661,18 @@ class CrawloraClient:
     @overload
     def request(
         self,
+        operation_id: Literal['cricbuzz-auction-videos'],
+        params: CricbuzzAuctionVideosParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CricbuzzAuctionVideosResponse: ...
+    @overload
+    def request(
+        self,
         operation_id: Literal['cricbuzz-match-facts'],
         params: CricbuzzMatchFactsParams,
         *,
@@ -2361,6 +2730,18 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CricbuzzNavigationResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['cricbuzz-news-story'],
+        params: CricbuzzNewsStoryParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CricbuzzNewsStoryResponse: ...
     @overload
     def request(
         self,
@@ -2445,6 +2826,30 @@ class CrawloraClient:
         retries: int | None = ...,
         retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
     ) -> CricbuzzSeriesStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['cricbuzz-team-stats'],
+        params: CricbuzzTeamStatsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CricbuzzTeamStatsResponse: ...
+    @overload
+    def request(
+        self,
+        operation_id: Literal['cricbuzz-team-stats-options'],
+        params: CricbuzzTeamStatsOptionsParams,
+        *,
+        response_type: ResponseType = ...,
+        timeout: float | None = ...,
+        headers: Mapping[str, str] | None = ...,
+        retries: int | None = ...,
+        retry_predicate: Callable[[int, BaseException | None], bool] | None = ...,
+    ) -> CricbuzzTeamStatsOptionsResponse: ...
     @overload
     def request(
         self,
@@ -2551,6 +2956,18 @@ class CricbuzzClient(CrawloraClient):
     @overload
     def auction_live(self, **params: Unpack[CricbuzzAuctionLiveDefaultParams]) -> CricbuzzAuctionLiveResponse: ...
     @overload
+    def auction_live_blog(self, **params: Unpack[CricbuzzAuctionLiveBlogStreamParams]) -> BinaryIO: ...
+    @overload
+    def auction_live_blog(self, **params: Unpack[CricbuzzAuctionLiveBlogTextResponseParams]) -> str: ...
+    @overload
+    def auction_live_blog(self, **params: Unpack[CricbuzzAuctionLiveBlogDefaultParams]) -> CricbuzzAuctionLiveBlogResponse: ...
+    @overload
+    def auction_news(self, **params: Unpack[CricbuzzAuctionNewsStreamParams]) -> BinaryIO: ...
+    @overload
+    def auction_news(self, **params: Unpack[CricbuzzAuctionNewsTextResponseParams]) -> str: ...
+    @overload
+    def auction_news(self, **params: Unpack[CricbuzzAuctionNewsDefaultParams]) -> CricbuzzAuctionNewsResponse: ...
+    @overload
     def auction_options(self, **params: Unpack[CricbuzzAuctionOptionsStreamParams]) -> BinaryIO: ...
     @overload
     def auction_options(self, **params: Unpack[CricbuzzAuctionOptionsTextResponseParams]) -> str: ...
@@ -2611,6 +3028,12 @@ class CricbuzzClient(CrawloraClient):
     @overload
     def auction_upcoming_options(self, **params: Unpack[CricbuzzAuctionUpcomingOptionsDefaultParams]) -> CricbuzzAuctionUpcomingOptionsResponse: ...
     @overload
+    def auction_videos(self, **params: Unpack[CricbuzzAuctionVideosStreamParams]) -> BinaryIO: ...
+    @overload
+    def auction_videos(self, **params: Unpack[CricbuzzAuctionVideosTextResponseParams]) -> str: ...
+    @overload
+    def auction_videos(self, **params: Unpack[CricbuzzAuctionVideosDefaultParams]) -> CricbuzzAuctionVideosResponse: ...
+    @overload
     def match_facts(self, **params: Unpack[CricbuzzMatchFactsStreamParams]) -> BinaryIO: ...
     @overload
     def match_facts(self, **params: Unpack[CricbuzzMatchFactsTextResponseParams]) -> str: ...
@@ -2640,6 +3063,12 @@ class CricbuzzClient(CrawloraClient):
     def navigation(self, **params: Unpack[CricbuzzNavigationTextResponseParams]) -> str: ...
     @overload
     def navigation(self, **params: Unpack[CricbuzzNavigationDefaultParams]) -> CricbuzzNavigationResponse: ...
+    @overload
+    def news_story(self, **params: Unpack[CricbuzzNewsStoryStreamParams]) -> BinaryIO: ...
+    @overload
+    def news_story(self, **params: Unpack[CricbuzzNewsStoryTextResponseParams]) -> str: ...
+    @overload
+    def news_story(self, **params: Unpack[CricbuzzNewsStoryDefaultParams]) -> CricbuzzNewsStoryResponse: ...
     @overload
     def news_topics(self, **params: Unpack[CricbuzzNewsTopicsStreamParams]) -> BinaryIO: ...
     @overload
@@ -2682,6 +3111,18 @@ class CricbuzzClient(CrawloraClient):
     def series_stats(self, **params: Unpack[CricbuzzSeriesStatsTextResponseParams]) -> str: ...
     @overload
     def series_stats(self, **params: Unpack[CricbuzzSeriesStatsDefaultParams]) -> CricbuzzSeriesStatsResponse: ...
+    @overload
+    def team_stats(self, **params: Unpack[CricbuzzTeamStatsStreamParams]) -> BinaryIO: ...
+    @overload
+    def team_stats(self, **params: Unpack[CricbuzzTeamStatsTextResponseParams]) -> str: ...
+    @overload
+    def team_stats(self, **params: Unpack[CricbuzzTeamStatsDefaultParams]) -> CricbuzzTeamStatsResponse: ...
+    @overload
+    def team_stats_options(self, **params: Unpack[CricbuzzTeamStatsOptionsStreamParams]) -> BinaryIO: ...
+    @overload
+    def team_stats_options(self, **params: Unpack[CricbuzzTeamStatsOptionsTextResponseParams]) -> str: ...
+    @overload
+    def team_stats_options(self, **params: Unpack[CricbuzzTeamStatsOptionsDefaultParams]) -> CricbuzzTeamStatsOptionsResponse: ...
     @overload
     def teams(self, **params: Unpack[CricbuzzTeamsStreamParams]) -> BinaryIO: ...
     @overload
@@ -2729,6 +3170,18 @@ class AsyncCricbuzzClient(AsyncCrawloraClient):
     @overload
     async def auction_live(self, **params: Unpack[CricbuzzAuctionLiveDefaultParams]) -> CricbuzzAuctionLiveResponse: ...
     @overload
+    async def auction_live_blog(self, **params: Unpack[CricbuzzAuctionLiveBlogStreamParams]) -> BinaryIO: ...
+    @overload
+    async def auction_live_blog(self, **params: Unpack[CricbuzzAuctionLiveBlogTextResponseParams]) -> str: ...
+    @overload
+    async def auction_live_blog(self, **params: Unpack[CricbuzzAuctionLiveBlogDefaultParams]) -> CricbuzzAuctionLiveBlogResponse: ...
+    @overload
+    async def auction_news(self, **params: Unpack[CricbuzzAuctionNewsStreamParams]) -> BinaryIO: ...
+    @overload
+    async def auction_news(self, **params: Unpack[CricbuzzAuctionNewsTextResponseParams]) -> str: ...
+    @overload
+    async def auction_news(self, **params: Unpack[CricbuzzAuctionNewsDefaultParams]) -> CricbuzzAuctionNewsResponse: ...
+    @overload
     async def auction_options(self, **params: Unpack[CricbuzzAuctionOptionsStreamParams]) -> BinaryIO: ...
     @overload
     async def auction_options(self, **params: Unpack[CricbuzzAuctionOptionsTextResponseParams]) -> str: ...
@@ -2789,6 +3242,12 @@ class AsyncCricbuzzClient(AsyncCrawloraClient):
     @overload
     async def auction_upcoming_options(self, **params: Unpack[CricbuzzAuctionUpcomingOptionsDefaultParams]) -> CricbuzzAuctionUpcomingOptionsResponse: ...
     @overload
+    async def auction_videos(self, **params: Unpack[CricbuzzAuctionVideosStreamParams]) -> BinaryIO: ...
+    @overload
+    async def auction_videos(self, **params: Unpack[CricbuzzAuctionVideosTextResponseParams]) -> str: ...
+    @overload
+    async def auction_videos(self, **params: Unpack[CricbuzzAuctionVideosDefaultParams]) -> CricbuzzAuctionVideosResponse: ...
+    @overload
     async def match_facts(self, **params: Unpack[CricbuzzMatchFactsStreamParams]) -> BinaryIO: ...
     @overload
     async def match_facts(self, **params: Unpack[CricbuzzMatchFactsTextResponseParams]) -> str: ...
@@ -2818,6 +3277,12 @@ class AsyncCricbuzzClient(AsyncCrawloraClient):
     async def navigation(self, **params: Unpack[CricbuzzNavigationTextResponseParams]) -> str: ...
     @overload
     async def navigation(self, **params: Unpack[CricbuzzNavigationDefaultParams]) -> CricbuzzNavigationResponse: ...
+    @overload
+    async def news_story(self, **params: Unpack[CricbuzzNewsStoryStreamParams]) -> BinaryIO: ...
+    @overload
+    async def news_story(self, **params: Unpack[CricbuzzNewsStoryTextResponseParams]) -> str: ...
+    @overload
+    async def news_story(self, **params: Unpack[CricbuzzNewsStoryDefaultParams]) -> CricbuzzNewsStoryResponse: ...
     @overload
     async def news_topics(self, **params: Unpack[CricbuzzNewsTopicsStreamParams]) -> BinaryIO: ...
     @overload
@@ -2860,6 +3325,18 @@ class AsyncCricbuzzClient(AsyncCrawloraClient):
     async def series_stats(self, **params: Unpack[CricbuzzSeriesStatsTextResponseParams]) -> str: ...
     @overload
     async def series_stats(self, **params: Unpack[CricbuzzSeriesStatsDefaultParams]) -> CricbuzzSeriesStatsResponse: ...
+    @overload
+    async def team_stats(self, **params: Unpack[CricbuzzTeamStatsStreamParams]) -> BinaryIO: ...
+    @overload
+    async def team_stats(self, **params: Unpack[CricbuzzTeamStatsTextResponseParams]) -> str: ...
+    @overload
+    async def team_stats(self, **params: Unpack[CricbuzzTeamStatsDefaultParams]) -> CricbuzzTeamStatsResponse: ...
+    @overload
+    async def team_stats_options(self, **params: Unpack[CricbuzzTeamStatsOptionsStreamParams]) -> BinaryIO: ...
+    @overload
+    async def team_stats_options(self, **params: Unpack[CricbuzzTeamStatsOptionsTextResponseParams]) -> str: ...
+    @overload
+    async def team_stats_options(self, **params: Unpack[CricbuzzTeamStatsOptionsDefaultParams]) -> CricbuzzTeamStatsOptionsResponse: ...
     @overload
     async def teams(self, **params: Unpack[CricbuzzTeamsStreamParams]) -> BinaryIO: ...
     @overload
@@ -2905,6 +3382,18 @@ class _AsyncCricbuzzGroup:
     @overload
     async def auction_live(self, **params: Unpack[CricbuzzAuctionLiveDefaultParams]) -> CricbuzzAuctionLiveResponse: ...
     @overload
+    async def auction_live_blog(self, **params: Unpack[CricbuzzAuctionLiveBlogStreamParams]) -> BinaryIO: ...
+    @overload
+    async def auction_live_blog(self, **params: Unpack[CricbuzzAuctionLiveBlogTextResponseParams]) -> str: ...
+    @overload
+    async def auction_live_blog(self, **params: Unpack[CricbuzzAuctionLiveBlogDefaultParams]) -> CricbuzzAuctionLiveBlogResponse: ...
+    @overload
+    async def auction_news(self, **params: Unpack[CricbuzzAuctionNewsStreamParams]) -> BinaryIO: ...
+    @overload
+    async def auction_news(self, **params: Unpack[CricbuzzAuctionNewsTextResponseParams]) -> str: ...
+    @overload
+    async def auction_news(self, **params: Unpack[CricbuzzAuctionNewsDefaultParams]) -> CricbuzzAuctionNewsResponse: ...
+    @overload
     async def auction_options(self, **params: Unpack[CricbuzzAuctionOptionsStreamParams]) -> BinaryIO: ...
     @overload
     async def auction_options(self, **params: Unpack[CricbuzzAuctionOptionsTextResponseParams]) -> str: ...
@@ -2965,6 +3454,12 @@ class _AsyncCricbuzzGroup:
     @overload
     async def auction_upcoming_options(self, **params: Unpack[CricbuzzAuctionUpcomingOptionsDefaultParams]) -> CricbuzzAuctionUpcomingOptionsResponse: ...
     @overload
+    async def auction_videos(self, **params: Unpack[CricbuzzAuctionVideosStreamParams]) -> BinaryIO: ...
+    @overload
+    async def auction_videos(self, **params: Unpack[CricbuzzAuctionVideosTextResponseParams]) -> str: ...
+    @overload
+    async def auction_videos(self, **params: Unpack[CricbuzzAuctionVideosDefaultParams]) -> CricbuzzAuctionVideosResponse: ...
+    @overload
     async def match_facts(self, **params: Unpack[CricbuzzMatchFactsStreamParams]) -> BinaryIO: ...
     @overload
     async def match_facts(self, **params: Unpack[CricbuzzMatchFactsTextResponseParams]) -> str: ...
@@ -2994,6 +3489,12 @@ class _AsyncCricbuzzGroup:
     async def navigation(self, **params: Unpack[CricbuzzNavigationTextResponseParams]) -> str: ...
     @overload
     async def navigation(self, **params: Unpack[CricbuzzNavigationDefaultParams]) -> CricbuzzNavigationResponse: ...
+    @overload
+    async def news_story(self, **params: Unpack[CricbuzzNewsStoryStreamParams]) -> BinaryIO: ...
+    @overload
+    async def news_story(self, **params: Unpack[CricbuzzNewsStoryTextResponseParams]) -> str: ...
+    @overload
+    async def news_story(self, **params: Unpack[CricbuzzNewsStoryDefaultParams]) -> CricbuzzNewsStoryResponse: ...
     @overload
     async def news_topics(self, **params: Unpack[CricbuzzNewsTopicsStreamParams]) -> BinaryIO: ...
     @overload
@@ -3036,6 +3537,18 @@ class _AsyncCricbuzzGroup:
     async def series_stats(self, **params: Unpack[CricbuzzSeriesStatsTextResponseParams]) -> str: ...
     @overload
     async def series_stats(self, **params: Unpack[CricbuzzSeriesStatsDefaultParams]) -> CricbuzzSeriesStatsResponse: ...
+    @overload
+    async def team_stats(self, **params: Unpack[CricbuzzTeamStatsStreamParams]) -> BinaryIO: ...
+    @overload
+    async def team_stats(self, **params: Unpack[CricbuzzTeamStatsTextResponseParams]) -> str: ...
+    @overload
+    async def team_stats(self, **params: Unpack[CricbuzzTeamStatsDefaultParams]) -> CricbuzzTeamStatsResponse: ...
+    @overload
+    async def team_stats_options(self, **params: Unpack[CricbuzzTeamStatsOptionsStreamParams]) -> BinaryIO: ...
+    @overload
+    async def team_stats_options(self, **params: Unpack[CricbuzzTeamStatsOptionsTextResponseParams]) -> str: ...
+    @overload
+    async def team_stats_options(self, **params: Unpack[CricbuzzTeamStatsOptionsDefaultParams]) -> CricbuzzTeamStatsOptionsResponse: ...
     @overload
     async def teams(self, **params: Unpack[CricbuzzTeamsStreamParams]) -> BinaryIO: ...
     @overload
@@ -3137,6 +3650,54 @@ CricbuzzAuctionLiveStreamParams = TypedDict('CricbuzzAuctionLiveStreamParams', {
     'tournament': Required[str],
     'year': Required[str],
     'currency': Required[str],
+}, total=False)
+
+CricbuzzAuctionLiveBlogDefaultParams = TypedDict('CricbuzzAuctionLiveBlogDefaultParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': NotRequired[Literal["auto", "json"]],
+    'tournament': Required[str],
+    'year': Required[str],
+}, total=False)
+
+CricbuzzAuctionLiveBlogTextResponseParams = TypedDict('CricbuzzAuctionLiveBlogTextResponseParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': Required[Literal["text"]],
+    'tournament': Required[str],
+    'year': Required[str],
+}, total=False)
+
+CricbuzzAuctionLiveBlogStreamParams = TypedDict('CricbuzzAuctionLiveBlogStreamParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': Required[Literal["stream"]],
+    'tournament': Required[str],
+    'year': Required[str],
+}, total=False)
+
+CricbuzzAuctionNewsDefaultParams = TypedDict('CricbuzzAuctionNewsDefaultParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': NotRequired[Literal["auto", "json"]],
+    'tournament': Required[str],
+    'year': Required[str],
+}, total=False)
+
+CricbuzzAuctionNewsTextResponseParams = TypedDict('CricbuzzAuctionNewsTextResponseParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': Required[Literal["text"]],
+    'tournament': Required[str],
+    'year': Required[str],
+}, total=False)
+
+CricbuzzAuctionNewsStreamParams = TypedDict('CricbuzzAuctionNewsStreamParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': Required[Literal["stream"]],
+    'tournament': Required[str],
+    'year': Required[str],
 }, total=False)
 
 CricbuzzAuctionOptionsDefaultParams = TypedDict('CricbuzzAuctionOptionsDefaultParams', {
@@ -3436,6 +3997,30 @@ CricbuzzAuctionUpcomingOptionsStreamParams = TypedDict('CricbuzzAuctionUpcomingO
     'year': NotRequired[str],
 }, total=False)
 
+CricbuzzAuctionVideosDefaultParams = TypedDict('CricbuzzAuctionVideosDefaultParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': NotRequired[Literal["auto", "json"]],
+    'tournament': Required[str],
+    'year': Required[str],
+}, total=False)
+
+CricbuzzAuctionVideosTextResponseParams = TypedDict('CricbuzzAuctionVideosTextResponseParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': Required[Literal["text"]],
+    'tournament': Required[str],
+    'year': Required[str],
+}, total=False)
+
+CricbuzzAuctionVideosStreamParams = TypedDict('CricbuzzAuctionVideosStreamParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': Required[Literal["stream"]],
+    'tournament': Required[str],
+    'year': Required[str],
+}, total=False)
+
 CricbuzzMatchFactsDefaultParams = TypedDict('CricbuzzMatchFactsDefaultParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
@@ -3539,6 +4124,27 @@ CricbuzzNavigationStreamParams = TypedDict('CricbuzzNavigationStreamParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     '_response_type': Required[Literal["stream"]],
+}, total=False)
+
+CricbuzzNewsStoryDefaultParams = TypedDict('CricbuzzNewsStoryDefaultParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': NotRequired[Literal["auto", "json"]],
+    'url': Required[str],
+}, total=False)
+
+CricbuzzNewsStoryTextResponseParams = TypedDict('CricbuzzNewsStoryTextResponseParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': Required[Literal["text"]],
+    'url': Required[str],
+}, total=False)
+
+CricbuzzNewsStoryStreamParams = TypedDict('CricbuzzNewsStoryStreamParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': Required[Literal["stream"]],
+    'url': Required[str],
 }, total=False)
 
 CricbuzzNewsTopicsDefaultParams = TypedDict('CricbuzzNewsTopicsDefaultParams', {
@@ -3719,6 +4325,66 @@ CricbuzzSeriesStatsStreamParams = TypedDict('CricbuzzSeriesStatsStreamParams', {
     'series_url': Required[str],
     'stat': NotRequired[Literal['mostRuns', 'highestScore', 'highestAvg', 'highestSr', 'mostHundreds', 'mostFifties', 'mostFours', 'mostSixes', 'mostNineties', 'mostWickets', 'lowestAvg', 'bestBowlingInnings', 'mostFiveWickets', 'lowestEcon', 'lowestSr']],
     'format': NotRequired[str],
+}, total=False)
+
+CricbuzzTeamStatsDefaultParams = TypedDict('CricbuzzTeamStatsDefaultParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': NotRequired[Literal["auto", "json"]],
+    'category': Required[Literal['international', 'domestic', 'league', 'women']],
+    'team_id': Required[int],
+    'stat': Required[str],
+    'format_id': Required[str],
+    'year': Required[str],
+    'opponent_id': Required[str],
+}, total=False)
+
+CricbuzzTeamStatsTextResponseParams = TypedDict('CricbuzzTeamStatsTextResponseParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': Required[Literal["text"]],
+    'category': Required[Literal['international', 'domestic', 'league', 'women']],
+    'team_id': Required[int],
+    'stat': Required[str],
+    'format_id': Required[str],
+    'year': Required[str],
+    'opponent_id': Required[str],
+}, total=False)
+
+CricbuzzTeamStatsStreamParams = TypedDict('CricbuzzTeamStatsStreamParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': Required[Literal["stream"]],
+    'category': Required[Literal['international', 'domestic', 'league', 'women']],
+    'team_id': Required[int],
+    'stat': Required[str],
+    'format_id': Required[str],
+    'year': Required[str],
+    'opponent_id': Required[str],
+}, total=False)
+
+CricbuzzTeamStatsOptionsDefaultParams = TypedDict('CricbuzzTeamStatsOptionsDefaultParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': NotRequired[Literal["auto", "json"]],
+    'category': Required[Literal['international', 'domestic', 'league', 'women']],
+    'team_id': Required[int],
+}, total=False)
+
+CricbuzzTeamStatsOptionsTextResponseParams = TypedDict('CricbuzzTeamStatsOptionsTextResponseParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': Required[Literal["text"]],
+    'category': Required[Literal['international', 'domestic', 'league', 'women']],
+    'team_id': Required[int],
+}, total=False)
+
+CricbuzzTeamStatsOptionsStreamParams = TypedDict('CricbuzzTeamStatsOptionsStreamParams', {
+    '_timeout': NotRequired[float],
+    '_headers': NotRequired[Mapping[str, str]],
+    '_response_type': Required[Literal["stream"]],
+    'category': Required[Literal['international', 'domestic', 'league', 'women']],
+    'team_id': Required[int],
 }, total=False)
 
 CricbuzzTeamsDefaultParams = TypedDict('CricbuzzTeamsDefaultParams', {

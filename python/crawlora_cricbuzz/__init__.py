@@ -6,10 +6,10 @@ from .operations import OPERATION_COUNT, OPERATION_IDS, PLATFORM
 
 Client = CricbuzzClient
 AsyncClient = AsyncCricbuzzClient
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 DISPLAY_NAME = 'Cricbuzz'
 PLATFORM = 'cricbuzz'
-CONTRACT_REVISION = 'sha256:24090022ab422946e7b2a0693ba68ff52b3751b406e29ef04e14c88905c28a6b'
+CONTRACT_REVISION = 'sha256:1e46ae7c209d4dd81abf58d240cc7c9d37e3a1500c184439486584dd49d96b5b'
 
 __all__ = [
     "CricbuzzClient", "AsyncCricbuzzClient", "Client", "AsyncClient",

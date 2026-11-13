@@ -2,13 +2,15 @@
 
 Generated from `openapi/public.json`. Deprecated, admin, and internal operations are excluded from this SDK contract.
 
-Total operations: `29`
+Total operations: `35`
 
 | Group | SDK method | Operation ID | HTTP | Params | Auth | Response | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | cricbuzz | `cricbuzz.archives` | `cricbuzz-archives` | `GET /cricbuzz/archives` | `year` (query number)<br>`category` (query "international" \| "league" \| "domestic" \| "women")<br>`q` (query string) | `ApiKeyAuth` | `CricbuzzArchivesResponse` |  |
 | cricbuzz | `cricbuzz.auctionInfo` | `cricbuzz-auction-info` | `GET /cricbuzz/auction/info` | `tournament` (query string)<br>`year` (query string) | `ApiKeyAuth` | `CricbuzzAuctionInfoResponse` |  |
 | cricbuzz | `cricbuzz.auctionLive` | `cricbuzz-auction-live` | `GET /cricbuzz/auction/live` | `tournament` (query string required)<br>`year` (query string required)<br>`currency` (query string required) | `ApiKeyAuth` | `CricbuzzAuctionLiveResponse` |  |
+| cricbuzz | `cricbuzz.auctionLiveBlog` | `cricbuzz-auction-live-blog` | `GET /cricbuzz/auction/live-blog` | `tournament` (query string required)<br>`year` (query string required) | `ApiKeyAuth` | `CricbuzzAuctionLiveBlogResponse` |  |
+| cricbuzz | `cricbuzz.auctionNews` | `cricbuzz-auction-news` | `GET /cricbuzz/auction/news` | `tournament` (query string required)<br>`year` (query string required) | `ApiKeyAuth` | `CricbuzzAuctionNewsResponse` |  |
 | cricbuzz | `cricbuzz.auctionOptions` | `cricbuzz-auction-options` | `GET /cricbuzz/auction/options` | `tournament` (query string)<br>`year` (query string) | `ApiKeyAuth` | `CricbuzzAuctionOptionsResponse` |  |
 | cricbuzz | `cricbuzz.auctionPlayerDetail` | `cricbuzz-auction-player-detail` | `GET /cricbuzz/auction/player` | `tournament` (query string required)<br>`year` (query string required)<br>`currency` (query string required)<br>`player_id` (query number required) | `ApiKeyAuth` | `CricbuzzAuctionPlayerDetailResponse` |  |
 | cricbuzz | `cricbuzz.auctionPlayerSearch` | `cricbuzz-auction-player-search` | `GET /cricbuzz/auction/player-search` | `tournament` (query string required)<br>`year` (query string required)<br>`q` (query string required) | `ApiKeyAuth` | `CricbuzzAuctionPlayerSearchResponse` |  |
@@ -19,11 +21,13 @@ Total operations: `29`
 | cricbuzz | `cricbuzz.auctionTeamsOptions` | `cricbuzz-auction-teams-options` | `GET /cricbuzz/auction/teams/options` | `tournament` (query string)<br>`year` (query string) | `ApiKeyAuth` | `CricbuzzAuctionTeamsOptionsResponse` |  |
 | cricbuzz | `cricbuzz.auctionUpcoming` | `cricbuzz-auction-upcoming` | `GET /cricbuzz/auction/upcoming` | `tournament` (query string required)<br>`year` (query string required)<br>`currency` (query string required)<br>`page` (query number)<br>`country_ids` (query string)<br>`role` (query string)<br>`cap` (query string)<br>`sort` (query string) | `ApiKeyAuth` | `CricbuzzAuctionUpcomingResponse` |  |
 | cricbuzz | `cricbuzz.auctionUpcomingOptions` | `cricbuzz-auction-upcoming-options` | `GET /cricbuzz/auction/upcoming/options` | `tournament` (query string)<br>`year` (query string) | `ApiKeyAuth` | `CricbuzzAuctionUpcomingOptionsResponse` |  |
+| cricbuzz | `cricbuzz.auctionVideos` | `cricbuzz-auction-videos` | `GET /cricbuzz/auction/videos` | `tournament` (query string required)<br>`year` (query string required) | `ApiKeyAuth` | `CricbuzzAuctionVideosResponse` |  |
 | cricbuzz | `cricbuzz.matchFacts` | `cricbuzz-match-facts` | `GET /cricbuzz/match-facts` | `match_url` (query string required) | `ApiKeyAuth` | `CricbuzzMatchFactsResponse` |  |
 | cricbuzz | `cricbuzz.matchGraphs` | `cricbuzz-match-graphs` | `GET /cricbuzz/match-graphs` | `match_url` (query string required) | `ApiKeyAuth` | `CricbuzzMatchGraphsResponse` |  |
 | cricbuzz | `cricbuzz.matchOvers` | `cricbuzz-match-overs` | `GET /cricbuzz/match-overs` | `match_url` (query string required) | `ApiKeyAuth` | `CricbuzzMatchOversResponse` |  |
 | cricbuzz | `cricbuzz.matches` | `cricbuzz-matches` | `GET /cricbuzz/matches` | `status` (query "live" \| "recent" \| "upcoming")<br>`category` (query "all" \| "international" \| "league" \| "domestic" \| "women") | `ApiKeyAuth` | `CricbuzzMatchesResponse` |  |
 | cricbuzz | `cricbuzz.navigation` | `cricbuzz-navigation` | `GET /cricbuzz/navigation` | none | `ApiKeyAuth` | `CricbuzzNavigationResponse` |  |
+| cricbuzz | `cricbuzz.newsStory` | `cricbuzz-news-story` | `GET /cricbuzz/news/story` | `url` (query string required) | `ApiKeyAuth` | `CricbuzzNewsStoryResponse` |  |
 | cricbuzz | `cricbuzz.newsTopics` | `cricbuzz-news-topics` | `GET /cricbuzz/news/topics` | `q` (query string) | `ApiKeyAuth` | `CricbuzzNewsTopicsResponse` |  |
 | cricbuzz | `cricbuzz.rankings` | `cricbuzz-rankings` | `GET /cricbuzz/rankings` | `gender` (query "men" \| "women")<br>`type` (query "batting" \| "bowling" \| "all-rounder" \| "teams")<br>`format` (query "test" \| "odi" \| "t20") | `ApiKeyAuth` | `CricbuzzRankingsResponse` |  |
 | cricbuzz | `cricbuzz.records` | `cricbuzz-records` | `GET /cricbuzz/records` | `stat` (query "mostRuns" \| "highestScore" \| "highestAvg" \| "highestSr" \| "mostHundreds" \| "mostFifties" \| "mostFours" \| "mostSixes" \| "mostNineties" \| "mostWickets" \| "lowestAvg" \| "bestBowlingInnings" \| "mostFiveWickets" \| "lowestEcon" \| "lowestSr")<br>`format` (query "test" \| "odi" \| "t20")<br>`year` (query string)<br>`team` (query string)<br>`opponent` (query string) | `ApiKeyAuth` | `CricbuzzRecordsResponse` |  |
@@ -31,6 +35,8 @@ Total operations: `29`
 | cricbuzz | `cricbuzz.scorecard` | `cricbuzz-scorecard` | `GET /cricbuzz/scorecard` | `match_url` (query string required) | `ApiKeyAuth` | `CricbuzzScorecardResponse` |  |
 | cricbuzz | `cricbuzz.series` | `cricbuzz-series` | `GET /cricbuzz/series` | `category` (query "all" \| "international" \| "domestic" \| "league" \| "women")<br>`live_stream` (query boolean)<br>`q` (query string) | `ApiKeyAuth` | `CricbuzzSeriesResponse` |  |
 | cricbuzz | `cricbuzz.seriesStats` | `cricbuzz-series-stats` | `GET /cricbuzz/series/stats` | `series_url` (query string required)<br>`stat` (query "mostRuns" \| "highestScore" \| "highestAvg" \| "highestSr" \| "mostHundreds" \| "mostFifties" \| "mostFours" \| "mostSixes" \| "mostNineties" \| "mostWickets" \| "lowestAvg" \| "bestBowlingInnings" \| "mostFiveWickets" \| "lowestEcon" \| "lowestSr")<br>`format` (query string) | `ApiKeyAuth` | `CricbuzzSeriesStatsResponse` |  |
+| cricbuzz | `cricbuzz.teamStats` | `cricbuzz-team-stats` | `GET /cricbuzz/team/stats` | `category` (query "international" \| "domestic" \| "league" \| "women" required)<br>`team_id` (query number required)<br>`stat` (query string required)<br>`format_id` (query string required)<br>`year` (query string required)<br>`opponent_id` (query string required) | `ApiKeyAuth` | `CricbuzzTeamStatsResponse` |  |
+| cricbuzz | `cricbuzz.teamStatsOptions` | `cricbuzz-team-stats-options` | `GET /cricbuzz/team/stats/options` | `category` (query "international" \| "domestic" \| "league" \| "women" required)<br>`team_id` (query number required) | `ApiKeyAuth` | `CricbuzzTeamStatsOptionsResponse` |  |
 | cricbuzz | `cricbuzz.teams` | `cricbuzz-teams` | `GET /cricbuzz/teams` | `category` (query "international" \| "domestic" \| "league" \| "women")<br>`q` (query string) | `ApiKeyAuth` | `CricbuzzTeamsResponse` |  |
 | cricbuzz | `cricbuzz.videoCategories` | `cricbuzz-video-categories` | `GET /cricbuzz/videos/categories` | none | `ApiKeyAuth` | `CricbuzzVideoCategoriesResponse` |  |
 | cricbuzz | `cricbuzz.videoPlaylists` | `cricbuzz-video-playlists` | `GET /cricbuzz/videos/playlists` | none | `ApiKeyAuth` | `CricbuzzVideoPlaylistsResponse` |  |

@@ -7,7 +7,7 @@ from .async_client import AsyncCrawloraClient
 class CricbuzzClient(CrawloraClient):
     """Synchronous Cricbuzz API client."""
     def __init__(self, *args: Any, **kwargs: Any) -> None:
-        kwargs.setdefault('user_agent', 'crawlora-cricbuzz-python/0.1.0')
+        kwargs.setdefault('user_agent', 'crawlora-cricbuzz-python/0.2.0')
         super().__init__(*args, **kwargs)
 
     def archives(self, **params: Any) -> Any:
@@ -27,6 +27,18 @@ class CricbuzzClient(CrawloraClient):
         timeout = params.pop('_timeout', None)
         headers = params.pop('_headers', None)
         return self.request('cricbuzz-auction-live', params, response_type=response_type, timeout=timeout, headers=headers)
+
+    def auction_live_blog(self, **params: Any) -> Any:
+        response_type = params.pop('_response_type', 'auto')
+        timeout = params.pop('_timeout', None)
+        headers = params.pop('_headers', None)
+        return self.request('cricbuzz-auction-live-blog', params, response_type=response_type, timeout=timeout, headers=headers)
+
+    def auction_news(self, **params: Any) -> Any:
+        response_type = params.pop('_response_type', 'auto')
+        timeout = params.pop('_timeout', None)
+        headers = params.pop('_headers', None)
+        return self.request('cricbuzz-auction-news', params, response_type=response_type, timeout=timeout, headers=headers)
 
     def auction_options(self, **params: Any) -> Any:
         response_type = params.pop('_response_type', 'auto')
@@ -88,6 +100,12 @@ class CricbuzzClient(CrawloraClient):
         headers = params.pop('_headers', None)
         return self.request('cricbuzz-auction-upcoming-options', params, response_type=response_type, timeout=timeout, headers=headers)
 
+    def auction_videos(self, **params: Any) -> Any:
+        response_type = params.pop('_response_type', 'auto')
+        timeout = params.pop('_timeout', None)
+        headers = params.pop('_headers', None)
+        return self.request('cricbuzz-auction-videos', params, response_type=response_type, timeout=timeout, headers=headers)
+
     def match_facts(self, **params: Any) -> Any:
         response_type = params.pop('_response_type', 'auto')
         timeout = params.pop('_timeout', None)
@@ -117,6 +135,12 @@ class CricbuzzClient(CrawloraClient):
         timeout = params.pop('_timeout', None)
         headers = params.pop('_headers', None)
         return self.request('cricbuzz-navigation', params, response_type=response_type, timeout=timeout, headers=headers)
+
+    def news_story(self, **params: Any) -> Any:
+        response_type = params.pop('_response_type', 'auto')
+        timeout = params.pop('_timeout', None)
+        headers = params.pop('_headers', None)
+        return self.request('cricbuzz-news-story', params, response_type=response_type, timeout=timeout, headers=headers)
 
     def news_topics(self, **params: Any) -> Any:
         response_type = params.pop('_response_type', 'auto')
@@ -160,6 +184,18 @@ class CricbuzzClient(CrawloraClient):
         headers = params.pop('_headers', None)
         return self.request('cricbuzz-series-stats', params, response_type=response_type, timeout=timeout, headers=headers)
 
+    def team_stats(self, **params: Any) -> Any:
+        response_type = params.pop('_response_type', 'auto')
+        timeout = params.pop('_timeout', None)
+        headers = params.pop('_headers', None)
+        return self.request('cricbuzz-team-stats', params, response_type=response_type, timeout=timeout, headers=headers)
+
+    def team_stats_options(self, **params: Any) -> Any:
+        response_type = params.pop('_response_type', 'auto')
+        timeout = params.pop('_timeout', None)
+        headers = params.pop('_headers', None)
+        return self.request('cricbuzz-team-stats-options', params, response_type=response_type, timeout=timeout, headers=headers)
+
     def teams(self, **params: Any) -> Any:
         response_type = params.pop('_response_type', 'auto')
         timeout = params.pop('_timeout', None)
@@ -187,7 +223,7 @@ class CricbuzzClient(CrawloraClient):
 class AsyncCricbuzzClient(AsyncCrawloraClient):
     """Asynchronous Cricbuzz API client."""
     def __init__(self, *args: Any, **kwargs: Any) -> None:
-        kwargs.setdefault('user_agent', 'crawlora-cricbuzz-python/0.1.0')
+        kwargs.setdefault('user_agent', 'crawlora-cricbuzz-python/0.2.0')
         super().__init__(*args, **kwargs)
 
     async def archives(self, **params: Any) -> Any:
@@ -207,6 +243,18 @@ class AsyncCricbuzzClient(AsyncCrawloraClient):
         timeout = params.pop('_timeout', None)
         headers = params.pop('_headers', None)
         return await self.request('cricbuzz-auction-live', params, response_type=response_type, timeout=timeout, headers=headers)
+
+    async def auction_live_blog(self, **params: Any) -> Any:
+        response_type = params.pop('_response_type', 'auto')
+        timeout = params.pop('_timeout', None)
+        headers = params.pop('_headers', None)
+        return await self.request('cricbuzz-auction-live-blog', params, response_type=response_type, timeout=timeout, headers=headers)
+
+    async def auction_news(self, **params: Any) -> Any:
+        response_type = params.pop('_response_type', 'auto')
+        timeout = params.pop('_timeout', None)
+        headers = params.pop('_headers', None)
+        return await self.request('cricbuzz-auction-news', params, response_type=response_type, timeout=timeout, headers=headers)
 
     async def auction_options(self, **params: Any) -> Any:
         response_type = params.pop('_response_type', 'auto')
@@ -268,6 +316,12 @@ class AsyncCricbuzzClient(AsyncCrawloraClient):
         headers = params.pop('_headers', None)
         return await self.request('cricbuzz-auction-upcoming-options', params, response_type=response_type, timeout=timeout, headers=headers)
 
+    async def auction_videos(self, **params: Any) -> Any:
+        response_type = params.pop('_response_type', 'auto')
+        timeout = params.pop('_timeout', None)
+        headers = params.pop('_headers', None)
+        return await self.request('cricbuzz-auction-videos', params, response_type=response_type, timeout=timeout, headers=headers)
+
     async def match_facts(self, **params: Any) -> Any:
         response_type = params.pop('_response_type', 'auto')
         timeout = params.pop('_timeout', None)
@@ -297,6 +351,12 @@ class AsyncCricbuzzClient(AsyncCrawloraClient):
         timeout = params.pop('_timeout', None)
         headers = params.pop('_headers', None)
         return await self.request('cricbuzz-navigation', params, response_type=response_type, timeout=timeout, headers=headers)
+
+    async def news_story(self, **params: Any) -> Any:
+        response_type = params.pop('_response_type', 'auto')
+        timeout = params.pop('_timeout', None)
+        headers = params.pop('_headers', None)
+        return await self.request('cricbuzz-news-story', params, response_type=response_type, timeout=timeout, headers=headers)
 
     async def news_topics(self, **params: Any) -> Any:
         response_type = params.pop('_response_type', 'auto')
@@ -339,6 +399,18 @@ class AsyncCricbuzzClient(AsyncCrawloraClient):
         timeout = params.pop('_timeout', None)
         headers = params.pop('_headers', None)
         return await self.request('cricbuzz-series-stats', params, response_type=response_type, timeout=timeout, headers=headers)
+
+    async def team_stats(self, **params: Any) -> Any:
+        response_type = params.pop('_response_type', 'auto')
+        timeout = params.pop('_timeout', None)
+        headers = params.pop('_headers', None)
+        return await self.request('cricbuzz-team-stats', params, response_type=response_type, timeout=timeout, headers=headers)
+
+    async def team_stats_options(self, **params: Any) -> Any:
+        response_type = params.pop('_response_type', 'auto')
+        timeout = params.pop('_timeout', None)
+        headers = params.pop('_headers', None)
+        return await self.request('cricbuzz-team-stats-options', params, response_type=response_type, timeout=timeout, headers=headers)
 
     async def teams(self, **params: Any) -> Any:
         response_type = params.pop('_response_type', 'auto')

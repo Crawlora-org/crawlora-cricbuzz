@@ -1,6 +1,6 @@
 {
   "name": "crawlora/cricbuzz",
-  "description": "Crawlora Cricbuzz API client with 29 endpoints for cricket matches, schedules, news, rankings, series, and records",
+  "description": "Crawlora Cricbuzz API client with 35 endpoints for cricket matches, schedules, news, rankings, series, and records",
   "keywords": [
     "crawlora",
     "api-client",
